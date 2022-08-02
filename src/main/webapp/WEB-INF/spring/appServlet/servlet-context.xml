@@ -23,7 +23,7 @@
 	<context:component-scan
 		base-package="com.spring.**" />
 
-	<!-- tiles설정 ViewResolver은 타일즈를 통해서 설정파일에 존재하지 않으면 우선순위 2로 -->
+	<!-- tiles설정 ViewResolver은 타일즈를 통해서 설정파일에 존재하지 않으면 우선순위 2로
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
@@ -38,14 +38,14 @@
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
-		<beans:property name="order" value="1" /><!-- 우선순위설정 -->
-	</beans:bean>
+		<beans:property name="order" value="1" />우선순위설정
+	</beans:bean> -->
 
 	<beans:bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
+		<beans:property name="order" value="1" />
 
 	</beans:bean>
 
