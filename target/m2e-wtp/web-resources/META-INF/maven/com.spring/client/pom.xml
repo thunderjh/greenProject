@@ -32,6 +32,15 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- Spring 시큐리티 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>5.7.2</version>
+		</dependency>
+
 
 		<!--lombok-->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
