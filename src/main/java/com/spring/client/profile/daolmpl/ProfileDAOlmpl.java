@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spring.client.profile.dao.ProfileDAO;
 import com.spring.client.profile.vo.ProfileVO;
 
-@Repository // ÇöÀç Å¬·¡½º¸¦ dao beanÀ¸·Î µî·Ï
+@Repository // í˜„ì¬ í´ë˜ìŠ¤ë¥¼ dao beanìœ¼ë¡œ ë“±ë¡
 public class ProfileDAOlmpl implements ProfileDAO{
 	
 	@Autowired
 	@Inject
-	private SqlSession sqlSession; // SqlSession ÀÇÁ¸°ü°è ÁÖÀÔ
+	private SqlSession sqlSession; // SqlSession ì˜ì¡´ê´€ê³„ ì£¼ì…
 
 	@Override
 	public String loginCheck(ProfileVO pvo) {
@@ -29,17 +29,17 @@ public class ProfileDAOlmpl implements ProfileDAO{
 		return null;
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹ °Ë»ç
+	// ì•„ì´ë”” ì¤‘ë³µ ê²€ì‚¬
 	public int check_id(String id) throws Exception{
 		return sqlSession.selectOne("profile.check_id", id);
 	}
 		
-	// ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç
+	// ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬
 	public int check_email(String email) throws Exception{
 		return sqlSession.selectOne("profile.check_email", email);
 	}
 		
-	// È¸¿ø°¡ÀÔ 
+	// íšŒì›ê°€ì… 
 	@Transactional
 	public int join_member(ProfileVO pvo) throws Exception{
 		return sqlSession.insert("profile.join_member", pvo);

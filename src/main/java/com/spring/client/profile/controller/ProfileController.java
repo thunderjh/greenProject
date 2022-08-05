@@ -38,41 +38,41 @@ public class ProfileController {
 
 	
 	/***********************************
-	 ¸¶ÀÌÆäÀÌÁö (ÆäÀÌÁö Ã³¸® ¸ñ·Ï Á¶È¸)
-	 ¿äÃ» URL
+	 ë§ˆì´í˜ì´ì§€ (í˜ì´ì§€ ì²˜ë¦¬ ëª©ë¡ ì¡°íšŒ)
+	 ìš”ì²­ URL
 	 ************************************/
 	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)	
 	public String MyPage(@ModelAttribute("data") String userId, Model model) {
-		log.info("MyPage È£Ãâ ¼º°ø");	
+		log.info("MyPage í˜¸ì¶œ ì„±ê³µ");	
 		model.addAttribute("userId", userId);		
 		return "profile/MyPage";
 	}
 	
 	/***********************************
-	 ¸¶ÀÌÆäÀÌÁö »ó¼¼ Á¤º¸ (ÆäÀÌÁö Ã³¸® ¸ñ·Ï Á¶È¸)
-	 ¿äÃ» URL
+	 ë§ˆì´í˜ì´ì§€ ìƒì„¸ ì •ë³´ (í˜ì´ì§€ ì²˜ë¦¬ ëª©ë¡ ì¡°íšŒ)
+	 ìš”ì²­ URL
 	 ************************************/
 	@RequestMapping(value = "/MyPage2", method = RequestMethod.GET)
 	public String MyPage2() throws Exception{
 		return "profile/MyPage2";
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹ °Ë»ç(AJAX)
+	// ì•„ì´ë”” ì¤‘ë³µ ê²€ì‚¬(AJAX)
 	@RequestMapping(value = "/check_id", method = RequestMethod.POST)
 	public void check_id(@RequestParam("id") String id, HttpServletResponse response) throws Exception{
 		service.check_id(id, response);
 	}
 		
-	// ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç(AJAX)
+	// ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬(AJAX)
 	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
 	public void check_email(@RequestParam("email") String email, HttpServletResponse response) throws Exception{
 		service.check_email(email, response);
 	}
 		
-	// È¸¿ø °¡ÀÔ
+	// íšŒì› ê°€ì…
 	@RequestMapping(value = "/join_member", method = RequestMethod.GET)
 	public String join_member(@ModelAttribute ProfileVO pvo, RedirectAttributes rttr, HttpServletResponse response) throws Exception{
-		log.info("MyPage È£Ãâ ¼º°ø");	
+		log.info("MyPage í˜¸ì¶œ ì„±ê³µ");	
 		rttr.addFlashAttribute("result", service.join_member(pvo, response));
 		return "redircet:profile/join_member";
 	}
