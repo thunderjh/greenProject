@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.client.profile.dao.ProfileDAO;
 import com.spring.client.profile.vo.ProfileVO;
@@ -13,6 +15,7 @@ import com.spring.client.profile.vo.ProfileVO;
 @Repository // 현재 클래스를 dao bean으로 등록
 public class ProfileDAOlmpl implements ProfileDAO{
 	
+	@Autowired
 	@Inject
 	private SqlSession sqlSession; // SqlSession 의존관계 주입
 
@@ -23,35 +26,39 @@ public class ProfileDAOlmpl implements ProfileDAO{
 
 	@Override
 	public ProfileVO MyPage(String userId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
+	// 아이디 중복 검사
+	public int check_id(String id) throws Exception{
+		return sqlSession.selectOne("profile.check_id", id);
+	}
+		
+	// 이메일 중복 검사
+	public int check_email(String email) throws Exception{
+		return sqlSession.selectOne("profile.check_email", email);
+	}
+		
+	// 회원가입 
+	@Transactional
+	public int join_member(ProfileVO pvo) throws Exception{
+		return sqlSession.insert("profile.join_member", pvo);
+	}
 	
+	@Override
+	public void update_pw(ProfileVO pvo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update_mypage(ProfileVO pvo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
-	// 01. 전체 회원 목록 조회
-    @Override
-    public List<ProfileVO> profileList() {
-        return sqlSession.selectList("profile.profileList");
-    }
-    // 02. 회원 등록
-    @Override
-    public void insertProfile(ProfileVO pvo) {
-        sqlSession.insert("profile.insertProfile", pvo);
-    }
-    // 03. 회원 정보 상세 조회
-    @Override
-    public ProfileVO profileView(String userId) {
-        return sqlSession.selectOne("profile.viewProfile", userId);
-    }
- 
-    @Override
-    public void deleteProfile(String userId) {
- 
-    }
- 
-    @Override
-    public void updateProfile(ProfileVO pvo) {
- 
-    }
+
+	
 }

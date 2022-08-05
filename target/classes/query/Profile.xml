@@ -18,31 +18,24 @@
 	
 	
 	
-	<!-- 01. 회원록록 -->
-    <select id="profileList" resultType="com.spring.client.profile.vo.ProfileVO">
-        SELECT 
-          id AS userId, 
-          name AS userName,
-          email AS userEmail
-        FROM profile
-        ORDER BY userId
-    </select>
-    
-    <!-- 02. 회원 등록 -->
-    <insert id="insertProfile">
-        INSERT INTO tbl_profile
-            (id, passwd, name, email)
-        VALUES 
-            (#{userId}, #{userPw}, #{userName}, #{userEmail})
-    </insert>
-    
-    <!-- 03. 회원정보 상세조회 -->
-    <select id="profileView" resultType="com.spring.client.profile.vo.ProfileVO">
-        SELECT 
-          id AS userId, 
-          name AS userName,
-          email AS userEmail
-        FROM profile
-        WHERE id = #{userId}
-    </select>
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" parameterType="String" resultType="int">
+		select count(*) from profile where id = #{id}
+	</select>
+	
+	<!-- 이메일 중복 검사 -->
+	<select id="check_email" parameterType="String" resultType="int">
+		select count(*) from profile where email = #{email}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="join_member" parameterType="profile">
+		insert into profile 
+		values(#{id}, #{passwd}, #{email}, now(), now(), 'false', #{approval_key})
+	</insert>
+	
+	<!-- 회원정보 수정 -->
+	<update id="update_mypage" parameterType="profile">
+		update profile set email = #{email} where id = #{id}
+	</update> 
 </mapper>
