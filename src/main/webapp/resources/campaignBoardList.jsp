@@ -17,7 +17,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
 	
-
+	<link rel="styleSheet" href="/resources/include/css/greenProject.css">
 	
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/campaignBoardList.css" rel="stylesheet">
@@ -60,6 +60,10 @@
    .container {
     padding: 80px 120px;
   }
+  .board_icon{
+	width: 20px;
+	height: 20px;
+}
 	</style>
 	
 	

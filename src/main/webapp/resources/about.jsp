@@ -1,77 +1,138 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author"
-	content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
-<meta name="generator" content="Hugo 0.88.1">
-<title>greenProject</title>
-<link rel="icon" href="image/logo.png">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<!--     <link rel="canonical" href="https://getbootstrap.kr/docs/5.1/examples/carousel/"> -->
+    <title>Carousel Template for Bootstrap</title>
 
-<!-- Bootstrap core CSS -->
-<link
+    <!-- Bootstrap core CSS -->
+    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="/resources/include/dist/css/carousel.css" rel="stylesheet">
+    
+    <link rel="styleSheet" href="/resources/include/css/greenProject.css">
+    
+    <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-
-<!-- Favicons -->
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<meta name="theme-color" content="#7952b3">
-
-<link rel="styleSheet" href="/resources/include/css/greenProject.css">
-
-<script type="text/javascript">
-
-
-</script>
-</head>
-<body>
-	<!-- 네비게이션 바  시작-->
-	<header>
-		<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-			<div class="container-fluid" style="height: 90px; background-color: #fff;">
-				<a class="navbar-brand" href="#"><img src="/resources/images/logo/logo.png" id="logo">GreenProject</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav me-auto mb-2 mb-md-0">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">소개</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캠페인</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">미션</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-					</ul>
-					<form class="d-flex">
-						<a href="#"><img src="/resources/images/common/myPage.png"></a> 
-						<a href="#"><img src="/resources/images/common/signIn.png"></a> 
-						<a href="#"><img src="/resources/images/common/singUp.png"></a>
-					</form>
-				</div>
-			</div>
-		</nav>
-	</header>
-	<!-- 네비게이션 바 끝 -->
 	
-	<main>
+    <style type="text/css">
+    #about_img{
+    	filter:brightness(50%);
+    }
+    
+    </style>
+  </head>
+
+  <body>
+
+
+
+    <!-- 어바웃 메인 이미지 -->
+    
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="/resources/images/about/main_01.jpg" alt="First slide" id="about_img">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>지구를 지키는 힘</h1>
+              <p>지구 사랑</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!-- 어바웃 메인 이미지 -->
+
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="/resources/images/about/main_01.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>슬로건1</h2>
+          <p>내용</p>
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-lg-4">
+          <img class="img-circle" src="/resources/images/about/main_01.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>슬로건2</h2>
+          <p>내용</p>
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-lg-4">
+          <img class="img-circle" src="/resources/images/about/main_01.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>슬로건3</h2>
+          <p>내용</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">다양한 환경문제</h2>
+          <p class="lead">환경문제 내용</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" src="/resources/images/about/main_01.jpg" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" src="/resources/images/about/main_01.jpg" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7">
+          <h2 class="featurette-heading">다양한 환경문제</h2>
+          <p class="lead">환경문제 내용</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      
+
+      <!-- /END THE FEATURETTES -->
 	
-		<!-- 메인 이미지 섹션 시작 -->
-		<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-			<div class="col-md-5 p-lg-5 mx-auto my-5">
-				<h1 class="display-4 fw-normal">Punny headline</h1>
-				<p class="lead fw-normal"></p>
-				<a class="btn btn-outline-secondary" href="#">Coming soon</a>
-			</div>
-			<div class="product-device shadow-sm d-none d-md-block"></div>
-			<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-		</div>
-		<!-- 메인 이미지 섹션 끝-->
-		
+		<!--  youtube -->
+		<div style="margin-bottom: 60px;"><h1 class="text-center">유튜브 동영상</h1></div>
+		<iframe width="1280" height="656" src="https://www.youtube.com/embed/4i6VSrIYRYY" title="YouTube video player" 
+		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+		<!--  youtube end-->
+
+	<hr class="featurette-divider">
+
 		<!-- 캠페인 섹션 시작 -->
 		<div class="album py-5 bg-light">
 			<div class="container">
@@ -194,22 +255,32 @@
 				</div>
 			</div>
 		</div>
-		<!-- 진행 중인 후원 섹션끝 -->	
-	</main>
+		<!-- 진행 중인 후원 섹션끝 -->
+	
 
-	<footer class="text-muted py-5">
-		<div class="container">
-			<p class="float-end mb-1">
-				<a href="#">Back to top</a>
-			</p>
-			<p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-			<p class="mb-0">New to Bootstrap?
-				<a href="/">Visit the homepage</a> or read our
-				<a href="/docs/5.1/getting-started/introduction/">getting started guide</a>.
-			</p>
-		</div>
-	</footer>
+	
+	
+	<!-- 로고 -->
+	<div class="text-center">
+		<img src="/resources/images/logo/logo.png" style="height: 180px; width: 180px;" /> 
+	</div>
+	<!-- 로고 -->
+	
+	
+	
+	
+	
+	
+    </div><!-- /.container -->
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/resources/include/dist/assets/js/docs.min.js"></script>
+    <script src="resources/include/assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

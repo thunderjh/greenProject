@@ -19,4 +19,11 @@ public class CampaignBoardController {
 		
 		return "board/campaignBoardList";
 	}
+	
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String about() {
+		log.info("about.jsp 호출 성공!!");
+		
+		return "board/about";
+	}
 }
