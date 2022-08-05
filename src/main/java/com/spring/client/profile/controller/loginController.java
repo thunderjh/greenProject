@@ -30,28 +30,28 @@ public class loginController{
 	private ProfileService profileService;
 	
 	/************************************
-	 * ·Î±×ÀÎ
+	 * ë¡œê·¸ì¸
 	 ************************************/
 	@RequestMapping(value = "/login" , method = RequestMethod.GET)
 	public String login() {
-		log.info("login È£Ãâ ¼º°ø");
+		log.info("login í˜¸ì¶œ ì„±ê³µ");
 		
 		return "profile/login";	//	/WEB-INF/views/profile/login.jsp
 	}
 	
 	/************************************
-	 * ·Î±×ÀÎ Ã¼Å©
+	 * ë¡œê·¸ì¸ ì²´í¬
 	 ************************************/	
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public ModelAndView loginCheck(@ModelAttribute ProfileVO pvo, HttpSession session) {
-		log.info("loginCheck È£Ãâ ¼º°ø"); 
+		log.info("loginCheck í˜¸ì¶œ ì„±ê³µ"); 
 		
 		String name = profileService.loginCheck(pvo, session);  
 		ModelAndView mav = new ModelAndView();
 		
-		if (name != null) { // ·Î±×ÀÎ ¼º°ø ½Ã
-			mav.setViewName("profile/mainPage"); // ºäÀÇ ÀÌ¸§
-		} else { // ·Î±×ÀÎ ½ÇÆĞ ½Ã
+		if (name != null) { // ë¡œê·¸ì¸ ì„±ê³µ ì‹œ
+			mav.setViewName("profile/mainPage"); // ë·°ì˜ ì´ë¦„
+		} else { // ë¡œê·¸ì¸ ì‹¤íŒ¨ ì‹œ
 			mav.setViewName("profile/login"); 		
 			mav.addObject("message", "error");
 		}
@@ -59,11 +59,11 @@ public class loginController{
 	}
 	
 	/************************************
-	 * ·Î±×¾Æ¿ô
+	 * ë¡œê·¸ì•„ì›ƒ
 	 ************************************/	   
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
-		log.info("logout È£Ãâ ¼º°ø"); 
+		log.info("logout í˜¸ì¶œ ì„±ê³µ"); 
 		profileService.logout(session); 
 		mav.setViewName("profile/login"); 
 		mav.addObject("message", "logout"); 

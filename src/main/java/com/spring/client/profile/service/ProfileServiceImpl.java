@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 import com.spring.client.profile.dao.ProfileDAO;
 import com.spring.client.profile.vo.ProfileVO;
 
-@Service // service beanÀ¸·Î µî·Ï
+@Service // service beanìœ¼ë¡œ ë“±ë¡
 public class ProfileServiceImpl implements ProfileService {
 
 	@Inject
 	ProfileDAO profileDAO;
 	
-	//·Î±×ÀÎ Ã¼Å©
+	//ë¡œê·¸ì¸ ì²´í¬
 	@Override
 	public String loginCheck(ProfileVO pvo, HttpSession session) {
 		String name = profileDAO.loginCheck(pvo);
-		if (name != null) { // ¼¼¼Ç º¯¼ö ÀúÀå
+		if (name != null) { // ì„¸ì…˜ ë³€ìˆ˜ ì €ì¥
 		session.setAttribute("id", pvo.getId());
 		session.setAttribute("name", name);
 	}
@@ -30,16 +30,16 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public void logout(HttpSession session) {
-		session.invalidate(); // ¼¼¼Ç ÃÊ±âÈ­
+		session.invalidate(); // ì„¸ì…˜ ì´ˆê¸°í™”
 	}
 	
-	// ¸¶ÀÌÆäÀÌÁö ¸ŞÀÎÈ­¸é
+	// ë§ˆì´í˜ì´ì§€ ë©”ì¸í™”ë©´
 	@Override
 	public ProfileVO MyPage(String userId) {
 		return profileDAO.MyPage(userId);
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹ °Ë»ç(AJAX)
+	// ì•„ì´ë”” ì¤‘ë³µ ê²€ì‚¬(AJAX)
 	@Override
 	public void check_id(String id, HttpServletResponse response) throws Exception {
 		PrintWriter out = response.getWriter();
@@ -47,7 +47,7 @@ public class ProfileServiceImpl implements ProfileService {
 		out.close();
 	}
 
-	// ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç(AJAX)
+	// ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬(AJAX)
 	@Override
 	public void check_email(String email, HttpServletResponse response) throws Exception {
 		PrintWriter out = response.getWriter();
@@ -55,7 +55,7 @@ public class ProfileServiceImpl implements ProfileService {
 		out.close();
 	}
 
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	@Override
 	public int join_member(ProfileVO pvo, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=utf-8");
@@ -63,14 +63,14 @@ public class ProfileServiceImpl implements ProfileService {
 
 		if (profileDAO.check_id(pvo.getId()) == 1) {
 			out.println("<script>");
-			out.println("alert('µ¿ÀÏÇÑ ¾ÆÀÌµğ°¡ ÀÖ½À´Ï´Ù.');");
+			out.println("alert('ë™ì¼í•œ ì•„ì´ë””ê°€ ìˆìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 			return 0;
 		} else if (profileDAO.check_email(pvo.getEmail()) == 1) {
 			out.println("<script>");
-			out.println("alert('µ¿ÀÏÇÑ ÀÌ¸ŞÀÏÀÌ ÀÖ½À´Ï´Ù.');");
+			out.println("alert('ë™ì¼í•œ ì´ë©”ì¼ì´ ìˆìŠµë‹ˆë‹¤.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
@@ -82,14 +82,14 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 	
 	
-	// È¸¿øÁ¤º¸ ¼öÁ¤
+	// íšŒì›ì •ë³´ ìˆ˜ì •
 	@Override
 	public ProfileVO update_mypage(ProfileVO pvo) throws Exception {
 		profileDAO.update_mypage(pvo);
 		return pvo;
 	}
 		
-	// ºñ¹Ğ¹øÈ£ º¯°æ
+	// ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 	@Override
 	public ProfileVO update_pw(ProfileVO pvo, String old_pw, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=utf-8");

@@ -6,13 +6,13 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ProfileVO {
-	private String id = "";			//¾ÆÀÌµğ
-	private String email = "";		//ÀÌ¸ŞÀÏ
-	private String name = "";		//ÀÌ¸§
-	private String passwd;			//ºñ¹Ğ¹øÈ£
-	private String phone = "";		//Æù¹øÈ£
-	private int access_code = 0;	//Á¢±ÙÄÚµå
-	private String mmbwth = "";		//È¸¿øÅ»Åğ
+	private String id = "";			//ì•„ì´ë””
+	private String email = "";		//ì´ë©”ì¼
+	private String name = "";		//ì´ë¦„
+	private String passwd;			//ë¹„ë°€ë²ˆí˜¸
+	private String phone = "";		//í°ë²ˆí˜¸
+	private int access_code = 0;	//ì ‘ê·¼ì½”ë“œ
+	private String mmbwth = "";		//íšŒì›íƒˆí‡´
 
 	
 }
