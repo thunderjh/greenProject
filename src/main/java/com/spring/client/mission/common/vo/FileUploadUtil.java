@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import org.imgscalr.Scalr;
 import org.springframework.web.multipart.MultipartFile;
 
-
+//파일업로드
 public class FileUploadUtil {
 
 	// 업로드 할 폴더 생성

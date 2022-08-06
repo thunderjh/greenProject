@@ -14,6 +14,7 @@ import com.spring.client.mission.service.MissionService;
 import com.spring.client.mission.vo.MissionVO;
 
 import lombok.AllArgsConstructor;
+//미션게시판컨트롤러
 
 @Controller
 @RequestMapping("/client/mission/*")

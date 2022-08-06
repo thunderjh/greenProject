@@ -10,4 +10,6 @@ public interface AdminMissionService {
 	public int pointPlus(MissionVO bvo);
 
 	public int pointCancle(MissionVO bvo);
+
+	public int totalPoint(MissionVO bvo);
 }

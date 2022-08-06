@@ -1,9 +1,10 @@
 package com.spring.client.missionReply.vo;
 
 import lombok.Data;
-
+//미션댓글VO
 @Data
 public class MissionReplyVO {
+	
 	private int m_r_num;
 	private int m_no;
 	private String id;

@@ -145,6 +145,7 @@
 						</c:choose>
 					</tbody>
 				</table>
+				<h4>총 지급 포인트: ${totalPoint}</h4>
 			</div>
 		</div>
 

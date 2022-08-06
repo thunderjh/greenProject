@@ -3,6 +3,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page trimDirectiveWhitespaces="true"%>
+<!-- 관리자페이지 left -->
 <c:set var="uri" value='${requestScope["javax.servlet.forward.request_uri"]}' />
 
 

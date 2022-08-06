@@ -30,4 +30,8 @@
 		set m_p_approval = 'N', m_point = null 
 		where m_no =#{m_no}
 	</update>
+	
+	<select id="totalPoint" parameterType="mission" resultType="int">
+	select sum(m_point) from mission
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.missionReply.dao.MissionReplyDAO">
+<!-- 미션댓글 -->
 <select id="MissionReplyList" parameterType="missionReply" resultType="missionReply">
 select m_r_num, m_no, id, m_r_content, to_char(m_r_date,'YYYY-MM-DD HH24:MI:SS') as m_r_date
 from m_reply

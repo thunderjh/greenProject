@@ -3,8 +3,9 @@ package com.spring.client.mission.dao;
 import java.util.List;
 
 import com.spring.client.mission.vo.MissionVO;
-
+//미션게시판DAO
 public interface MissionDAO {
+	
 	public List<MissionVO> missionList(MissionVO bvo);
 	
 	public int missionViewsUpdate(MissionVO bvo);

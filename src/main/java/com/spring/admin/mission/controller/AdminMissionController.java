@@ -13,12 +13,13 @@ import com.spring.admin.mission.service.AdminMissionService;
 import com.spring.client.mission.vo.MissionVO;
 
 import lombok.AllArgsConstructor;
-
+//관리자포인트관리컨트롤러
 @Controller
 @RequestMapping(value = "/admin/*")
 @AllArgsConstructor
 public class AdminMissionController {
 
+	
 	private AdminMissionService adminMissionService;
 
 	@GetMapping(value = "/board/pointApproval")

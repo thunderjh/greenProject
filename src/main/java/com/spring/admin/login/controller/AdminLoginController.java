@@ -14,12 +14,13 @@ import com.spring.admin.login.service.AdminLoginService;
 import com.spring.admin.login.vo.AdminLoginVO;
 
 import lombok.AllArgsConstructor;
-
+//관리자로그인컨트롤러
 @Controller
 @SessionAttributes("adminLogin")
 @RequestMapping("/admin/*")
 @AllArgsConstructor
 public class AdminLoginController {
+	
 	private AdminLoginService adminLoginService;
 
 	@ModelAttribute

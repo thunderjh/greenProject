@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@page trimDirectiveWhitespaces="true" %>
+<!-- 관리자페이지 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>

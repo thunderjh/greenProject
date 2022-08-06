@@ -24,7 +24,9 @@ public class AdminMissionController {
 	@GetMapping(value = "/board/pointApproval")
 	public String pointApproval(@ModelAttribute("data") MissionVO bvo, Model model) {
 		List<MissionVO> missionList = adminMissionService.missionList(bvo);
+		int totalPoint = adminMissionService.totalPoint(bvo);
 		model.addAttribute("missionList", missionList);
+		model.addAttribute("totalPoint", totalPoint);
 
 		return "admin/board/pointApproval";
 	}

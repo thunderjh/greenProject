@@ -10,10 +10,12 @@ import com.spring.client.mission.vo.MissionVO;
 
 import lombok.AllArgsConstructor;
 
+//미션게시판서비스클래스
 @Service
 @AllArgsConstructor
 public class MissionServiceImpl implements MissionService {
 
+	
 	private MissionDAO missionDAO;
 
 	@Override

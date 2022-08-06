@@ -33,4 +33,10 @@ public class AdminMissionServiceImpl implements AdminMissionService {
 		return result;
 	}
 
+	@Override
+	public int totalPoint(MissionVO bvo) {
+		int result = adminMissionDAO.totalPoint(bvo);
+		return result;
+	}
+
 }

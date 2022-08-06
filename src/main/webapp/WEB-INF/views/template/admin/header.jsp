@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@page trimDirectiveWhitespaces="true"%>
+<!-- 관리자페이지헤더 -->
 <div class="container-fluid">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed"
