@@ -6,5 +6,7 @@
 <typeAlias type="com.spring.client.mission.vo.MissionVO" alias="mission" />
 <typeAlias type="com.spring.client.missionReply.vo.MissionReplyVO" alias="missionReply" />
 <typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminLogin" />
+<!--회원정보-->
+	<typeAlias type="com.spring.client.profile.vo.ProfileVO" alias="profile"/>
 </typeAliases>
 </configuration>
