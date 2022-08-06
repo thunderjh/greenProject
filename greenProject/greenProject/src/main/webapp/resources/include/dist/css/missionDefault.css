@@ -1,0 +1,8 @@
+@charset "UTF-8";
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+}
+#floatingTextarea2 {height: 100px;
+text-align : justify;
+}
