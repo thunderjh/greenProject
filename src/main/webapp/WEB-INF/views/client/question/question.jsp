@@ -1,27 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/common/common.jspf" %>
+<%@ include file="/WEB-INF/views/common/common.jspf"%>
 
-<script type="text/javascript">
-	$(function(){
-		
-		//제목 클릭시 상세페이지 이동 
-		$(".detailPage").click(function(){
-			let n_num = $(this).parents("tr").attr("data-num");
-			$("#n_num").val(n_num);
-			$("#detailForm").attr({
-				"method" : "get",
-				"action" : "/notice/noticeDetail"
-			});
-			$("#detailForm").submit();
-		});
-		
-		//글쓰기 버튼 클릭시 
-	});
-</script>
 </head>
 <body>
- 	<div class="subNav">
+	<div class="subNav">
 		<ul>
 			<li><a href="/notice/noticeList">공지사항</a></li>
 			<li><a href="/question/questionList">Q &amp; A</a></li>
