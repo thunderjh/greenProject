@@ -132,4 +132,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.gitignore
+*META-INF
+
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,eclipse
