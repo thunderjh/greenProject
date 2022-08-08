@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.client.mission.vo.MissionVO" alias="mission" />
+		<!-- <typeAlias type="com.spring.client.mission.vo.MissionVO" alias="mission" /> -->
 		<typeAlias type="com.spring.client.notice.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.spring.client.question.vo.QuestionVO" alias="question"/>
 	</typeAliases>
