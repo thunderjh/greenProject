@@ -15,6 +15,17 @@
 	</head>
 	
 	<body>
-	로그인 성공시 나오는 페이지입니다 ^^
+		로그인 성공시 나오는 페이지입니다 ^^
+		<hr/>
+		<input type="button" value="회원가입" onclick="location.href= '/profile/memberJoinForm'">
+		<c:if test="${pvo == null}">
+			<input type="button" value="로그인" onclick="location.href='/profile/login'">
+		</c:if>
+		
+		<hr/>
+		<c:if test="${pvo != null}">
+			<a href="/profile/mainMypage">마이페이지(${pvo.id})</a>
+			<input type="button" value="로그아웃" onclick="location.href='/profile/logout'">
+		</c:if>
 	</body>
 </html>

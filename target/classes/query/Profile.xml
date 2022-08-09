@@ -3,39 +3,40 @@
 
 <mapper namespace="com.spring.client.profile.dao.ProfileDAO">
 	
-	<!-- 해당 번호의 비밀번호 확인 -->
-	<select id="loginCheck" resultType="String">
-		select name
-		from profile
-		where id=#{id} and passwd=#{passwd}
+	<!-- 아이디, 비밀번호 확인 -->
+	<select id="loginCheck" parameterType="String" resultType="profile">
+		select * from profile where id = #{id}
 	</select>
 	
-	<!-- 회원 리스트 기본 조회 -->
-	<select id="MyPage" parameterType="profile" resultType="profile">
+	<!-- 마이페이지 -->
+	<select id="mainMypage" parameterType="profile" resultType="profile">
 		SELECT *
 		FROM profile
 	</select>
 	
-	
-	
 	<!-- 아이디 중복 검사 -->
 	<select id="check_id" parameterType="String" resultType="int">
-		select count(*) from profile where id = #{id}
+		select count(*) 
+		from profile 
+		where id = #{id}
 	</select>
 	
 	<!-- 이메일 중복 검사 -->
 	<select id="check_email" parameterType="String" resultType="int">
-		select count(*) from profile where email = #{email}
+		select count(*) 
+		from profile 
+		where email = #{email}
 	</select>
 	
 	<!-- 회원 가입 -->
 	<insert id="join_member" parameterType="profile">
-		insert into profile 
-		values(#{id}, #{passwd}, #{email}, now(), now(), 'false', #{approval_key})
-	</insert>
+		insert into profile (id,passwd,email,name,phone,approval_status,approval_key)
+		values(#{id}, #{passwd}, #{email}, #{name}, #{phone}, 'false', #{approval_key})
+	</insert> 
 	
-	<!-- 회원정보 수정 -->
-	<update id="update_mypage" parameterType="profile">
-		update profile set email = #{email} where id = #{id}
-	</update> 
+	<!-- 이메일 인증 -->
+	<update id="approval_member" parameterType="profile">
+		update profile set approval_status = 'true' where email = #{email} and approval_key = #{approval_key}
+	</update>
+	
 </mapper>

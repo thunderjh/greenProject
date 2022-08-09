@@ -4,81 +4,42 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-	<title>Insert title here</title>
-	
-	<style>
-		html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-	</style>
-	
-	<style type="text/css">		
-		.form1 {
-			background-color: #d9d9d9;		   
-		}
-		   
-		.div00 {
-			margin: auto;
-			background-color: #d9d9d9;
-			width: 600px;
-			text-align: center;
-		}
-			
-		.input_group {
-			border-bottom: 0px dotted #ccc;
-			font: 1em/40px '돋움', 'Helvetica';
-		}			
-										
-	</style>	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-    <script src="/resources/include/dist/assets/js/docs.min.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		$("#btnLogin").click(function(){
-			id=$("#id").val();
-		 var passwd=$("#passwd").val(); if(id == ""){
-		  alert("아이디를 입력하세요");
-		  $("#id").focus(); //입력포커스 이동
-
-		  return; //함수 종료
-		}
-		if(passwd==""){
-		 alert("비밀번호를 입력하세요"); 
-		 $("#passwd").focus();
-		  return;
-		}
-		//폼 내부의 데이터를 전송할 주소
-		 document.form1.action= "${path}/profile/loginCheck";
-		 document.form1.submit(); //제출
-		 });
-		});
-	</script>
-	</head>
-	
-	<body>
-	<div class="div00">
-		<h1>로그인</h1>
-		<form name="form1" method="post">
-			<div class="input_group">
-				<div class="input_group">
-					<input id="id" name="id" maxlength="12" placeholder="Username" />
-				</div>
-				<div class="input_group">
-					<input type="password" id="passwd" name="passwd" placeholder="Password" />
-				</div>
-				<div class="input_group">
-					<button type="button" id="btnLogin">login</button>
-					<c:if test="${message == 'error'}">
-						<div style="color:red;"> 아이디 또는 비밀번호가 일치하지 않습니다.</div>
-					</c:if>
-					<c:if test="${message == 'logout'}">
-						<div style="color:red;"> 로그아웃되었습니다.</div>
-					</c:if>
-				</div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Login Form</title>
+</head>
+<body>
+	<div class="w3-content w3-container w3-margin-top">
+		<div class="w3-container w3-card-4">
+			<div class="w3-center w3-large w3-margin-top">
+				<h3>Log In</h3>
 			</div>
-		</form>
+			<div>
+				<form action="/profile/loginCheck" method="post">
+					<p>
+						<label>ID</label>
+						<!-- <span class="w3-right w3-button w3-hover-white" title="아이디 찾기" id="find_id_btn">
+							<i class="fa fa-exclamation-triangle w3-hover-text-red w3-large"></i>
+						</span> -->
+						<input class="w3-input" id="id" name="id" type="text" required>
+					</p>
+					<p>
+						<label>Password</label>
+						<!-- <span class="w3-right w3-button w3-hover-white" title="비밀번호 찾기" id="find_pw_btn">
+							<i class="fa fa-exclamation-triangle w3-hover-text-red w3-large"></i>
+						</span> -->
+						<input class="w3-input" id="passwd" name="passwd" type="password" required>
+					</p>
+					<p class="w3-center">
+						<button type="submit" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">Log in</button>
+						<button type="button" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round" onclick="history.go(-1)">Cancel</button>
+					</p>
+				</form>
+			</div>
+		</div>
 	</div>
-	</body>
+</body>
 </html>
