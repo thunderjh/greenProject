@@ -11,6 +11,8 @@
 				return;
 			else if (!chkData("#m_content", "내용을"))
 				return;
+			else if (!chkDataFile("#file", "인증사진은 필수입니다."))
+				return;
 			else {
 				if($("#file").val()!=""){
 					if(!chkFile($("#file"))) return;

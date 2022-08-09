@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.spring.admin.mission.dao.AdminMissionDAO;
+import com.spring.client.mission.common.vo.FileUploadUtil;
 import com.spring.client.mission.vo.MissionVO;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +38,17 @@ public class AdminMissionServiceImpl implements AdminMissionService {
 	@Override
 	public int totalPoint(MissionVO bvo) {
 		int result = adminMissionDAO.totalPoint(bvo);
+		return result;
+	}
+
+	@Override
+	public int missionAdminDelete(MissionVO bvo) throws Exception {
+		if (!bvo.getM_file().isEmpty()) {
+			FileUploadUtil.fileDelete(bvo.getM_file());
+			FileUploadUtil.fileDelete(bvo.getM_thumb());
+		}
+
+		int result = adminMissionDAO.missionAdminDelete(bvo.getM_no());
 		return result;
 	}
 

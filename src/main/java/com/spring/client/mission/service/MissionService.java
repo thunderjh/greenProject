@@ -17,4 +17,11 @@ public interface MissionService {
 	public int missionUpdate(MissionVO bvo) throws Exception;
 
 	public int missionDelete(MissionVO bvo) throws Exception;
+	
+	public int missionListCnt(MissionVO bvo);
+	
+	public List<MissionVO> pointList(MissionVO bvo);
+	
+	public int totalPoint(MissionVO bvo);
+
 }

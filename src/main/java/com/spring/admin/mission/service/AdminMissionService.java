@@ -13,4 +13,7 @@ public interface AdminMissionService {
 	public int pointCancle(MissionVO bvo);
 
 	public int totalPoint(MissionVO bvo);
+	
+	public int missionAdminDelete(MissionVO bvo) throws Exception;
+
 }

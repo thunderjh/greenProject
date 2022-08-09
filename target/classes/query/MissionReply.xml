@@ -2,12 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.client.missionReply.dao.MissionReplyDAO">
 <!-- 미션댓글 -->
-<select id="MissionReplyList" parameterType="missionReply" resultType="missionReply">
+<select id="missionReplyList" parameterType="missionReply" resultType="missionReply">
 select m_r_num, m_no, id, m_r_content, to_char(m_r_date,'YYYY-MM-DD HH24:MI:SS') as m_r_date
 from m_reply
 where m_no = #{m_no}
 order by m_r_num desc
 </select>
 
+<insert id="missionReplyInsert" parameterType="missionReply">
+insert into m_reply(m_r_num, m_no, id, m_r_content)
+values(m_reply_seq.nextval, #{m_no}, #{id}, #{m_r_content})
+</insert>
+
+ <update id="missionReplyUpdate" parameterType="missionReply">
+update m_reply 
+set m_r_content =#{m_r_content},m_r_date = sysdate 
+where m_r_num =#{m_r_num} and id = #{id}
+</update>
+
+<delete id="missionReplyDelete" parameterType="missionReply">
+delete 
+from m_reply 
+where m_r_num =#{m_r_num} 
+and id = #{id}
+</delete>
 </mapper>
 

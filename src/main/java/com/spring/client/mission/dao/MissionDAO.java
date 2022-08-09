@@ -19,6 +19,12 @@ public interface MissionDAO {
 	public int missionUpdate(MissionVO bvo);
 
 	public int missionDelete(int m_no);
+	
+	public int missionListCnt(MissionVO bvo);
+	
+	public int totalPoint(MissionVO bvo);
+
+	public List<MissionVO> pointList(MissionVO bvo);
 
 
 }

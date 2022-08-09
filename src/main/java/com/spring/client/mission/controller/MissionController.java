@@ -2,6 +2,8 @@ package com.spring.client.mission.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.client.mission.common.vo.PageDTO;
 import com.spring.client.mission.service.MissionService;
 import com.spring.client.mission.vo.MissionVO;
 
@@ -22,12 +25,19 @@ import lombok.AllArgsConstructor;
 public class MissionController {
 
 	private MissionService missionService;
+	private HttpSession session;
 
 	// 게시글 목록 조회
 	@GetMapping("/missionList")
 	public String missionList(@ModelAttribute("data") MissionVO bvo, Model model) {
+		//전체 레코드 조회
 		List<MissionVO> missionList = missionService.missionList(bvo);
 		model.addAttribute("missionList", missionList);
+		
+		//전체 레코드 수
+		int total = missionService.missionListCnt(bvo);
+		//페이징
+		model.addAttribute("pageMaker",new PageDTO(total,bvo));
 
 		return "client/mission/missionList";
 	}
@@ -35,14 +45,16 @@ public class MissionController {
 	// 글쓰기 폼
 	@RequestMapping("/missionForm")
 	public String writeForm(@ModelAttribute("data") MissionVO bvo) {
-
+		
 		return "client/mission/missionInsert";
 	}
 
 	// 새글 추가
 	@PostMapping("/missionInsert")
 	public String missionInsert(MissionVO bvo, Model model) throws Exception {
-		bvo.setId("wlgus");
+		String sessionId = (String)session.getAttribute("id");
+		bvo.setId(sessionId);
+		model.addAttribute("sessionId",sessionId);
 		missionService.missionInsert(bvo);
 
 		return "redirect:/client/mission/missionList";
@@ -53,7 +65,6 @@ public class MissionController {
 	public String missionDetail(@ModelAttribute("data") MissionVO bvo, Model model) {
 		MissionVO detail = missionService.missionDetail(bvo);
 		model.addAttribute("detail", detail);
-
 		return "client/mission/missionDetail";
 	}
 
@@ -83,6 +94,18 @@ public class MissionController {
 		ras.addFlashAttribute("boardVO", bvo);
 
 		return "redirect:/client/mission/missionList";
+	}
+	
+	//마이페이지 포인트조회
+	@RequestMapping(value="/point")
+	public String pointList(@ModelAttribute("data") MissionVO bvo, Model model) {
+		String sessionId = (String)session.getAttribute("id");
+		bvo.setId(sessionId);
+		List<MissionVO> pointList = missionService.pointList(bvo);
+		model.addAttribute("pointList", pointList);
+		int totalPoint = missionService.totalPoint(bvo);
+		model.addAttribute("totalPoint", totalPoint);
+		return "client/mission/point";
 	}
 
 }
