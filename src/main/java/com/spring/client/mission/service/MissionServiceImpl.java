@@ -83,4 +83,23 @@ public class MissionServiceImpl implements MissionService {
 		return result;
 	}
 
+
+	@Override
+	public int missionListCnt(MissionVO bvo) {
+		
+		return missionDAO.missionListCnt(bvo);
+	}
+
+	@Override
+	public List<MissionVO> pointList(MissionVO bvo) {
+		List<MissionVO> list = missionDAO.pointList(bvo);
+		return list;
+	}
+
+	@Override
+	public int totalPoint(MissionVO bvo) {
+		int result = missionDAO.totalPoint(bvo);
+		return result;
+	}
+
 }

@@ -79,10 +79,13 @@
 			</form>
 			<br>
 			<div>
+			<c:if test="${sessionScope.id == detail.id}">
 				<button type="button" class="btn btn-sm btn-primary" id="btnModify">수정</button>
 				<button type="button" class="btn btn-sm btn-danger" id="btnCancle">삭제</button>
+				</c:if>
 				<button type="button" class="btn btn-sm btn-secondary" id="btnList">목록</button>
 			</div>
+			<br>
 		<jsp:include page="missionReply.jsp" />
 		</div>
 		

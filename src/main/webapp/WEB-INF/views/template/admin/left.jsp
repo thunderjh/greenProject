@@ -8,11 +8,20 @@
 
 
 <ul class="nav nav-sidebar">
-	<li><a href="#">관리자 메뉴</a></li>
+	<li><a href="#"><strong>관리자 메뉴</strong></a></li>
+	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
+	<a href="#">회원 관리</a>
+	</li>
+	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
+	<a href="#">공지사항 관리</a>
+	</li>
+	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
+	<a href="#">Q&A 관리</a>
+	</li>
 	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/board')}">class="active"</c:if>>
 	<a href="/admin/board/pointApproval">포인트 관리</a>
 	</li>
 	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
-	<a href="#">게시판 관리</a>
+	<a href="#">후원금 관리</a>
 	</li>
 </ul>

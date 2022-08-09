@@ -65,14 +65,8 @@ body {
 				if (!chkData("#keyword", "검색어를"))
 					return;
 			}
-			if ($("#search").val() == "all") {
-				$("#keyword").val("");
-			}
-			$("#f_search").attr({
-				"method" : "get",
-				"action" : "/client/mission/missionList"
-			});
-			$("#f_search").submit();
+			$("#pageNum").val(1);
+			goPage();
 		});
 
 		//검색 데이터 유지
@@ -98,7 +92,25 @@ body {
 			$("#detailMissionForm").submit();
 		});
 
+		$(".paginate_button a").click(function(e){
+			e.preventDefault();
+			$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
+			
+			goPage();
 	});
+	});
+		
+	
+	function goPage(){
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/client/mission/missionList"
+		});
+		$("#f_search").submit();
+	}
 </script>
 </head>
 <body>
@@ -112,7 +124,8 @@ body {
 				</form>
 				<div id="missionSearch" class="text-right">
 					<form id="f_search" name="f_search" class="form-inline">
-						<%--페이징 처리 위한 파라미터 --%>
+						<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum}">
+						<input type="hidden" name="amount"id="amount" value="${pageMaker.cvo.amount}">
 						<div class="form-group">
 							<label>검색조건</label> <select id="search" name="search"
 								class="form-control form-control-sm">
@@ -169,9 +182,33 @@ body {
 					</tbody>
 				</table>
 			</div>
+			<c:if test="${sessionScope.id != null}">
 			<div class="contentBtn text-right">
 				<button type="button" class="btn btn-sm btn-primary"
 					id="missionInsertFormBtn">글쓰기</button>
+			</div>
+			</c:if>
+			<%--페이징 --%>
+			<div class="text-center">
+			<ul class="pagination">
+			<c:if test="${pageMaker.prev}">
+			<li class="paginate_button previous">
+			<a href="${pageMaker.startPage -1}">Previous</a>
+			</li>
+			</c:if>
+			
+			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			<li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active' : ''}">
+			<a href="${num}">${num}</a>
+			</li>
+			</c:forEach>
+			
+			<c:if test="${pageMaker.next}">
+			<li class="paginate_button next">
+			<a href="${pageMaker.endPage +1}">Next</a>
+			</li>
+			</c:if>
+			</ul>
 			</div>
 
 

@@ -16,5 +16,7 @@
 	
 	<body>
 	로그인 성공시 나오는 페이지입니다 ^^
+	<a href="/client/mission/missionList">게시판 리스트 이동</a>
+	<a href="/profile/MyPage">MyPage</a>
 	</body>
 </html>

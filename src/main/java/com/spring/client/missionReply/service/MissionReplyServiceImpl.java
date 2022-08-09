@@ -17,9 +17,30 @@ public class MissionReplyServiceImpl implements MissionReplyService {
 	private MissionReplyDAO missionReplyDAO;
 
 	@Override
-	public List<MissionReplyVO> MissionReplyList(Integer m_no) {
-		List<MissionReplyVO> list = missionReplyDAO.MissionReplyList(m_no);
+	public List<MissionReplyVO> missionReplyList(Integer m_no) {
+		List<MissionReplyVO> list = missionReplyDAO.missionReplyList(m_no);
 		return list;
+	}
+
+	
+	@Override
+	public int missionReplyInsert(MissionReplyVO rvo) {
+		int result =missionReplyDAO.missionReplyInsert(rvo);
+		return result;
+	}
+
+
+	@Override
+	public int missionReplyDelete(MissionReplyVO rvo) {
+		int result = missionReplyDAO.missionReplyDelete(rvo);
+		return result;
+	}
+
+
+	@Override
+	public int missionReplyUpdate(MissionReplyVO rvo) {
+		int result = missionReplyDAO.missionReplyUpdate(rvo);
+		return result;
 	}
 
 }

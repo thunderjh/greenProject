@@ -13,5 +13,8 @@ public interface AdminMissionDAO {
 	public int pointCancle(MissionVO bvo);
 	
 	public int totalPoint(MissionVO bvo);
+	
+	public int missionAdminDelete(int m_no);
+
 
 }
