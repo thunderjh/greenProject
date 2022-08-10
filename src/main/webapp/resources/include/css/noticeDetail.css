@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+table{
+	margin-top: 20px;
+}
+
+.col-md-12 span{
+	margin: 5px 15px;
+}
+
+.table-tr-height td{
+	padding: 50px 15px;
+	float: left;
+}
+
+#next{
+	display: inline-block;
+    padding: 4px 15px;
+    border: 1px solid rgba(0,0,0, .15);
+    font-size: 14px;
+    line-height: 1.36;
+}
+
+.span_left{
+	float:left;
+}
+
+.span_right{
+	float:right;
+}
+
+.span_right em{
+	padding: 10px;
+}
+
+#noticeList{
+	width: 160px;
+	height: 50px;
+	border: none;
+	color: white;
+	background-color: #828282;
+}
