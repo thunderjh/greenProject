@@ -14,6 +14,7 @@ public class PageDTO {
 	private MissionCommonVO cvo;
 
 	public PageDTO(int total, MissionCommonVO cvo) {
+		
 		this.total = total;
 		this.cvo = cvo;
 

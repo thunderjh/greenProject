@@ -21,8 +21,8 @@ body {
 }
 </style>
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="/resources/images/common/icon.png" />
-<link rel="apple-touch-icon" href="/resources/images/common/icon.png" />
+<link rel="shortcut icon" href="/resources/images/common/logo.png" />
+<link rel="apple-touch-icon" href="/resources/images/common/logo.png" />
 <!-- 모바일 웹 페이지 설정 끝 -->
 
 <!--[if lt IE 9]>
