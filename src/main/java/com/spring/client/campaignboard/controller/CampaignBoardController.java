@@ -17,8 +17,10 @@ public class CampaignBoardController {
 	public String campaignBoardList() {
 		log.info("campaignBoardList호출 성공!!");
 		
-		return "board/campaignBoardList";
+		return "board/campaignBoard/campaignBoardList";
 	}
+	
+	
 	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about() {
