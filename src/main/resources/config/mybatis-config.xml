@@ -2,12 +2,6 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.client.notice.vo.NoticeVO" alias="notice"/>
-		<typeAlias type="com.spring.client.question.vo.QuestionVO" alias="question"/>
-    <typeAlias type="com.spring.client.mission.vo.MissionVO" alias="mission" />
-    <typeAlias type="com.spring.client.missionReply.vo.MissionReplyVO" alias="missionReply" />
-    <typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminLogin" />
-    <!--회원정보-->
-	  <typeAlias type="com.spring.client.profile.vo.ProfileVO" alias="profile"/>
-</typeAliases>
+		<typeAlias type="com.spring.client.profile.vo.ProfileVO" alias="profile"/>
+	</typeAliases>
 </configuration>
