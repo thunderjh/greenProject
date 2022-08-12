@@ -20,15 +20,6 @@ function chkData(item, msg) {
 	} else { return true; }
 }
 
-function chkDataFile(item, msg) {
-	if ($(item).val().replace(/\s/g, "") == "") {
-		alert(msg);
-		$(item).val("");
-		$(item).focus();
-		return false;
-	} else { return true; }
-}
-
 //유효성 체크 대상, 출력 영역, 메시지 내용
 function dataCheck(item, out, msg) {
 	if ($(item).val().replace(/\s/g, "") == "") {
