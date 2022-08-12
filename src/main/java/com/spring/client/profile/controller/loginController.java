@@ -29,12 +29,12 @@ public class loginController{
 	private ProfileService service;
 	
 	/***********************************
-	 임시 메인 페이지
+	 메인 페이지
 	 ************************************/
-	@RequestMapping(value = "/profile/mainPage")	
+	@RequestMapping(value = "/greenProject")	
 	public String mainMypage() {
-		log.info("mainPage 호출 성공");		
-		return "mainPage";
+		log.info("greenProject 호출 성공");		
+		return "greenProject";
 	}
 	
 	/************************************
@@ -55,7 +55,7 @@ public class loginController{
 		log.info("loginCheck 호출 성공");
 		pvo = service.loginCheck(pvo, response);	//**
 		session.setAttribute("pvo", pvo);	//**
-		return "mainPage";
+		return "redirect:/greenProject";
 	}	
 	
 	

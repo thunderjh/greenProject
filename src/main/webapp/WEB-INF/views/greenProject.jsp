@@ -50,13 +50,13 @@
 					<a href="#"><img src="images/common/myPage.png"></a> 
 					
 					<c:if test="${pvo == null}">
-						<a href="/profile/login"><img src="images/common/signIn.png"></a> 
-						<a href="/profile/memberJoinForm"><img src="images/common/singUp.png"></a>
+						<a href="/profile/login">로그인<img src="images/common/signIn.png"></a> 
+						<a href="/profile/memberJoinForm">가입<img src="images/common/singUp.png"></a>
 					</c:if>
 					
 					<c:if test="${pvo != null}">
-						<a href="/profile/login"><img src="images/common/signIn.png"></a> 
-						<a href="/profile/memberJoinForm"><img src="images/common/singUp.png"></a>
+						<a href="/profile/logout">로그아웃<img src="images/common/signIn.png"></a> 
+						<a href="/profile/mainMypage">마이페이지<img src="images/common/singUp.png"></a>
 					</c:if>
 					
 						
