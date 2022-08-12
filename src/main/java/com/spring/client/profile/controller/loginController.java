@@ -44,7 +44,7 @@ public class loginController{
 	public String login() throws Exception{
 		log.info("login 호출 성공");
 		return "profile/login";
-	}	
+	}
 	
 	
 	/************************************
