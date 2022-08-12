@@ -3,6 +3,7 @@ package com.spring.persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +13,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.spring.client.profile.vo.ProfileVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -48,4 +55,6 @@ public class JDBCTests {
 		}
 
 	}
+
+	
 }

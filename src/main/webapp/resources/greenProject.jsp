@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -43,7 +47,19 @@
 						<li class="nav-item"><a class="nav-link" href="/notice/noticeList">고객센터</a></li>
 					</ul>
 					<form class="d-flex">
-						<a href="#"><img src="images/common/myPage.png"></a> <a href="#"><img src="images/common/signIn.png"></a> <a href="#"><img src="images/common/singUp.png"></a>
+					<a href="#"><img src="images/common/myPage.png"></a> 
+					
+					<c:if test="${pvo == null}">
+						<a href="/profile/login"><img src="images/common/signIn.png"></a> 
+						<a href="/profile/memberJoinForm"><img src="images/common/singUp.png"></a>
+					</c:if>
+					
+					<c:if test="${pvo != null}">
+						<a href="/profile/login"><img src="images/common/signIn.png"></a> 
+						<a href="/profile/memberJoinForm"><img src="images/common/singUp.png"></a>
+					</c:if>
+					
+						
 					</form>
 				</div>
 			</div>
