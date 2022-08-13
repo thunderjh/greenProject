@@ -29,7 +29,7 @@ public class loginController{
 	private ProfileService service;
 	
 	/***********************************
-	 메인 페이지
+	 메인 페이지 
 	 ************************************/
 	@RequestMapping(value = "/greenProject")	
 	public String mainMypage() {
