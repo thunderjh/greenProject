@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false) 
 public class ProfileVO {
 	private String id = "";			//아이디
 	private String email = "";		//이메일

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import com.spring.client.profile.dao.ProfileDAO;
 import com.spring.client.profile.vo.ProfileVO;
 
-@Service // service bean으로 등록
+@Service // service bean으로 등록 
 public class ProfileServiceImpl implements ProfileService {
 
 	@Inject

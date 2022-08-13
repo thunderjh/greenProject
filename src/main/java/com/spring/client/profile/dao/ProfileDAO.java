@@ -2,7 +2,7 @@ package com.spring.client.profile.dao;
 
 import com.spring.client.profile.vo.ProfileVO;
 
-
+ 
 public interface ProfileDAO {
 	
 	public ProfileVO loginCheck(String id) throws Exception;
