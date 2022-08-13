@@ -24,7 +24,7 @@
 			location.href='/profile/find_pw_form';						
 		});
 	}); 
-</script>
+</script> 
 </head>
 
 

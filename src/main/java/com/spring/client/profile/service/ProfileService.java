@@ -2,7 +2,7 @@ package com.spring.client.profile.service;
 
 import javax.servlet.http.HttpServletResponse;
 import com.spring.client.profile.vo.ProfileVO;
-
+ 
 public interface ProfileService {
 
 	public void check_id(String id, HttpServletResponse response) throws Exception;
