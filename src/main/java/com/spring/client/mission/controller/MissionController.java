@@ -15,13 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.client.mission.common.vo.PageDTO;
 import com.spring.client.mission.service.MissionService;
 import com.spring.client.mission.vo.MissionVO;
+import com.spring.client.profile.vo.ProfileVO;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 //미션게시판컨트롤러
 
 @Controller
 @RequestMapping("/client/mission/*")
 @AllArgsConstructor
+@Log4j
 public class MissionController {
 
 	private MissionService missionService;
@@ -52,8 +55,8 @@ public class MissionController {
 	// 새글 추가
 	@PostMapping("/missionInsert")
 	public String missionInsert(MissionVO bvo, Model model) throws Exception {
-		String sessionId = (String)session.getAttribute("id");
-		bvo.setId(sessionId);
+		ProfileVO sessionId = (ProfileVO)session.getAttribute("pvo");
+		bvo.setId(sessionId.getId());
 		model.addAttribute("sessionId",sessionId);
 		missionService.missionInsert(bvo);
 
@@ -99,8 +102,8 @@ public class MissionController {
 	//마이페이지 포인트조회
 	@RequestMapping(value="/point")
 	public String pointList(@ModelAttribute("data") MissionVO bvo, Model model) {
-		String sessionId = (String)session.getAttribute("id");
-		bvo.setId(sessionId);
+		ProfileVO sessionId = (ProfileVO)session.getAttribute("pvo");
+		bvo.setId(sessionId.getId());
 		List<MissionVO> pointList = missionService.pointList(bvo);
 		model.addAttribute("pointList", pointList);
 		int totalPoint = missionService.totalPoint(bvo);

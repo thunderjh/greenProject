@@ -79,7 +79,7 @@
 			</form>
 			<br>
 			<div>
-			<c:if test="${sessionScope.id == detail.id}">
+			<c:if test="${pvo.id == detail.id}">
 				<button type="button" class="btn btn-sm btn-primary" id="btnModify">수정</button>
 				<button type="button" class="btn btn-sm btn-danger" id="btnCancle">삭제</button>
 				</c:if>

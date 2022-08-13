@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	$(function() {
 		let m_no = ${detail.m_no};
-		let id = "${sessionScope.id}";
+		let id = "${pvo.id}";
 		listAll(m_no);
 
 		//댓글입력
@@ -131,6 +131,11 @@
 		$element.addClass("reply");
 		$element.find('.panel-heading > .media-body > .name').html(id + " ");
 		$element.find('.panel-heading > .media-body > .date').html(m_r_date);
+		
+		let loginName = "${pvo.id}";
+		if(loginName !=id){
+			$element.find('.panel-heading > .media-body > button').detach();
+		}
 		$element.find('.body').html(m_r_content);
 
 		$div.append($element);
@@ -190,7 +195,7 @@
 </head>
 <body>
 
-	<c:if test="${sessionScope.id != null}">
+	<c:if test="${pvo.id != null}">
 		<div class="my-3 p-3 bg-white rounded shadow-sm"
 			style="padding-top: 10px">
 			<div class="row">
