@@ -59,7 +59,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <hr class="w3-clear">
         
         <p><a class="fa fa-pencil fa-fw w3-margin-right w3-text-theme" href="/profile/mypage" ></a><a> 회원정보 수정</a></p>
-        <p><i class="fas fa-piggy-bank fa-fw w3-margin-right w3-text-theme"></i><a> 포인트 조회</a></p>
+        <p><i class="fas fa-piggy-bank fa-fw w3-margin-right w3-text-theme"></i><a href="/client/mission/point"> 포인트 조회</a></p>
         <p><i class="fa fa-comments fa-fw w3-margin-right w3-text-theme"></i><a> 문의사항 내역 확인</a></p>
         <p><i class="fas fa-hand-holding-usd fa-fw w3-margin-right w3-text-theme"></i><a> 기부내역 확인</a></p>
         <p><i class="fa fa-close fa-fw w3-margin-right w3-text-theme"></i><a> 회원탈퇴</a></p>
