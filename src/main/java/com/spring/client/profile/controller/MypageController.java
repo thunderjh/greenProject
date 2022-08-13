@@ -24,7 +24,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-public class MypageController2 {
+public class MypageController {
 
 	@Autowired
 	private ProfileService service;
