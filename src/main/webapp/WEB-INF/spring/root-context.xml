@@ -29,7 +29,6 @@
 		<property name="basePackage"><value>com.spring.**.**.dao</value></property>
 		</bean>
 
-
    <!-- 이메일 인증 관련 빈 등록 -->
    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
       <property name="host" value="smtp.gmail.com" />
