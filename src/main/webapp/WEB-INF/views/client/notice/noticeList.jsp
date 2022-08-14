@@ -1,9 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+
+<style type="text/css">
+	#noticeTable{
+		border-collapse: collapse;
+	}
+
+	#noticeTable tr td, th{
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+	}
+	
+</style>
 
 <script type="text/javascript">
 	$(function(){
+		
+		//입력 양식 enter 제거
+		$("#keyword").bind("keydown", function(event){
+			if(event.keyCode == 13){
+				event.preventDefault();	
+			}
+		});
 		
 		//제목 클릭시 상세페이지 이동 
 		$(".detailPage").click(function(){
@@ -16,17 +36,29 @@
 			$("#detailForm").submit();
 		});
 		
-		//글쓰기 버튼 클릭시 
+		//페이징 부분
+		$(".paginate_button a").click(function(e){
+			e.preventDefault();
+			$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
+			goPage();
+		});
 	});
+	
+	//검색을 위한 실질적인 처리 함수
+	function goPage(){
+		if($("#search").val()=="all"){
+			$("#keyword").val("");
+		}
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/notice/noticeList"
+		});
+		$("#f_search").submit();
+	}
 </script>
 </head>
 <body>
- 	<div class="subNav">
-		<ul>
-			<li><a href="/notice/noticeList">공지사항</a></li>
-			<li><a href="/question/questionList">Q &amp; A</a></li>
-		</ul>
-	</div>
+
 	<div class="container">
 		<form id="detailForm">
 			<input type="hidden" id="n_num" name="n_num"/>
@@ -35,6 +67,9 @@
 		<!-- 검색 기능 부분 -->
 		<div class="text-right"	id="noticeSearch">
 			<form	id="f_search" name="f_search"	class="form-inline">
+			<!-- 페이징 처리를 위한 파라미터 -->
+					<input type="hidden" name="pageNum" value="${pageMaker.cvo.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cvo.amount}">
 				<div class="form-group">
 					<select id="search" name="search"	 class="form-select-sm">
 						<option value="all">전체</option>
@@ -49,13 +84,13 @@
 		
 		<!-- 공지사항 리스트 시작 부분 -->
 		<div id="noticeList" class="table-height">
-			<table summary="공지사항" class="table table-striped">
+			<table summary="공지사항" class="table table-bordered" id="noticeTable">
 				<thead>
 					<tr>
 						<th data-value="n_num" class="order text-center col-md-1">글 번호</th>
 						<th class="text-center col-md-6">글 제목</th>
-						<th data-value="n_date" class="order col-md-3">작성일</th>
-						<th class="text-center col-md-2">조회수</th>
+						<th data-value="n_date" class="order col-md-2">작성일</th>
+						<th class="text-center col-md-1">조회수</th>
 					</tr>
 				</thead>
 				<tbody id="list"	class="table-striped">
@@ -65,7 +100,7 @@
 							<c:forEach var="notice" items="${noticeList}" varStatus="status">
 								<tr class="text-center" data-num="${notice.n_num}">
 									<td>${notice.n_num }</td>
-									<td class="detailPage text-left">${notice.n_title}</td>
+									<td class="detailPage text-center">${notice.n_title}</td>
 									<td class="text-left">${notice.n_date}</td>
 									<td class="text-center">${notice.views}</td>
 								</tr>
@@ -73,7 +108,7 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="5" class="teac text-center">등록된 게시물이 존재하지 않습니다.</td>
+								<td colspan="4" class="teac text-center">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -91,7 +126,7 @@
 					<a href="${pageMaker.startPage-1}">Previous</a>
 				</li>
 			</c:if>
-			</ul>
+			
 			
 			<!-- 바로가기 번호 출력 -->
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
@@ -106,18 +141,13 @@
 					<a href="${pageMaker.endPage+1}">Next</a>
 				</li>
 			</c:if>
+			</ul>
 		</div>
 		<!-- 페이징 출력 종료 -->
 		
 		<!-- 페이징 처리를 커스텀태그(pagination)를 정의 -->
-		<tag:pagination pageNum="${pageMaker.cvo.pageNum}" amount="${pageMaker.cvo.amount}" 
-		startPage="${pageMaker.startPage}" endPage="${pageMaker.endPage}" prev="${pageMaker.prev}" next="${pageMaker.next}"/>
-			
-		
-		<!-- 글쓰기 버튼 시작 부분
-		<div class="contentBtn text-right">
-			<input type="button" value="글쓰기" id="insertFormBtn" class="btn btn-success">
-		</div>
-		<!-- 글쓰기 버튼 끝 부분  -->
+		<%-- <tag:pagination pageNum="${pageMaker.cvo.pageNum}" amount="${pageMaker.cvo.amount}" 
+		startPage="${pageMaker.startPage}" endPage="${pageMaker.endPage}" prev="${pageMaker.prev}" next="${pageMaker.next}"/> --%>
+
 	</div>
 </body>

@@ -20,7 +20,7 @@ public class CommonVO {
 	private String end_date = "";
 	
 	public CommonVO() {
-		this(1,10);
+		this(1,5);
 	}
 	
 	public CommonVO(int pageNum, int  amount) {

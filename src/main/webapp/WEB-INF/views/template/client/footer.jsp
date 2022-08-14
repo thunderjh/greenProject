@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<footer class="text-muted py-5">
+<style type="text/css">
+	footer{
+		margin-top: 160px;
+	}
+</style>
+
 	<div class="container">
 		<p class="float-end mb-1">
 			<a href="#">Back to top</a>
@@ -12,4 +17,3 @@
 			<a href="/docs/5.1/getting-started/introduction/">getting started guide</a>.
 		</p>
 	</div>
-</footer>
