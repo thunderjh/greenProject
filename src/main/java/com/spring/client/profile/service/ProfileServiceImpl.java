@@ -226,7 +226,9 @@ public class ProfileServiceImpl implements ProfileService {
 			// 비밀번호 변경
 			profileDAO.update_pw(pvo);
 			// 임시 비밀번호 알림
-			out.print(passwd);
+			out.println("임시 비밀번호가 발급되었습니다.");
+			out.println("임시 비밀번호는 "+passwd+" 입니다.");
+
 			out.close();
 		}
 	}	
