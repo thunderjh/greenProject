@@ -33,19 +33,19 @@
 	<div class="w3-content w3-container w3-margin-top" id="join">
 		<div class="w3-container w3-card-4">
 			<div class="w3-center w3-large w3-margin-top">
-				<h3>Log In</h3>
+				<h3>로그인</h3>
 			</div>
 			<div>
 				<form action="/profile/loginCheck" method="post">
 					<p>
-						<label>ID</label>
+						<label>아이디</label>
 						<span class="w3-right w3-button w3-hover-white" title="아이디 찾기">
 							<i class="fa fa-exclamation-triangle w3-hover-text-red w3-large"></i>
 						</span>
 						<input class="w3-input" id="id" name="id" type="text" required>
 					</p>
 					<p>
-						<label>Password</label>
+						<label>비밀번호</label>
 						<span class="w3-right w3-button w3-hover-white" title="비밀번호 찾기">
 							<i class="fa fa-exclamation-triangle w3-hover-text-red w3-large"></i>
 						</span>

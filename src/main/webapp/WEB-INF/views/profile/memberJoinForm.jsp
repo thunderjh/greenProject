@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,15 +18,13 @@
 		$("#joinForm").submit(function(){								
 					
 			// pwd
-			let passwd = $("input[name='passwd']").val();
-			let PWD_RULE = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/;
 			if($("#passwd").val() !== $("#passwd2").val()){
 				alert("비밀번호가 다릅니다.");
 				$("#passwd").val("").focus();
 				$("#passwd2").val(""); 
 				return false;
-			}else if (!PWD_RULE.test(passwd)) {
-				alert("비밀번호는 영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력하십시오.");
+			}else if ($("#passwd").val().length < 8) {
+				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
 				$("#passwd").val("");
 				$("#passwd").focus();
 				return false;
@@ -112,34 +110,34 @@
 	<div class="w3-content w3-container w3-margin-top" id="joinForm">
 		<div class="w3-container w3-card-4">
 			<div class="w3-center w3-large w3-margin-top">
-				<h3>Member Join Form</h3>
+				<h3>회원가입</h3>
 			</div>
 			<div>
 				<form action="/profile/join_member" method="post">
 					<p>
-						<label>ID</label> 
-						<input class="w3-input" type="text" id="id" name="id" required> 
+						<label>아이디</label> 
+						<input class="w3-input" type="text" id="id" name="id" required placeholder="아이디는 첫글자는 영문, 두번째부터 영문자와 숫자로 6글자이상 12글자이하만 사용 가능" required> 
 						<span id="check_id" class="w3-text-red"></span>
 					</p>
 					<p>
-						<label>Password</label> 
-						<input class="w3-input" id="passwd" name="passwd" type="password" required>
+						<label>비밀번호</label> 
+						<input class="w3-input" id="passwd" name="passwd" type="password" required placeholder="비밀번호는 8자 이상만 사용가능" required>
 					</p>
 					<p>
-						<label>Confirm</label> 
+						<label>비밀번호 확인</label> 
 						<input class="w3-input" id="passwd2" type="password" required>
 					</p>
 					<p>
-						<label>Name</label> 
-						<input class="w3-input" id="name" name="name" type="text" required placeholder=>
+						<label>이름</label> 
+						<input class="w3-input" id="name" name="name" type="text" required>
 					</p>
 					<p>
-						<label>Phone</label> 
-						<input class="w3-input" id="phone" name="phone" type="tel" required placeholder="-없이 입력">
+						<label>핸드폰 번호</label> 
+						<input class="w3-input" id="phone" name="phone" type="tel" required placeholder="-없이 입력" required>
 					</p>
 					<p>
-						<label>Email</label>
-						<input type="text" id="email" name="email" class="w3-input" required placeholder="이메일 인증 후 로그인이 가능합니다.">
+						<label>이메일</label>
+						<input type="text" id="email" name="email" class="w3-input" required>
 						<span id="check_email" class="w3-text-red"></span>
 					</p>
 					<p class="w3-center">

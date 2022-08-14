@@ -47,7 +47,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <!-- Profile -->
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <span class="w3-right w3-opacity">1 min</span>
-        <h4>My Page</h4><br>
+        <h4>마이페이지</h4><br>
         <p class="w3-center"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
         <!-- 데이터 출력 -->
 		<c:if test="${pvo == null}">
@@ -59,10 +59,9 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         <hr class="w3-clear">
         
         <p><a class="fa fa-pencil fa-fw w3-margin-right w3-text-theme" href="/profile/mypage" ></a><a> 회원정보 수정</a></p>
-        <p><i class="fas fa-piggy-bank fa-fw w3-margin-right w3-text-theme"></i><a href="/client/mission/point"> 포인트 조회</a></p>
+        <p><i class="fas fa-piggy-bank fa-fw w3-margin-right w3-text-theme"></i><a> 포인트 조회</a></p>
         <p><i class="fa fa-comments fa-fw w3-margin-right w3-text-theme"></i><a> 문의사항 내역 확인</a></p>
         <p><i class="fas fa-hand-holding-usd fa-fw w3-margin-right w3-text-theme"></i><a> 기부내역 확인</a></p>
-        <p><i class="fa fa-close fa-fw w3-margin-right w3-text-theme"></i><a> 회원탈퇴</a></p>
 
      
       </div>
