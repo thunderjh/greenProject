@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.spring.client.profile.dao.ProfileDAO">
+	
+	<!-- 아이디, 비밀번호 확인 -->
+	<select id="loginCheck" parameterType="String" resultType="profile">
+		select * from profile where id = #{id}
+	</select>
+	
+	<!-- 마이페이지 -->
+	<select id="mainMypage" parameterType="profile" resultType="profile">
+		SELECT *
+		FROM profile
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="update_mypage" parameterType="profile">
+		update profile 
+		set email = #{email} 
+		where id = #{id}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="update_pw" parameterType="profile">
+		update profile 
+		set passwd = #{passwd} 
+		where id = #{id}
+	</update>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" parameterType="String" resultType="int">
+		select count(*) 
+		from profile 
+		where id = #{id}
+	</select>
+	
+	<!-- 이메일 중복 검사 -->
+	<select id="check_email" parameterType="String" resultType="int">
+		select count(*) 
+		from profile 
+		where email = #{email}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="join_member" parameterType="profile">
+		insert into profile (id,passwd,email,name,phone,approval_status,approval_key)
+		values(#{id}, #{passwd}, #{email}, #{name}, #{phone}, 'false', #{approval_key})
+	</insert> 
+	
+	<!-- 이메일 인증 -->
+	<update id="approval_member" parameterType="profile">
+		update profile 
+		set approval_status = 'true' 
+		where email = #{email} and approval_key = #{approval_key}
+	</update>
+
+	<!-- 아이디 찾기 -->
+	<select id="find_id" parameterType="String" resultType="String">
+		select id 
+		from profile 
+		where email = #{email}
+	</select>	
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="find_pw" parameterType="String" resultType="Map">
+		select passwd 
+		from profile 
+		where id = #{id} and email = #{email}
+	</select>	
+	
+	<!-- 회원탈퇴 -->
+	<delete id="withdrawal" parameterType="profile">
+		delete 
+		from profile 
+		where id = #{id} and passwd = #{passwd}
+	</delete>	
+
+</mapper>
