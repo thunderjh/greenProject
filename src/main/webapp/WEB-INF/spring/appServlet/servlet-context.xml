@@ -19,10 +19,11 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/uploadStorage/**"
 		location="C:/uploadStorage/" />
-
+	<!-- --> 
 	<context:component-scan
 		base-package="com.spring.**" />
-
+	
+	
 	<!-- tiles설정 ViewResolver은 타일즈를 통해서 설정파일에 존재하지 않으면 우선순위 2로 -->
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

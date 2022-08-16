@@ -16,28 +16,40 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping(value = "/board/campaignBoard/*")
+@RequestMapping(value = "/board/*")
 @AllArgsConstructor
 public class CampaignBoardController {
-	
-	private CampaignBoardService campaignBoardService;
-	
-	@RequestMapping(value = "/campaignBoardList", method = RequestMethod.GET)
-	public String campaignBoardList(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
-		log.info("campaignBoardList호출 성공!!");
-		//전체 레코드 조회
-		List<CampaignBoardVo> campaignBoardList = campaignBoardService.campaignBoardList(cbvo);
-		model.addAttribute("campaignBoardList", campaignBoardList);
-		
-		return "board/campaignBoard/campaignBoardList";
-	}
-	
-	
+	/*
 	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about() {
 		log.info("about.jsp 호출 성공!!");
 		
 		return "board/about";
+	}
+	
+	private CampaignBoardService campaignBoardService;
+	
+	@RequestMapping(value = "/campaignBoard/campaignBoardList", method = RequestMethod.GET)
+	public String campaignBoardList(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
+		log.info("campaignBoardList호출 성공!!");
+		//전체 레코드 조회
+		List<CampaignBoardVo> campaignBoardList = campaignBoardService.campaignBoardList(cbvo);
+		model.addAttribute("campaignBoardList", campaignBoardList);
+		
+		
+		return "board/campaignBoard/campaignBoardList";
+	}
+	*/
+	
+	@RequestMapping(value = "/campaignBoard/campaignBoardList", method = RequestMethod.GET)
+	public String campaignBoardList() {
+		log.info("campaignBoardList호출 성공!!");
+		//전체 레코드 조회
+
+		
+		
+		return "board/campaignBoard/campaignBoardList";
+	
 	}
 }

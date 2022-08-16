@@ -60,6 +60,10 @@
    .container {
     padding: 80px 120px;
   }
+  .board_icon{
+  	height: 20px;
+  	width: 20px;
+  }
 	</style>
 	
 	

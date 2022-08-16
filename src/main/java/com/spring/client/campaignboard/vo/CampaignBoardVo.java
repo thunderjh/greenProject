@@ -2,10 +2,12 @@ package com.spring.client.campaignboard.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 
 @Data
+@AllArgsConstructor
 public class CampaignBoardVo {
 	
 	private int c_no = 0; //게시판 번호
