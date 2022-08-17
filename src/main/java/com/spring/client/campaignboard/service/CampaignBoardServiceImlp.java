@@ -13,7 +13,7 @@ import lombok.Setter;
 
 @Service
 public class CampaignBoardServiceImlp implements CampaignBoardService {
-	/*
+	/**/
 	@Setter(onMethod_ = @Autowired)
 	private CampaignBoardDao campaignBoardDao;
 	
@@ -24,5 +24,5 @@ public class CampaignBoardServiceImlp implements CampaignBoardService {
 		list = campaignBoardDao.campaignBoardList(cbvo);
 		return list;
 	}
-*/
+
 }

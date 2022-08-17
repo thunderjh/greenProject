@@ -8,9 +8,9 @@ import com.spring.client.campaignboard.vo.CampaignBoardVo;
 
 
 public interface CampaignBoardService {
-	/*
+	/**/
 	public List<CampaignBoardVo> campaignBoardList(CampaignBoardVo cbvo);
-*/
+
 
 
 	

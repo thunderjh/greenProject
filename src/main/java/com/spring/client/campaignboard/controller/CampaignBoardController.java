@@ -19,7 +19,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping(value = "/board/*")
 @AllArgsConstructor
 public class CampaignBoardController {
-	/*
+	
+	private CampaignBoardService campaignBoardService;
 	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about() {
@@ -28,7 +29,7 @@ public class CampaignBoardController {
 		return "board/about";
 	}
 	
-	private CampaignBoardService campaignBoardService;
+	
 	
 	@RequestMapping(value = "/campaignBoard/campaignBoardList", method = RequestMethod.GET)
 	public String campaignBoardList(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
@@ -40,7 +41,7 @@ public class CampaignBoardController {
 		
 		return "board/campaignBoard/campaignBoardList";
 	}
-	*/
+	/*
 	
 	@RequestMapping(value = "/campaignBoard/campaignBoardList", method = RequestMethod.GET)
 	public String campaignBoardList() {
@@ -51,5 +52,6 @@ public class CampaignBoardController {
 		
 		return "board/campaignBoard/campaignBoardList";
 	
-	}
+	}*/
+	
 }

@@ -101,54 +101,36 @@
 <div id="tour" class="bg-1">
   <div class="container">
     <h3 class="text-center">캠페인 목록</h3>
-    <p class="text-center">작은 실천으로,<br> 힘을 모아요!</p>
+    <p class="text-center" style="margin-bottom: 40px;">작은 실천으로,<br> 힘을 모아요!</p>
 
     
     <div class="row text-left">
-    <!-- 예시 데이터 구현시 삭제할 부분 -->
-      <div class="col-sm-4">
-	        <div class="thumbnail">
-	          <img src="/resources/images/about/main_01.jpg" alt="Paris" width="400" height="300">
-	          <p><strong>캠페인 이름</strong></p>
-	          <p>캠페인 소개</p>
-	          <div class=" text-center">
-	          	<button class="btn" data-toggle="modal" data-target="#myModal">바로가기</button>
-	          	<div class="text-left">
-					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/common/view.png"> 99
-					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/common/comment.png"> 99
-				</div>
-	          </div>
-	          <div class="text-left"> 		
-				</div>
-	        </div>
-      </div>
-      <!-- 예시 끝 -->
-      
       <!-- 리스트를 위한 반복문시작 -->
-      <div class="col-sm-4">
+      <c:forEach items="${campaignBoardList }" var="campaignBoard">
+      <div class="col-md-4">
         <div class="thumbnail">
         <!-- 데이터 리스트 시작  -->
           <img src="/resources/images/about/main_01.jpg" alt="New York" width="400" height="300">
-          <p><strong>캠페인 이름</strong></p>
-          <p>캠페인 소개</p>
+          <p><strong>${campaignBoard.c_title}</strong></p>
+          <p>${campaignBoard.c_content}</p>
         <!-- 데이터 리스트 끝 -->
           <div class=" text-center">
-          	<button class="btn" data-toggle="modal" data-target="#myModal">바로가기</button>
+          	<button class="btn" data-toggle="modal" data-target="#myModal" style="margin-bottom: 15px;">바로가기</button>
+          	<div class="text-left">
+					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/common/view.png"> 99
+					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/common/comment.png"> 99
+			</div>
           </div>
         </div>
       </div>
+      </c:forEach>
       <!-- 리스트를 위한 반복문 끝 -->
       
-      <div class="col-sm-4">
-        <div class="thumbnail">
-          <img src="/resources/images/about/main_01.jpg" alt="San Francisco" width="400" height="300">
-          <p><strong>캠페인 이름</strong></p>
-          <p>캠페인 소개</p>
-          <div class=" text-center">
-          	<button class="btn" data-toggle="modal" data-target="#myModal">바로가기</button>
-          </div>
-        </div>
-      </div>
+      
+    
+      
+    
+      
     </div>
   </div>
 </div>	

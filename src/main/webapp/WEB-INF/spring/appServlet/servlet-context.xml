@@ -50,9 +50,9 @@
 
 	</beans:bean>
 
-	<!-- 파일첨부 빈
+	<!-- 파일첨부 빈 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
 	</beans:bean>
- -->
+
 </beans:beans>

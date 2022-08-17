@@ -125,11 +125,12 @@
       <!-- 예시 끝 -->
       
       <!-- 리스트를 위한 반복문시작 -->
+      <c:forEach items="${campaignBoardList }" var="campaignBoard">
       <div class="col-sm-4">
         <div class="thumbnail">
         <!-- 데이터 리스트 시작  -->
           <img src="/resources/images/about/main_01.jpg" alt="New York" width="400" height="300">
-          <p><strong>캠페인 이름</strong></p>
+          <p><strong>${campaignBoard.c_title }</strong></p>
           <p>캠페인 소개</p>
         <!-- 데이터 리스트 끝 -->
           <div class=" text-center">
@@ -137,6 +138,7 @@
           </div>
         </div>
       </div>
+      </c:forEach>
       <!-- 리스트를 위한 반복문 끝 -->
       
       <div class="col-sm-4">
