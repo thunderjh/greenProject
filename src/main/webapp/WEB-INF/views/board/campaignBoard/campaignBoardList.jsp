@@ -66,11 +66,42 @@
   }
 	</style>
 	
+	<script type="text/javascript">
+	
+	
+	
+	</script>
 	
 </head>
 
 
   <body>
+  
+  <%--검색 기능 시작 --%>
+			<div id="boardSearch" class="text-right">
+				<form id="f_search" name="f_search" class="form-inline">
+					<%--페이징 처리를 위한 파라미터 --%>
+					<input type="hidden" name="pageNum" value="${pageMaker.cvo.pageNum }">
+					<input type="hidden" name="amount" value="${pageMaker.cvo.amount }">
+					<div class="form-group" id="s_div">
+						<label>검색 조건</label>
+						<select id="search" name="search" class="form-control">
+							<option value="all">전체</option>
+							<option value="b_title">제목</option>
+							<option value="b_content">내용</option>
+							<option value="b_name">작성자</option>	
+							
+						</select>
+						<input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" class="form-control" />
+						<button type="button" id="searchData" class="btn btn-succesee">검색</button>
+					</div>
+				</form>
+			</div>
+			<%--검색 기능 끝 --%>
+  
+  
+  
+ 
   <!-- 카테고리 시작 -->
  <div class="container text-center">
   <h3>카테고리</h3>
@@ -107,7 +138,7 @@
     <div class="row text-left">
       <!-- 리스트를 위한 반복문시작 -->
       <c:forEach items="${campaignBoardList }" var="campaignBoard">
-      <div class="col-md-4">
+      <div class="col-md-4" style="border: solid 0.5px #000; ">
         <div class="thumbnail">
         <!-- 데이터 리스트 시작  -->
           <img src="/resources/images/about/main_01.jpg" alt="New York" width="400" height="300">

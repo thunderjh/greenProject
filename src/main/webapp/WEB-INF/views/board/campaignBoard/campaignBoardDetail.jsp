@@ -59,7 +59,7 @@
 
   <body>
 
-    <div class="container" style="border: solid 1px #000;">
+    <div class="container" ">
       <div class="jumbotron">
         <h1>게시판 리스트에 첨부한 파일 영역입니다.</h1> 
       </div>
@@ -78,7 +78,16 @@
 	      	</div>
       	</div>
       	
-   
+      <div class="btnArea col-md-4">
+      	<button type="button" id="campaignBoardListBtn" class="btn btn-success ">목록으로</button>
+      	<button type="button" id="campaignBoardUpdateBtn" class="btn btn-success">수정하기</button>
+    </div> 
+    <br>
+    
+    <div>
+    <jsp:include page="campaignBoardReply.jsp" />
+    </div>
+    </div><!-- /container -->
 	
 
 
