@@ -18,7 +18,7 @@
 		</c:if>
 		<c:if test="${empty adminLogin}">
 		<script type="text/javascript">
-		loaction.href="/admin/login";
+		location.href="/admin/login";
 		</script>
 		</c:if>
 		</div>

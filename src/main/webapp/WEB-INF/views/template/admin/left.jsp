@@ -15,6 +15,9 @@
 	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
 	<a href="#">공지사항 관리</a>
 	</li>
+	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/adminCampaignBoard')}">class="active"</c:if>>
+	<a href="/admin/adminCampaignBoard/campaignBoardList">캠페인게시판 관리</a>
+	</li>
 	<li <c:if test="${fn:containsIgnoreCase(uri,'/admin/member')}">class="active"</c:if>>
 	<a href="#">Q&A 관리</a>
 	</li>

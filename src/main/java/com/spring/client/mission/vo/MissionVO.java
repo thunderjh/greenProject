@@ -25,7 +25,7 @@ public class MissionVO extends MissionCommonVO {
 	private String m_c_name;
 
 	private String m_p_approval;
-	private int m_point;
+	private int m_point =0;
 //파일 업로드
 	private MultipartFile file;
 	private String m_thumb;

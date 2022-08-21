@@ -5,6 +5,7 @@
 		<typeAlias type="com.spring.client.notice.vo.NoticeVO" alias="notice"/>
 		<typeAlias type="com.spring.client.question.vo.QuestionVO" alias="question"/>
     <typeAlias type="com.spring.client.mission.vo.MissionVO" alias="mission" />
+    <typeAlias type="com.spring.client.campaignboard.vo.CampaignBoardVo" alias="campaignBoard" />
     <typeAlias type="com.spring.client.missionReply.vo.MissionReplyVO" alias="missionReply" />
     <typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminLogin" />
     <!--회원정보-->

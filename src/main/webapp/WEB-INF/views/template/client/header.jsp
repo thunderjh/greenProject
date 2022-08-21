@@ -11,7 +11,7 @@
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav me-auto mb-2 mb-md-0">
 					<li class="nav-item"><a class="nav-link active" aria-current="page" href="#">소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">캠페인</a></li>
+					<li class="nav-item"><a class="nav-link" href="campaignBoard/campaignBoardList">캠페인</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">미션</a></li>
 					<li class="nav-item"><a class="nav-link" href="notice/noticeList">고객센터</a></li>
 				</ul>
