@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.admin.campaignboard.dao.CampaignBoardDao">
+<!-- 게시판 리스트 조회-->
+<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+select C_NO, C_TITLE, C_CONTENT, C_DATE, CAT_TITLE, A_ID, C_DETAIL_TITLE, C_DETAIL_CONTENT
+from CAMPAIGN_BOARD
+order by C_NO desc
+</select>
+
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.admin.campaignboard.dao.AdminCampaignBoardDao">
+
+		<!-- 게시판 리스트 조회-->
+		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB
+		from CAMPAIGN_BOARD
+		order by C_NO desc
+		</select>
+
+		<!-- 게시글 등록 -->
+			<insert id="campaignBoardInsert" parameterType="campaignBoard">
+				insert into
+				CAMPAIGN_BOARD(C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB)
+				values(CAMPAIGN_BOARD_seq.nextval,#{a_id},#{c_title},#{c_content},#{c_detail_title},#{c_detail_content},#{c_detail_videoid},#{cat_title},#{c_file},#{c_thumb})
+			</insert>
+
+		<!-- 게시판 디테일 -->
+		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID, C_DETAIL_TITLE,C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB
+		from CAMPAIGN_BOARD
+		WHERE c_no = #{c_no}
+		</select>
+
+</mapper>
