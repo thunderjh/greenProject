@@ -15,6 +15,10 @@ public interface AdminCampaignBoardDao {
 
 	public CampaignBoardVo campaignBoardDetail(CampaignBoardVo cbvo);
 	
+	public CampaignBoardVo updateDataForm(CampaignBoardVo cbvo);
 	
+	public int campaignBoardUpdate(CampaignBoardVo cbvo);
+	
+	public int campaignBoardDelete(int c_no);
 	
 }

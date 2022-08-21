@@ -12,6 +12,14 @@ public interface AdminCampaignBoardService {
 
 	public CampaignBoardVo campaignBoardDetail(CampaignBoardVo cbvo);
 
+	public CampaignBoardVo updateDataForm(CampaignBoardVo cbvo);
+
+	public int campaignBoardUpdate(CampaignBoardVo cbvo) throws Exception;
+
+	public int campaignBoardDelete(CampaignBoardVo cbvo) throws Exception;
+
+
+
 
 
 }

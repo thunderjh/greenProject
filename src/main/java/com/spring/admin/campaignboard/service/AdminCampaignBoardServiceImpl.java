@@ -61,5 +61,49 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 		}
 		return campaignBoardDetail;
 	}
+	
+	
+	/*글 수정하기 - 맵핑*/
+	@Override
+		public CampaignBoardVo updateDataForm(CampaignBoardVo cbvo) {
+			CampaignBoardVo updateData = adminCampaignBoardDao.campaignBoardDetail(cbvo);
+			return updateData;
+		}
+	@Override
+	public int campaignBoardUpdate(CampaignBoardVo cbvo) throws Exception {
+		if (!cbvo.getFile().isEmpty()) {
+			if (!cbvo.getC_file().isEmpty()) {
+				FileUploadUtil.fileDelete(cbvo.getC_file());
+				FileUploadUtil.fileDelete(cbvo.getC_thumb());
+			}
+			String fileName = FileUploadUtil.fileUpload(cbvo.getFile(), "mission");
+			cbvo.setC_file(fileName);
+			String thumbName = FileUploadUtil.makeThumbnail(fileName);
+			cbvo.setC_thumb(thumbName);
+		}
+
+		int result = adminCampaignBoardDao.campaignBoardUpdate(cbvo);
+
+		return result;
+	}
+	/*글 삭제하기*/
+
+	@Override
+	public int campaignBoardDelete(CampaignBoardVo cbvo) throws Exception {
+		int result = 0;
+		if (!cbvo.getC_file().isEmpty()) {
+			FileUploadUtil.fileDelete(cbvo.getC_file());
+			FileUploadUtil.fileDelete(cbvo.getC_thumb());
+		}
+		
+		result = adminCampaignBoardDao.campaignBoardDelete(cbvo.getC_no());
+		return result;
+	}
+
+
 
 }
+
+
+
+

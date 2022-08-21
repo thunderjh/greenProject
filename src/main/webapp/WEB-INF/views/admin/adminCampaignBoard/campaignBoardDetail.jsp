@@ -59,6 +59,24 @@
 			location.href="/admin/adminCampaignBoard/campaignBoardUpdateForm";
 		});
     	
+    	
+    	//삭제
+    	$("#campaignBoardDeleteBtn").click(function () {
+				if(confirm("삭제하시겠습니까?")){
+					$("#campaignBoardUpdateForm").attr({
+						"action" : "/admin/adminCampaignBoard/campaignBoardDelete"						
+					});
+					$("#campaignBoardUpdateForm").submit();
+				}
+			
+		});
+    	
+    	$("#f_writeForm").attr({
+			"method" : "post",
+			"enctype": "multipart/form-data",
+			"action" : "/board/boardInsert"
+		});
+    	
 	});// $
     
 	</script>
@@ -84,7 +102,12 @@
 	
 	<form id="youtubesrcForm">
   	<input type="hidden" id="c_detail_videoid" name="c_detail_videoid">
- 	 </form>
+ 	</form>
+	<form id="campaignBoardUpdateForm" name="campaignBoardUpdateForm" method="post">
+		<input type="hidden" name="c_no" value="${campaignBoardDetail.c_no}" /> 
+		<input type="hidden" name="c_file" value="${campaignBoardDetail.c_file}" /> 
+		<input type="hidden" name="c_thumb" value="${campaignBoardDetail.c_thumb}" />
+	</form>
 	
 	
     <div class="container">
@@ -120,6 +143,7 @@
       <div class="btnArea col-md-4">
       	<button type="button" class="btn btn-default" onclick="history.back()">목록으로</button>
       	<button type="button" id="campaignBoardUpdateBtn" class="btn btn-success">수정하기</button>
+      	<button type="button" id="campaignBoardDeleteBtn" class="btn btn-success">삭제하기</button>
     </div> 
     <br>
     	${campaignBoardDetail.c_detail_videoid}

@@ -22,5 +22,25 @@
 		from CAMPAIGN_BOARD
 		WHERE c_no = #{c_no}
 		</select>
-
+		
+		<!-- 글수정하기 campaignBoardUpdate -->
+		<update id="campaignBoardUpdate" parameterType="campaignBoard">
+		update CAMPAIGN_BOARD
+		SET C_TITLE=#{c_title}, C_CONTENT=#{c_content}, C_DETAIL_TITLE=#{c_detail_title}, C_DETAIL_CONTENT=#{c_detail_content}, C_DETAIL_VIDEOID=#{c_detail_videoid}, CAT_TITLE=#{cat_title} 
+		<if test="c_thumb !=''">
+			,C_THUMB=#{c_thumb}
+		</if>
+		<if test="c_thumb !=''">
+			,C_FILE = #{c_file}
+		</if>
+		where c_no = #{c_no)
+		</update>
+		
+		<!-- 글삭제하기 campaignBoardDelete -->
+		<delete id="campaignBoardDelete" parameterType="campaignBoard">
+		 	delete from CAMPAIGN_BOARD
+		 	where c_no = #{c_no}
+		</delete>
+		
+		
 </mapper>

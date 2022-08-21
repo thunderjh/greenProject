@@ -6,13 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.admin.campaignboard.service.AdminCampaignBoardService;
 import com.spring.admin.login.vo.AdminLoginVO;
 import com.spring.client.campaignboard.vo.CampaignBoardVo;
+import com.spring.client.mission.vo.MissionVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -91,16 +94,46 @@ public class AdminCampaignBoardController {
 	 * */
 	/*글 수정 폼 출력하기(수정화면 맵핑)*/
 	@RequestMapping(value = "/adminCampaignBoard/campaignBoardUpdateForm")
-	public String campaignBoardUpdateForm() {
+	public String campaignBoardUpdateForm(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
 		log.info("campaignBoardUpdateForm 호출 성공");
+		
+		CampaignBoardVo updateData = adminCampaignBoardService.updateDataForm(cbvo);
+		model.addAttribute("updateData", updateData);
+		
 		return "admin/adminCampaignBoard/campaignBoardUpdateForm";
 		
 	}
+		
+	/*글수정 처리*/
+	@PostMapping("/adminCampaignBoard/campaignBoardUpdate")
+	public String campaignBoardUpdate(@ModelAttribute CampaignBoardVo cbvo, RedirectAttributes ras) throws Exception {
+		adminCampaignBoardService.campaignBoardUpdate(cbvo);
+		ras.addFlashAttribute("data", cbvo);
+
+		return "redirect:/admin/adminCampaignBoard/campaignBoardDetail";
+
+	}
 	
-	//글수정 기능 구현
-	
-	
-	
-	
-	
+	/*글삭제하기*/
+	@RequestMapping(value = "/adminCampaignBoard/campaignBoardDelete")
+	public String campaignBoardDelete(@ModelAttribute CampaignBoardVo cbvo, RedirectAttributes ras) throws Exception {
+		
+		int result = 0;
+		String url = "";
+		
+		result = adminCampaignBoardService.campaignBoardDelete(cbvo);
+		ras.addFlashAttribute("CampaignBoardVo", cbvo);
+		
+		//문제 생겼을 때 입력 화면으로 이동하기 위해서 작성
+		//사실 문제 없이 성공하면 필요없음
+		
+				if(result == 1) {
+					url = "/admin/adminCampaignBoard/campaignBoardList";
+				}else {
+					url = "/admin/adminCampaignBoard/campaignBoardDetail";
+				}
+				//문제시 입력 화면 이동하기 위한 if문 끝
+				
+				return "redirect:"+url;
+	}
 }
