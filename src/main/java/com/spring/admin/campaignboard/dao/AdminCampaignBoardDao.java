@@ -21,4 +21,6 @@ public interface AdminCampaignBoardDao {
 	
 	public int campaignBoardDelete(int c_no);
 	
+	public int campaignBoardView(CampaignBoardVo cbvo);
+	
 }

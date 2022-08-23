@@ -53,6 +53,7 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 	@Override
 	public CampaignBoardVo campaignBoardDetail(CampaignBoardVo cbvo) {
 		CampaignBoardVo campaignBoardDetail = null;
+		adminCampaignBoardDao.campaignBoardView(cbvo);
 		campaignBoardDetail = adminCampaignBoardDao.campaignBoardDetail(cbvo);
 		if(campaignBoardDetail != null)
 		{
