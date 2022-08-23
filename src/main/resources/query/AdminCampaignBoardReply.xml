@@ -10,5 +10,15 @@
 	order by c_r_num desc
 	</select>
 	
+	<insert id="adminCampaignboardReplyInsert" parameterType="adminCampaignBoardReply">
+	insert into campaign_board_reply(c_r_num, c_no, a_id, c_r_content)
+	values(m_reply_seq.nextval, #{c_no}, #{a_id}, #{c_r_content})
+	</insert>
+	
+	<delete id="adminCampaignboardReplyDelete" parameterType="adminCampaignBoardReply">
+	delete 
+	from campaign_board_reply 
+	where c_r_num =#{c_r_num} 
+	</delete>
 	
 </mapper>

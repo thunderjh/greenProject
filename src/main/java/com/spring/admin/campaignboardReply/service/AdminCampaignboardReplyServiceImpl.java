@@ -24,8 +24,14 @@ public class AdminCampaignboardReplyServiceImpl implements AdminCampaignboardRep
 
 	@Override
 	public int adminCampaignboardReplyInsert(AdminCampaignboardReplyVo cb_rvo) {
-		
-		return 0;
+		int result = adminCampaignboardReplyDao.adminCampaignboardReplyInsert(cb_rvo);
+		return result;
+	}
+
+	@Override
+	public int adminCampaignboardReplyDelete(AdminCampaignboardReplyVo cb_rvo) {
+		int result = adminCampaignboardReplyDao.adminCampaignboardReplyDelete(cb_rvo);
+		return result;
 	}
 
 }

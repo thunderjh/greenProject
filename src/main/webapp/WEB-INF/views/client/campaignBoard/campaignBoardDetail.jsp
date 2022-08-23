@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    
 
     <title>캠페인보드 디테일</title>
 
@@ -29,7 +31,12 @@
     <![endif]-->
     
     <script type="text/javascript">
-		
+	
+    //body에 있는 유튜브를 실행하기 위한 것 DB에 담긴 값을 가져온다
+ 	var youtubeVideoId = '<c:out value="${campaignBoardDetail.c_detail_videoid}"/>';
+ 	console.log("videoId = " + youtubeVideoId);
+ 	
+ 	
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
@@ -41,9 +48,37 @@
     var player;
     function onYouTubePlayerAPIReady() {
       player = new YT.Player('ytplayer', {
-        videoId: '2VwaH8SPgsc'
+        videoId: youtubeVideoId
       });
     }
+    
+    
+    $(function() {
+    	//수정하기 버튼 클 릭 
+		$("#campaignBoardUpdateBtn").click(function () {
+			location.href="/admin/adminCampaignBoard/campaignBoardUpdateForm?c_no="+${campaignBoardDetail.c_no};
+			
+		});
+    	
+    	
+    	//삭제
+    	$("#campaignBoardDeleteBtn").click(function () {
+				if(confirm("삭제하시겠습니까?")){
+					$("#campaignBoardUpdateForm").attr({
+						"action" : "/admin/adminCampaignBoard/campaignBoardDelete"						
+					});
+					$("#campaignBoardUpdateForm").submit();
+				}
+			
+		});
+    	
+    	$("#f_writeForm").attr({
+			"method" : "post",
+			"enctype": "multipart/form-data",
+			"action" : "/board/boardInsert"
+		});
+    	
+	});// $
     
 	</script>
     <style type="text/css">
@@ -53,38 +88,71 @@
     	text-align: center;
     	width: 100%;
     	}
-    
+    .detail-mainwrapper{
+   	width: 100%;
+    }
+    .detail-mainimage{
+    	max-width: 100%;
+    	height: auto;
+    	}
     </style>
   </head>
 
   <body>
+	
+	
+	<form id="youtubesrcForm">
+  	<input type="hidden" id="c_detail_videoid" name="c_detail_videoid">
+ 	</form>
+	<form id="campaignBoardUpdateForm" name="campaignBoardUpdateForm" method="post">
+		<input type="hidden" name="c_no" value="${campaignBoardDetail.c_no}" /> 
+		<input type="hidden" name="c_file" value="${campaignBoardDetail.c_file}" /> 
+		<input type="hidden" name="c_thumb" value="${campaignBoardDetail.c_thumb}" />
+	</form>
+	
+	
+    <div class="container">
+      <div class="jumbotron detail-mainwrapper">
 
-    <div class="container" ">
-      <div class="jumbotron">
-        <h1>게시판 리스트에 첨부한 파일 영역입니다.</h1> 
+ 		<c:if test='${campaignBoardDetail.c_file == ""}'>
+          <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
+          </c:if>
+           <c:if test='${campaignBoardDetail.c_file != ""}'>
+          <img src="/uploadStorage/campaign/${campaignBoardDetail.c_file}" alt="캠페인 이미지" width="400" height="300">
+           </c:if>
+
       </div>
 
       <div class="row marketing">
-        <div class="col-xs-9"><h2 class="page-header">빨간 대야 소녀, 보명이</h2></div>
- 		 <div class="col-xs-12"><p>읍내에서도 30km 넘게 떨어진 땅끝 해남의 한 마을. 세 살 때부터 이곳에서 자라온 열네 살 보명이에겐 소중한 친구가 있습니다. 바로 빨간 대야입니다. 어릴 때부터 놀이터 삼아 뛰어놀던 바닷가나 밭을 갈 때면 보명이는 빨간 대야와 한 몸처럼 붙어 지냈습니다. 초등학교 1학년 때부터 몸집보다 큰 이불 빨래를 할 때도 농사일을 거들 때도, 새참을 나를 때도, 갯벌의 생물을 채취할 때도 그만큼 쓰임새 좋은 물건도 없기 때문입니다. 한창 외모에 신경 쓸 나이지만, 보명이가 투박하고 색바랜 빨간 대야를 들고 다닌 건, 하나뿐인 가족인 아빠의 일을 거들어주고 싶은 마음에서였습니다. 혼자서 자신을 키우느라 새벽부터 늦은 밤까지, 작은 체구로 바지런하게 일하는 아빠를 볼 때면 항상 미안하다는 보명이.
- 		  오랜 시간 빨간 대야가 보명이의 친구가 돼줬듯, 
- 		  보명인 아빠의 짐을 빨간 대야에 나눠지는 아빠에게 
- 		  든든한 딸이 되고 싶습니다.</p></div>   
+        <div class="col-xs-9"><h2 class="page-header">${campaignBoardDetail.c_detail_title }</h2></div>
+ 		 <div class="col-xs-12"><p>${campaignBoardDetail.c_detail_content}
+ 		  </p></div>   
       </div>
       
-      <!-- 16:9 aspect ratio -->
-      	<div class="embed-responsive embed-responsive-16by9">
-	      	<div id="ytplayer">
-	      	</div>
-      	</div>
       	
+      	<c:if test='${campaignBoardDetail.c_detail_videoid == ""}'>
+          간장
+          </c:if>
+           <c:if test='${campaignBoardDetail.c_detail_videoid != ""}'>
+       		<!-- 16:9 aspect ratio -->
+		      	<div class="embed-responsive embed-responsive-16by9">
+			      	<div id="ytplayer"></div>   	
+		      	</div>
+	        <!-- 16:9 aspect ratio -->	
+           </c:if>
+	
       <div class="btnArea col-md-4">
-      	<button type="button" id="campaignBoardListBtn" class="btn btn-success ">목록으로</button>
+      	<button type="button" class="btn btn-default" onclick="history.back()">목록으로</button>
       	<button type="button" id="campaignBoardUpdateBtn" class="btn btn-success">수정하기</button>
+      	<button type="button" id="campaignBoardDeleteBtn" class="btn btn-success">삭제하기</button>
     </div> 
     <br>
     
-    <div>
+    
+    <div>	
+    
+   		  
+    
     <jsp:include page="campaignBoardReply.jsp" />
     </div>
     </div><!-- /container -->

@@ -12,4 +12,5 @@ public interface AdminCampaignboardReplyDao {
 	
 	public List<AdminCampaignboardReplyVo> adminCampaignboardReplyList(Integer c_no);
 	public int adminCampaignboardReplyInsert(AdminCampaignboardReplyVo cb_rvo);
+	public int adminCampaignboardReplyDelete(AdminCampaignboardReplyVo cb_rvo);
 }
