@@ -39,7 +39,13 @@ public class AdminCampaignboardReplycontroller {
 	//댓글입력
 	@PostMapping(value="/replyInsert", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
 	public String  adminCampaignboardReplyInsert(@RequestBody AdminCampaignboardReplyVo cb_rvo) {
-		int result = adminCampaignboardReplyService.adminCampaignboardReplyInsert(cb_rvo);
+		log.info("adminreplyInsert 호출 성공 ");
+		log.info("cb_rvo : " + cb_rvo);
+		int result = 0;
+		
+		/*int result = adminCampaignboardReplyService.adminCampaignboardReplyInsert(cb_rvo);*/
+		
+		result = adminCampaignboardReplyService.adminCampaignboardReplyInsert(cb_rvo);
 		return (result == 1) ? "SUCCESS" :"FAILURE";
 	}
 	

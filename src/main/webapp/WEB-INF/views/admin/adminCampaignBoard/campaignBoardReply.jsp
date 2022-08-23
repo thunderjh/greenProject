@@ -9,7 +9,7 @@
 		    <meta name="viewport" content="width=device-width, initial-scale=1">
 		    <meta name="description" content="">
 		    <meta name="author" content="">
-		    <link rel="icon" href="../../favicon.ico">
+		    
 		
 		    <title>캠페인 댓글</title>
 	
@@ -55,15 +55,7 @@
 				let c_no =${campaignBoardDetail.c_no};
 				listAll(c_no);
 				
-				/*비밀번호 확인 없이 삭제 버튼 제어
-				$(".delBtn").click(function () {
-				console.log("hello")	
-				let c_r_num = $(this).parents("div.panel").attr("data-num");
-				deleteBtn(c_no, c_r_num);	
-				});*/
-				
-				
-				
+				/*비밀번호 확인 없이 삭제 버튼 제어*/
 				$(document).on("click", ".delBtn", function() {
 					let c_r_num = $(this).parents("div.panel").attr("data-num");
 					deleteBtn(c_no, c_r_num);	
@@ -71,13 +63,15 @@
 				
 				
 				
-				//댓글입력
+				
+				
+				//댓글입력 Ajax 연동 처리 방법
 				$(document).on("click", "#replyInsertBtn", function() {
 					let insertUrl = "/replies/replyInsert";
-
+					//JSON.stringify = javaScript 값 혹은 객체를 json문자열로 변환
 					let value = JSON.stringify({
 						c_no : c_no,
-						a_id : a_id,
+						a_id : $("#a_id").val(),
 						c_r_content : $("#c_r_content").val()
 					});
 
@@ -190,7 +184,9 @@
 			</script>
 		</head>
 		<body>	
-		
+			  
+			  	
+			  
 		
 			<%-- 
 			<div class="container">
@@ -213,7 +209,8 @@
 						<tr>
 							<td class="col-md-1">댓글 내용</td>
 							<td colspan="4" class="col-md-11 text-left">
-								<textarea name="q_r_content" id="q_r_content" class="form-control" rows="3"></textarea>
+								<input type="hidden" id="a_id" name="a_id">
+								<textarea name="c_r_content" id="c_r_content" class="form-control" rows="3"></textarea>
 								<div class="text-right" style="padding-top: 8px;">
 								<button type="button" id="replyInsertBtn" class="btn btn-success">저장</button>
 								</div>
