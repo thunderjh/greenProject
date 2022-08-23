@@ -23,6 +23,7 @@ public class CampaignBoardVo {
 	private String c_detail_content = ""; // 디테일 내용
 	private String c_detail_videoid = ""; // 디테일 유튜브 링크
 	
+	private int comment_cnt;
 	
 	private MultipartFile file; // 파일 업로드를 위한 필드 input에서 name명과 일치시켜야 한다.
 }

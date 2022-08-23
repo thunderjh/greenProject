@@ -100,6 +100,12 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 		result = adminCampaignBoardDao.campaignBoardDelete(cbvo.getC_no());
 		return result;
 	}
+	@Override
+	public int comment_cnt(int c_no) {
+		int result = 0; 
+		result = adminCampaignBoardDao.comment_cnt(c_no);
+		return result;
+	}
 
 
 

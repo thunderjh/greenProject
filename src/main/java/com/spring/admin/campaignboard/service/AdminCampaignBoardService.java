@@ -17,7 +17,8 @@ public interface AdminCampaignBoardService {
 	public int campaignBoardUpdate(CampaignBoardVo cbvo) throws Exception;
 
 	public int campaignBoardDelete(CampaignBoardVo cbvo) throws Exception;
-
+	
+	public int comment_cnt(int c_no);
 
 
 

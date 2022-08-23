@@ -172,7 +172,7 @@
           	<button class="goDetail" id="btn" data-target="#myModal" style="margin-bottom: 15px;" >바로가기</button>
           	<div class="text-left">
 					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> ${campaignBoard.c_views}
-					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png"> 99
+					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png">  ${campaignBoard.comment_cnt}
 			</div>
           </div>
         </div>

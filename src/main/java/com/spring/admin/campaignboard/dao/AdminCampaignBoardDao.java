@@ -23,4 +23,6 @@ public interface AdminCampaignBoardDao {
 	
 	public int campaignBoardView(CampaignBoardVo cbvo);
 	
+	public int comment_cnt(int c_no);
+	
 }

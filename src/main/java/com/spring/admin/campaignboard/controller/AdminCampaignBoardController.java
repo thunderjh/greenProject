@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.admin.campaignboard.service.AdminCampaignBoardService;
 import com.spring.admin.login.vo.AdminLoginVO;
 import com.spring.client.campaignboard.vo.CampaignBoardVo;
-import com.spring.client.mission.vo.MissionVO;
+
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -136,4 +138,19 @@ public class AdminCampaignBoardController {
 				
 				return "redirect:"+url;
 	}
+	
+	//총 댓글 수 구하기
+	@ResponseBody
+	@RequestMapping(value = "/comment_cnt")
+	public String comment_cnt(@RequestParam("c_no") int c_no){
+		
+		log.info("comment_cnt 호출 성공");
+		
+		int result = 0 ;
+		result = adminCampaignBoardService.comment_cnt(c_no);
+		
+		
+		return String.valueOf(result);
+	}
+	
 }
