@@ -76,7 +76,7 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 				FileUploadUtil.fileDelete(cbvo.getC_file());
 				FileUploadUtil.fileDelete(cbvo.getC_thumb());
 			}
-			String fileName = FileUploadUtil.fileUpload(cbvo.getFile(), "mission");
+			String fileName = FileUploadUtil.fileUpload(cbvo.getFile(), "campaign");
 			cbvo.setC_file(fileName);
 			String thumbName = FileUploadUtil.makeThumbnail(fileName);
 			cbvo.setC_thumb(thumbName);

@@ -56,7 +56,8 @@
     $(function() {
     	//수정하기 버튼 클 릭 
 		$("#campaignBoardUpdateBtn").click(function () {
-			location.href="/admin/adminCampaignBoard/campaignBoardUpdateForm";
+			location.href="/admin/adminCampaignBoard/campaignBoardUpdateForm?c_no="+${campaignBoardDetail.c_no};
+			
 		});
     	
     	
@@ -146,7 +147,7 @@
       	<button type="button" id="campaignBoardDeleteBtn" class="btn btn-success">삭제하기</button>
     </div> 
     <br>
-    	${campaignBoardDetail.c_detail_videoid}
+    
     
     <div>	
     

@@ -99,7 +99,7 @@ public class AdminCampaignBoardController {
 		
 		CampaignBoardVo updateData = adminCampaignBoardService.updateDataForm(cbvo);
 		model.addAttribute("updateData", updateData);
-		
+		log.info("updateData"+updateData);
 		return "admin/adminCampaignBoard/campaignBoardUpdateForm";
 		
 	}

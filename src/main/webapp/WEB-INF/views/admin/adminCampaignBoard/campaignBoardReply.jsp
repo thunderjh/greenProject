@@ -51,7 +51,37 @@
 				  textEle[0].style.height = 'auto';
 				  var textEleHeight = textEle.prop('scrollHeight');
 				  textEle.css('height', textEleHeight);
-				};
+			};
+				
+			/*댓글*/
+			function listAll(c_no) {
+					$("#reviewList").html("");
+					let url = "/replies/all/"+c_no;
+					    
+					$.getJSON(url, function (data) {
+						$(data).each(function() {
+							let c_r_num = this.c_r_num;	
+							let c_r_content = this.c_r_content;	
+							let c_r_date = this.c_r_date;	
+							let a_id = this.a_id;	
+							addItem(c_r_num, c_r_content, c_r_date, a_id);
+						});
+					}).fall(function () {
+						alert("댓글 불러오기 실패 !");
+					});
+			}
+			
+			/*댓글 표현*/
+			function addItem(c_r_num, c_r_content, c_r_date, a_id) {
+					$("#reviewList").append(c_r_num + c_r_content + c_r_date + a_id);
+			}
+				
+			$(function () {
+				/*기본 댓글 목록 불러오기*/
+				let c_no =${campaignBoardDetail.c_no};
+				listAll(c_no);
+			});
+			
 			</script>
 		</head>
 		<body>		
@@ -60,14 +90,14 @@
 				<h3>댓글 <img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png"> 99 </h3>
 				</div>
 			  <div class="panel panel-default">
-			    <div class="panel-heading">사용자ID <button type="button" class="btn btn-default " style="margin-left: 20px;">등록</button></div>
+			    <div class="panel-heading"><h4>사용자ID</h4> <button type="button" class="btn btn-default " style="margin-left: 20px;">등록</button></div>
 			    <textarea class="form-control" id="reply-text" rows="3" maxlength="999"></textarea>
 			  </div>
 			
 			<hr>
 			
  	 <!-- 댓글 리스트 시작 -->
-			  <div class="media">
+			  <div class="media" id="reviewList">
 			    <div class="media-body">
 			      <h4 class="media-heading">사용자ID<button type="button" class="btn btn-default" style="margin-left: 20px;">수정</button>
 			       								  <button type="button" class="btn btn-default">삭제</button></h4>

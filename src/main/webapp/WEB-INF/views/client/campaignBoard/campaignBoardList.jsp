@@ -43,7 +43,7 @@
     margin-top: 15px;
     color: #555;
   }
-   .btn {
+   #btn {
    	border: 1px solid #333;
     padding: 10px 20px;
     background-color: #fff;
@@ -51,7 +51,7 @@
     border-radius: 0;
     transition: .2s;
   }
-  .btn:hover, .btn:focus {
+  #btn:hover, .btn:focus {
     border: 1px solid #333;
     background-color: #58D64A;
     color: #fff;
@@ -67,7 +67,36 @@
 	</style>
 	
 	<script type="text/javascript">
-	
+	$(function () {
+		
+		
+		
+		//글 쓰기 버튼 클 릭 
+		$("#insertFormBtn").click(function () {
+			location.href="/admin/adminCampaignBoard/campaignBoardInsertForm";
+		});
+		
+		//상세페이지 이동
+		$(".goDetail").click(function() {
+			
+			let c_no = $(this).parents("div").attr("data-num");
+			$("#c_no").val(c_no);
+			console.log("c_no = " + c_no);
+			/*상세페이지 이동하기 위한 폼*/
+			$("#detailForm").attr({
+				"method" : "get",
+				"action" : "/admin/adminCampaignBoard/campaignBoardDetail"
+			});
+			$("#detailForm").submit();
+		
+		});
+
+		$("#exam").click(function () {
+			location.href="/admin/adminCampaignBoard/campaignBoardDetail";
+		});				   
+		
+		
+	})// 최상위 펀션
 	
 	
 	</script>
@@ -77,30 +106,12 @@
 
   <body>
   
-  <%--검색 기능 시작 --%>
-			<div id="boardSearch" class="text-right">
-				<form id="f_search" name="f_search" class="form-inline">
-					<%--페이징 처리를 위한 파라미터 --%>
-					<input type="hidden" name="pageNum" value="${pageMaker.cvo.pageNum }">
-					<input type="hidden" name="amount" value="${pageMaker.cvo.amount }">
-					<div class="form-group" id="s_div">
-						<label>검색 조건</label>
-						<select id="search" name="search" class="form-control">
-							<option value="all">전체</option>
-							<option value="b_title">제목</option>
-							<option value="b_content">내용</option>
-							<option value="b_name">작성자</option>	
-							
-						</select>
-						<input type="text" name="keyword" id="keyword" value="검색어를 입력하세요" class="form-control" />
-						<button type="button" id="searchData" class="btn btn-succesee">검색</button>
-					</div>
-				</form>
-			</div>
-			<%--검색 기능 끝 --%>
+
   
-  
-  
+  <!--detail페이지를 위한 form 태그 -->
+  <form id="detailForm">
+  	<input type="hidden" id="c_no" name="c_no">
+  </form>
  
   <!-- 카테고리 시작 -->
  <div class="container text-center">
@@ -133,20 +144,32 @@
   <div class="container">
     <h3 class="text-center">캠페인 목록</h3>
     <p class="text-center" style="margin-bottom: 40px;">작은 실천으로,<br> 힘을 모아요!</p>
+		
+		
+
+  <button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button>
 
     
     <div class="row text-left">
       <!-- 리스트를 위한 반복문시작 -->
+      
       <c:forEach items="${campaignBoardList }" var="campaignBoard">
-      <div class="col-xs-6 col-sm-4" style="border: solid 0.5px #000; ">
-        <div class="thumbnail">
+      <div class="col-xs-6 col-sm-4" style="border: solid 0.5px #000;">
+        <div class="thumbnail" >
         <!-- 데이터 리스트 시작  -->
+        <c:if test='${campaignBoard.c_file == ""}'>
           <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
+          </c:if>
+           <c:if test='${campaignBoard.c_file != ""}'>
+          <img src="/uploadStorage/campaign/${campaignBoard.c_file}" alt="캠페인 이미지" width="400" height="300">
+           </c:if>
           <p><strong>${campaignBoard.c_title}</strong></p>
           <p>${campaignBoard.c_content}</p>
+          
         <!-- 데이터 리스트 끝 -->
-          <div class=" text-center">
-          	<button class="btn" data-toggle="modal" data-target="#myModal" style="margin-bottom: 15px;">바로가기</button>
+        
+          <div class="text-center"  data-num="${campaignBoard.c_no}" >
+          	<button class="goDetail" id="btn" data-target="#myModal" style="margin-bottom: 15px;" >바로가기</button>
           	<div class="text-left">
 					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> 99
 					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png"> 99
@@ -154,10 +177,12 @@
           </div>
         </div>
       </div>
+     
       </c:forEach>
+      
       <!-- 리스트를 위한 반복문 끝 -->
       
-      
+     
     
       
     

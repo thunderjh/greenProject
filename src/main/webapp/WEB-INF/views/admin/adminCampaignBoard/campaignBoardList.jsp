@@ -182,7 +182,7 @@
       
       <!-- 리스트를 위한 반복문 끝 -->
       
-      <button type="button" id="exam">disis</button>
+     
     
       
     

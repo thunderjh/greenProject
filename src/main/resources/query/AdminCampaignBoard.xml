@@ -18,7 +18,7 @@
 
 		<!-- 게시판 디테일 -->
 		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
-		select C_NO,  A_ID, C_DETAIL_TITLE,C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB
 		from CAMPAIGN_BOARD
 		WHERE c_no = #{c_no}
 		</select>
@@ -26,14 +26,15 @@
 		<!-- 글수정하기 campaignBoardUpdate -->
 		<update id="campaignBoardUpdate" parameterType="campaignBoard">
 		update CAMPAIGN_BOARD
-		SET C_TITLE=#{c_title}, C_CONTENT=#{c_content}, C_DETAIL_TITLE=#{c_detail_title}, C_DETAIL_CONTENT=#{c_detail_content}, C_DETAIL_VIDEOID=#{c_detail_videoid}, CAT_TITLE=#{cat_title} 
+		SET C_TITLE=#{c_title}, C_CONTENT=#{c_content}, C_DETAIL_TITLE=#{c_detail_title}, C_DETAIL_CONTENT=#{c_detail_content}, 
+		C_DETAIL_VIDEOID=#{c_detail_videoid}, CAT_TITLE=#{cat_title} 
 		<if test="c_thumb !=''">
 			,C_THUMB=#{c_thumb}
 		</if>
 		<if test="c_thumb !=''">
 			,C_FILE = #{c_file}
 		</if>
-		where c_no = #{c_no)
+		where c_no = #{c_no}
 		</update>
 		
 		<!-- 글삭제하기 campaignBoardDelete -->

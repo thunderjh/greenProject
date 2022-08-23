@@ -52,18 +52,18 @@
 			else if(!chkData("#c_content","게시판리스트 설명을")) return;
 			else if(!chkData("#c_detail_title","상세페이지 제목을")) return;
 			else if(!chkData("#c_detail_content","상세페이지 내용을")) return;
-			else if(!chkFile($("#file"))) return;
+			//else if(!chkFile($("#file"))) return;
 			else{
 				if($("#file").val()!=""){
 					if(!chkFile($("#file"))) return;
 				}
 				
-				$("#f_writeForm").attr({
+				$("#campaignupdateForm").attr({
 					"method" : "post",
 					"enctype": "multipart/form-data",
-					"action" : "/board/boardInsert"
+					"action" : "/admin/adminCampaignBoard/campaignBoardUpdate"
 				});
-				$("#f_writeForm").submit();
+				$("#campaignupdateForm").submit();
 			}
 		});
     	
@@ -92,7 +92,10 @@
     </head>
 		<body>
 			<div class="container">
-			<form id="f_insertForm">
+			<form id="campaignupdateForm">
+			<input type="hidden" id="c_no" name="c_no" value="${updateData.c_no }" />
+				<input type="hidden" id="c_file" name="c_file" value="${updateData.c_file }" />
+				<input type="hidden" id="c_thumb" name="c_thumb" value="${updateData.c_thumb }" />
 		   	<br>
 			  <div class="form-group ">
 			    <label for="file">게시판 대표이미지</label>
@@ -118,31 +121,30 @@
 			  
 			  <div class="form-group ">
 			    <label for="c_title">게시판 제목</label>
-			    <input type="text" class="form-control input-lg" id="c_title" name="c_title" placeholder="리스트 제목을 입력하세요">
+			    <input type="text" class="form-control input-lg" id="c_title" name="c_title" value="${updateData.c_title }">
 			  </div>
 			  
 			  <div class="form-group ">
 			    <label for="c_content">게시판 소개</label>
-			    <input type="text" class="form-control input-lg" id="c_content" name="c_content" placeholder="리스트 소개를 입력하세요.">
+			    <input type="text" class="form-control input-lg" id="c_content" name="c_content" value="${updateData.c_content }">
 			  </div>
 			  
 			  
 			  <div class="form-group ">
 			    <label for="c_detail_title">게시판 디테일 소제목</label>
-			    <input type="text" class="form-control input-lg" id="c_detail_title" name="c_detail_title" placeholder="게시판 디테일 소제목을 입력하세요.">
+			    <input type="text" class="form-control input-lg" id="c_detail_title" name="c_detail_title" value="${updateData.c_detail_title }">
 			  </div>
 			  <br>
 			  
 			  <div class="form-group ">
 			    <label for="c_detail_content">게시판 디테일 내용</label>
-			    <textarea class="form-control" id="c_detail_content" name="c_detail_content" placeholder="게시판 디테일 내용을 입력하세요." 
-			    rows="20"></textarea>
+			    <textarea class="form-control" id="c_detail_content" name="c_detail_content"rows="20">${updateData.c_detail_content }</textarea>
 			  </div>
 			  <br>
 			  
 			  <div class="form-group ">
 			    <label for="c_detail_videoid">유튜브 링크</label>
-			    <input type="text" class="form-control input-lg" id="c_detail_videoid" name="c_detail_videoid" placeholder="https://youtu.be/ 제외한 URL 값을 입력해주세요.">
+			    <input type="text" class="form-control input-lg" id="c_detail_videoid" name="c_detail_videoid" value="${updateData.c_detail_videoid }">
 			  </div>
 			  <br>	
 			
