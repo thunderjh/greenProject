@@ -17,7 +17,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
 	
-
+ 	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 	
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/campaignBoardList.css" rel="stylesheet">
@@ -68,14 +68,6 @@
 	
 	<script type="text/javascript">
 	$(function () {
-		
-		
-		
-		//글 쓰기 버튼 클 릭 
-		$("#insertFormBtn").click(function () {
-			location.href="/admin/adminCampaignBoard/campaignBoardInsertForm";
-		});
-		
 		//상세페이지 이동
 		$(".goDetail").click(function() {
 			
@@ -85,15 +77,12 @@
 			/*상세페이지 이동하기 위한 폼*/
 			$("#detailForm").attr({
 				"method" : "get",
-				"action" : "/admin/adminCampaignBoard/campaignBoardDetail"
+				"action" : "/client/campaignBoard/campaignBoardDetail"
 			});
 			$("#detailForm").submit();
 		
 		});
-
-		$("#exam").click(function () {
-			location.href="/admin/adminCampaignBoard/campaignBoardDetail";
-		});				   
+		   
 		
 		
 	})// 최상위 펀션
@@ -147,7 +136,7 @@
 		
 		
 
-  <button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button>
+
 
     
     <div class="row text-left">
@@ -172,7 +161,7 @@
           	<button class="goDetail" id="btn" data-target="#myModal" style="margin-bottom: 15px;" >바로가기</button>
           	<div class="text-left">
 					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> ${campaignBoard.c_views}
-					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png"> 99
+					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png">  ${campaignBoard.comment_cnt}
 			</div>
           </div>
         </div>

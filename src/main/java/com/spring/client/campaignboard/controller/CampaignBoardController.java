@@ -39,15 +39,21 @@ public class CampaignBoardController {
 		log.info("campaignBoardList호출 성공!!");
 		//전체 레코드 조회
 		List<CampaignBoardVo> campaignBoardList = campaignBoardService.campaignBoardList(cbvo);
-		model.addAttribute("campaignBoardList", campaignBoardList);
-		//전체레코드 수 
-		
-		
-		
+		model.addAttribute("campaignBoardList", campaignBoardList);	
 		return "client/campaignBoard/campaignBoardList";
-
 	}
-
+	
+	/*캠페인 게시판 디데일*/
+	@GetMapping("/campaignBoardDetail")
+	public String campaignBoardDetail(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
+		log.info("campaignBoardDetail호출 성공!!");
+		
+		CampaignBoardVo campaignBoardDetail = campaignBoardService.campaignBoardDetail(cbvo);	
+		model.addAttribute("campaignBoardDetail", campaignBoardDetail);	
+		return "client/campaignBoard/campaignBoardDetail";
+		
+	
+	}
 
 
 

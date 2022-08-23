@@ -8,4 +8,6 @@ public interface CampaignBoardService {
 
 	public List<CampaignBoardVo> campaignBoardList(CampaignBoardVo cbvo);
 
+	public CampaignBoardVo campaignBoardDetail(CampaignBoardVo cbvo);
+
 }
