@@ -6,9 +6,14 @@
 		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
 		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views
 		from CAMPAIGN_BOARD
-		order by C_NO desc
+		<where>
+			<if test="cat_title != ''">
+				 cat_title = #{cat_title}
+			</if>
+		</where>	
+		order by C_NO desc	
 		</select>
-<!-- 게시판 리스트 조회-->
+
 
 <!-- 게시판 디테일 -->
 		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">

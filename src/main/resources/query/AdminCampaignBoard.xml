@@ -4,8 +4,9 @@
 
 		<!-- 게시판 리스트 조회-->
 		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
-		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views
-		from CAMPAIGN_BOARD
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, c_date, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views,
+		(select count(c_no) from CAMPAIGN_BOARD_reply where c_no = CAMPAIGN_BOARD.c_no) as comment_cnt
+		from CAMPAIGN_BOARD 
 		order by C_NO desc
 		</select>
 
@@ -18,7 +19,7 @@
 
 		<!-- 게시판 디테일 -->
 		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
-		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, c_date, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
 		from CAMPAIGN_BOARD
 		WHERE c_no = #{c_no}
 		</select>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.client.campaignboardReply.dao.CampaignboardReplyDao">
+
+	<!-- 댓글입력 -->
+	<insert id="campaignboardReplyInsert" parameterType="campaignBoardReply">
+	insert into campaign_board_reply(c_r_num, c_no, id, c_r_content)
+	values(campaign_board_reply_seq.nextval, #{c_no}, #{id}, #{c_r_content})
+	</insert>
+
+
+</mapper>

@@ -108,19 +108,19 @@
   <br>
   <div class="row">
     <div class="col-sm-3">     
-      <img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>전체</strong></p><br>
+      <a href="/client/campaignBoard/campaignBoardList"><img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100">
+     </a> <p class="text-center"><strong>전체</strong></p><br>
     </div>
     <div class="col-sm-3">      
-      <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>환경</strong></p><br>
+       <a href="/client/campaignBoard/campaignBoardList?cat_title=환경"><img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
+       </a><p class="text-center"><strong>환경</strong></p><br>
     </div>
     <div class="col-sm-3">     
-      <img src="/resources/images/cmapaignBoardimage/pictogram/pet-house.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>동물</strong></p><br>
+       <a href="/client/campaignBoard/campaignBoardList?cat_title=동물"><img src="/resources/images/cmapaignBoardimage/pictogram/pet-house.png" class="img-circle person" alt="Random Name" width="100" height="100">
+       </a><p class="text-center"><strong>동물</strong></p><br>
     </div>
     <div class="col-sm-3">      
-      <img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100">
+      <a href="/client/campaignBoard/campaignBoardList?cat_title=가정"><img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100"></a>
       <p class="text-center"><strong>가정</strong></p><br>
     </div>
   </div>

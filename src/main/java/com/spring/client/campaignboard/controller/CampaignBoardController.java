@@ -37,6 +37,8 @@ public class CampaignBoardController {
 	@GetMapping("/campaignBoardList")
 	public String campaignBoardList(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
 		log.info("campaignBoardList호출 성공!!");
+		log.info("cbvo = " + cbvo);
+		
 		//전체 레코드 조회
 		List<CampaignBoardVo> campaignBoardList = campaignBoardService.campaignBoardList(cbvo);
 		model.addAttribute("campaignBoardList", campaignBoardList);	

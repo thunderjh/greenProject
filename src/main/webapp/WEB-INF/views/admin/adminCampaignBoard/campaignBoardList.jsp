@@ -34,7 +34,7 @@
     
     <!-- Bootstrap core CSS -->
 	<style type="text/css">
-	  .thumbnail {
+/* 	  .thumbnail {
     padding: 0 0 15px 0;
     border: none;
     border-radius: 0;
@@ -63,7 +63,7 @@
   .board_icon{
   	height: 20px;
   	width: 20px;
-  }
+  } */
 	</style>
 	
 	<script type="text/javascript">
@@ -79,7 +79,7 @@
 		//상세페이지 이동
 		$(".goDetail").click(function() {
 			
-			let c_no = $(this).parents("div").attr("data-num");
+			let c_no = $(this).parents("tr").attr("data-num");
 			$("#c_no").val(c_no);
 			console.log("c_no = " + c_no);
 			/*상세페이지 이동하기 위한 폼*/
@@ -113,85 +113,66 @@
   	<input type="hidden" id="c_no" name="c_no">
   </form>
  
-  <!-- 카테고리 시작 -->
- <div class="container text-center">
-  <h3>카테고리</h3>
-  <br>
-  <div class="row">
-    <div class="col-sm-3">     
-      <img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>전체</strong></p><br>
-    </div>
-    <div class="col-sm-3">      
-      <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>환경</strong></p><br>
-    </div>
-    <div class="col-sm-3">     
-      <img src="/resources/images/cmapaignBoardimage/pictogram/pet-house.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>동물</strong></p><br>
-    </div>
-    <div class="col-sm-3">      
-      <img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100">
-      <p class="text-center"><strong>가정</strong></p><br>
-    </div>
-  </div>
-</div>
-    
-<!-- 카테고리 끝 -->
-	
-<!-- 보드 리스트 -->
-<div id="tour" class="bg-1">
-  <div class="container">
-    <h3 class="text-center">캠페인 목록</h3>
-    <p class="text-center" style="margin-bottom: 40px;">작은 실천으로,<br> 힘을 모아요!</p>
-		
-		
-
-  <button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button>
-
-    
-    <div class="row text-left">
-      <!-- 리스트를 위한 반복문시작 -->
-      
-      <c:forEach items="${campaignBoardList }" var="campaignBoard">
-      <div class="col-xs-6 col-sm-4" style="border: solid 0.5px #000;">
-        <div class="thumbnail" >
-        <!-- 데이터 리스트 시작  -->
-        <c:if test='${campaignBoard.c_file == ""}'>
-          <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
-          </c:if>
-           <c:if test='${campaignBoard.c_file != ""}'>
-          <img src="/uploadStorage/campaign/${campaignBoard.c_file}" alt="캠페인 이미지" width="400" height="300">
-           </c:if>
-          <p><strong>${campaignBoard.c_title}</strong></p>
-          <p>${campaignBoard.c_content}</p>
-          
-        <!-- 데이터 리스트 끝 -->
-        
-          <div class="text-center"  data-num="${campaignBoard.c_no}" >
-          	<button class="goDetail" id="btn" data-target="#myModal" style="margin-bottom: 15px;" >바로가기</button>
-          	<div class="text-left">
-					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> ${campaignBoard.c_views}
-					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png">  ${campaignBoard.comment_cnt}
-			</div>
-          </div>
-        </div>
-      </div>
-     
-      </c:forEach>
-      
-      <!-- 리스트를 위한 반복문 끝 -->
-      
-     
-    
-      
-    
-      
-    </div>
-  </div>
-</div>	
-<!-- 보드 리스트 끝-->
-
+ 	<table class="table table-striped table-sm">
+					<colgroup>
+						<col style="width: 5%;" />
+						<col style="width: 10%;" />
+						<col style="width: auto;" />
+						<col style="width: 10%;" />
+						<col style="width: 15%;" />
+						<col style="width: 10%;" />
+						<col style="width: 15%;" />
+						<col style="width: 5%;" />
+						<col style="width: 5%;" />
+						<col style="width: 5%;" />
+					</colgroup>
+					<thead>
+						<tr class="">
+							<th>NO</th>
+							<th>관리자 ID</th>
+							<th>글제목</th>
+							<th>카테고리</th>
+							 <th>조회수</th>
+							 <th>댓글</th>
+							<th>작성일</th>
+							<!--
+							
+							<th colspan=2></th> 
+							<th></th>-->
+						</tr>
+					</thead>
+					<tbody id="list">
+					
+						<c:choose>
+							<c:when test="${not empty campaignBoardList}">
+								<c:forEach var="campaignBoard" items="${campaignBoardList}" varStatus="status">
+									<tr data-num="${campaignBoard.c_no}">
+										<td>${campaignBoard.c_no}</td>
+										<td>${campaignBoard.a_id}</td>
+										<td class="goDetail">${campaignBoard.c_title}</td>
+										<td>${campaignBoard.cat_title}</td>
+										 <td class="id">${campaignBoard.c_views}</td>
+										 <td class="text-center">${campaignBoard.comment_cnt}</td>
+										<td>${campaignBoard.c_date}</td>
+										<%--<td>${list.m_views}</td>
+										
+										<td style="display: none;" class="text-center file">${list.m_file}</td>
+										<td style="display: none;" class="text-center thumb">${list.m_thumb}</td>
+										<td><button type="button" class="btn btn-sm btn-primary pointPlus">승인</button></td>
+										<td><button type="button" class="btn btn-sm btn-primary pointCancle">취소</button></td>
+										<td><button type="button" class="btn btn-sm btn-danger PostDelete">삭제</button></td> --%>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="6" align="center">데이터가 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+ <button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button>
 
 	
 

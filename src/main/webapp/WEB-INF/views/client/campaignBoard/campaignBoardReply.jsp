@@ -53,6 +53,7 @@
 			$(function () {
 				/*기본 댓글 목록 불러오기*/
 				let c_no =${campaignBoardDetail.c_no};
+				let a_id ="${campaignBoardDetail.a_id }";
 				listAll(c_no);
 				
 				/*비밀번호 확인 없이 삭제 버튼 제어*/
@@ -81,8 +82,8 @@
 							let c_r_num = this.c_r_num;	
 							let c_r_content = this.c_r_content;	
 							let c_r_date = this.c_r_date;	
-							let a_id = this.a_id;	
-							addItem(c_r_num, c_r_content, c_r_date, a_id);
+							let id = this.id;	
+							addItem(c_r_num, c_r_content, c_r_date, id);
 						});
 					}).fail(function(){
 						alert("댓글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
@@ -90,22 +91,22 @@
 			}
 			
 			/*댓글 표현
-			function addItem(c_r_num, c_r_content, c_r_date, a_id) {
-					$("#reviewList").append(c_r_num + c_r_content + c_r_date + a_id);
+			function addItem(c_r_num, c_r_content, c_r_date, id) {
+					$("#reviewList").append(c_r_num + c_r_content + c_r_date + id);
 			}*/
 			//새로운 글을 화면에 추가하기(보여주기) 위한 함수
-			function addItem(c_r_num, c_r_content, c_r_date, a_id){
+			function addItem(c_r_num, c_r_content, c_r_date, id){
 				
-			console.log("a_id = " + a_id + "c_r_date = " + c_r_date);
+			console.log("id = " + id + "c_r_date = " + c_r_date);
 				let $div = $('#reviewList');
 				
 				let $element = $('#item-template').clone().removeAttr('id');
 				$element.attr("data-num", c_r_num);
 				$element.addClass("reply");
-				$element.find('.panel-heading > .panel-title > .name').html("관리자 : "+a_id);
+				$element.find('.panel-heading > .panel-title > .name').html("관리자 : "+id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
 				$element.find('.panel-body').html(c_r_content);
-				$element.find('#a-name').html("관리자 : "+a_id);
+				$element.find('#a-name').html(id);
 				$div.append($element);
 			}
 			
@@ -138,25 +139,12 @@
 			</script>
 		</head>
 		<body>	
-		
-		
-			<%-- 
-			<div class="container">
-				<div class="text-left">
-				<h3>댓글 <img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png"> 99 </h3>
-				</div>
-			  <div class="panel panel-default">
-			    <div class="panel-heading"><h4>사용자ID</h4> <button type="button" class="btn btn-default " id="replyInsertBtn" style="margin-left: 20px;">등록</button></div>
-			    <textarea class="form-control" id="reply-text" rows="3" maxlength="999"></textarea>
-			  </div>
-			--%>
 			<form id="replyForm" name="replyForm">
 			<div class="panel panel-default">
 				<table class="table">
 					<tbody>
 						<tr>
-							<td class="col-md-1">작성자 : ${campaignBoardDetail.a_id }</td>
-							
+							<td class="col-md-1">작성자 : ${pvo.id }</td>				
 						</tr>
 						<tr>
 							<td class="col-md-1">댓글 내용</td>

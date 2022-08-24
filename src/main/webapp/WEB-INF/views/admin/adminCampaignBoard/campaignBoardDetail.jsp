@@ -82,7 +82,7 @@
     
 	</script>
     <style type="text/css">
-    	.btnArea{
+    /* 	.btnArea{
     	margin-top: 20px;
     	margin-bottom: 20px;
     	text-align: center;
@@ -94,7 +94,7 @@
     .detail-mainimage{
     	max-width: 100%;
     	height: auto;
-    	}
+    	} */
     </style>
   </head>
 
@@ -111,53 +111,40 @@
 	</form>
 	
 	
-    <div class="container">
-      <div class="jumbotron detail-mainwrapper">
+				<table class="table table-striped table-sm">
+					<tbody>
+						<tr>
+							<td class="col-md-3">작성자</td>
+							<td class="col-md-3 text-left">${campaignBoardDetail.a_id} (조회수: ${campaignBoardDetail.c_views})</td>
+							<td class="col-md-3">작성일</td>
+							<td class="col-md-3 text-left">${campaignBoardDetail.c_date}</td>
+						</tr>
+						<tr>
+							<td class="col-md-4">카테고리</td>
+							<td colspan="3" class="col-md-8 text-left">${campaignBoardDetail.cat_title}</td>
+						</tr>
+						<tr>
+							<td class="col-md-4">글제목</td>
+							<td colspan="3" class="col-md-8 text-left">${campaignBoardDetail.c_title}</td>
+						</tr>
+						<tr class="table-tr-height">
+							<td class="col-md-4">글내용</td>
+							<td colspan="3" class="col-md-8 text-left">${campaignBoardDetail.c_content}</td>
+						</tr>
+						<c:if test="${not empty campaignBoardDetail.c_file }">
+						
+						<tr>
+							<td class="col-md-4">이미지</td>
+							<td colspan="3" class="col-md-8 text-left">
+								<img src="/uploadStorage/campaign/${campaignBoardDetail.c_file}"/>
+							</td>
+						</tr>
+						</c:if>
+					</tbody>
+				</table>
+		
 
- 		<c:if test='${campaignBoardDetail.c_file == ""}'>
-          <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
-          </c:if>
-           <c:if test='${campaignBoardDetail.c_file != ""}'>
-          <img src="/uploadStorage/campaign/${campaignBoardDetail.c_file}" alt="캠페인 이미지" width="400" height="300">
-           </c:if>
-
-      </div>
-
-      <div class="row marketing">
-        <div class="col-xs-9"><h2 class="page-header">${campaignBoardDetail.c_detail_title }</h2></div>
- 		 <div class="col-xs-12"><p>${campaignBoardDetail.c_detail_content}
- 		  </p></div>   
-      </div>
-      
-      	
-      	<c:if test='${campaignBoardDetail.c_detail_videoid == ""}'>
-          간장
-          </c:if>
-           <c:if test='${campaignBoardDetail.c_detail_videoid != ""}'>
-       		<!-- 16:9 aspect ratio -->
-		      	<div class="embed-responsive embed-responsive-16by9">
-			      	<div id="ytplayer"></div>   	
-		      	</div>
-	        <!-- 16:9 aspect ratio -->	
-           </c:if>
-	
-      <div class="btnArea col-md-4">
-      	<button type="button" class="btn btn-default" onclick="history.back()">목록으로</button>
-      	<button type="button" id="campaignBoardUpdateBtn" class="btn btn-success">수정하기</button>
-      	<button type="button" id="campaignBoardDeleteBtn" class="btn btn-success">삭제하기</button>
-    </div> 
-    <br>
-    
-    
-    <div>	
-    
-   		  
-    
-    <jsp:include page="campaignBoardReply.jsp" />
-    </div>
-    </div><!-- /container -->
-	
-
+				<jsp:include page="campaignBoardReply.jsp" />
 
 
 

@@ -105,7 +105,7 @@
       
       	
       	<c:if test='${campaignBoardDetail.c_detail_videoid == ""}'>
-          간장
+          
           </c:if>
            <c:if test='${campaignBoardDetail.c_detail_videoid != ""}'>
        		<!-- 16:9 aspect ratio -->

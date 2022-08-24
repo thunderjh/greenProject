@@ -92,8 +92,7 @@
 						},
 						success : function(result) {
 							if (result == "SUCCESS") {
-								alert("댓글 등록이 완료되었습니다.");
-								dataReset();
+								alert("댓글 등록이 완료되었습니다.");								
 								listAll(c_no);
 							}
 						}
@@ -203,13 +202,13 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td class="col-md-1">작성자 : ${campaignBoardDetail.a_id }</td>
+							<td class="col-md-1">작성자 : ${adminLogin.a_id }</td>
 							
 						</tr>
 						<tr>
 							<td class="col-md-1">댓글 내용</td>
 							<td colspan="4" class="col-md-11 text-left">
-								<input type="hidden" id="a_id" name="a_id">
+								<input type="hidden" id="a_id" name="a_id" value="${adminLogin.a_id }">
 								<textarea name="c_r_content" id="c_r_content" class="form-control" rows="3"></textarea>
 								<div class="text-right" style="padding-top: 8px;">
 								<button type="button" id="replyInsertBtn" class="btn btn-success">저장</button>
