@@ -15,7 +15,7 @@
 	
 			<!-- jquery -->
 			<script src="/resources/include/js/jquery-1.12.4.min.js"></script>
-			
+			<script src="/resources/include/js/common.js"></script>
 			
 			 <!-- Bootstrap core CSS -->
 		    <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
 			$(function () {
 				/*기본 댓글 목록 불러오기*/
 				let c_no =${campaignBoardDetail.c_no};
-				let a_id ="${campaignBoardDetail.a_id }";
+				let a_id ="${pvo.id }";
 				listAll(c_no);
 				
 				/*비밀번호 확인 없이 삭제 버튼 제어*/
@@ -61,6 +61,46 @@
 				let c_r_num = $(this).parents("div.panel").attr("data-num");
 				deleteBtn(c_no, c_r_num);	
 				});
+				
+				
+				//댓글입력 Ajax 연동 처리 방법
+				$(document).on("click", "#replyInsertBtn", function() {
+					let insertUrl = "/replies/replyInsert";
+					//JSON.stringify = javaScript 값 혹은 객체를 json문자열로 변환
+					let value = JSON.stringify({
+						c_no : c_no,
+						a_id : $("#id").val(),
+						c_r_content : $("#c_r_content").val()
+					});
+
+					$.ajax({
+						url : insertUrl,
+						type : "post",
+						headers : {
+							"Content-Type" : "application/json"
+						},
+						dataType : "text",
+						data : value,
+						error : function() {
+							alert('시스템에 문제가 있어 잠시 후 다시 시도해주세요.');
+						},
+						beforeSend : function() {
+							if (!checkForm("#c_r_content", "댓글내용을"))
+								return false;
+						},
+						success : function(result) {
+							if (result == "SUCCESS") {
+								alert("댓글 등록이 완료되었습니다.");								
+								listAll(c_no);
+							}
+						}
+					});
+				});
+				
+				
+				
+				
+				
 		
 			}); // $ 
 			
@@ -103,7 +143,7 @@
 				let $element = $('#item-template').clone().removeAttr('id');
 				$element.attr("data-num", c_r_num);
 				$element.addClass("reply");
-				$element.find('.panel-heading > .panel-title > .name').html("관리자 : "+id);
+				$element.find('.panel-heading > .panel-title > .name').html('${pvo.id}');
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html(id);
@@ -149,7 +189,7 @@
 						<tr>
 							<td class="col-md-1">댓글 내용</td>
 							<td colspan="4" class="col-md-11 text-left">
-								<textarea name="q_r_content" id="q_r_content" class="form-control" rows="3"></textarea>
+								<textarea name="c_r_content" id="c_r_content" class="form-control" rows="3"></textarea>
 								<div class="text-right" style="padding-top: 8px;">
 								<button type="button" id="replyInsertBtn" class="btn btn-success">저장</button>
 								</div>
