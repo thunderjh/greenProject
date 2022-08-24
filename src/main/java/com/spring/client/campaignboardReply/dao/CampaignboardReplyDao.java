@@ -7,5 +7,5 @@ import com.spring.client.campaignboardReply.vo.CampaignboardReplyVo;
 public interface CampaignboardReplyDao {
 
 	public int campaignboardReplyInsert(CampaignboardReplyVo cb_rvo);
-	
+	public int campaignboardReplyDelete(CampaignboardReplyVo cb_rvo);
 }

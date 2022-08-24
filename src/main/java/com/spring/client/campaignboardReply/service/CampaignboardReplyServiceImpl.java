@@ -20,5 +20,12 @@ public class CampaignboardReplyServiceImpl implements CampaignboardReplyService 
 		return result;
 	}
 
+	//삭제
+	@Override
+	public int campaignboardReplyDelete(CampaignboardReplyVo cb_rvo) {
+		int result = campaignboardReplyDao.campaignboardReplyDelete(cb_rvo);
+		return result;
+	}
+
 
 }

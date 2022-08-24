@@ -57,9 +57,9 @@
 				listAll(c_no);
 				
 				/*비밀번호 확인 없이 삭제 버튼 제어*/
-				$("#deleteBtn").click(function () {
-				let c_r_num = $(this).parents("div.panel").attr("data-num");
-				deleteBtn(c_no, c_r_num);	
+				$(document).on("click", ".delBtn", function() {
+					let c_r_num = $(this).parents("div.panel").attr("data-num");
+					deleteBtn(c_no, c_r_num);	
 				});
 				
 				
@@ -179,6 +179,7 @@
 			</script>
 		</head>
 		<body>	
+		<c:if test="${pvo.id != null }">
 			<form id="replyForm" name="replyForm">
 			<div class="panel panel-default">
 				<table class="table">
@@ -199,6 +200,24 @@
 				</table>
 			</div>
 		</form>
+		</c:if>
+		
+		<c:if test="${pvo.id == null }">
+			<form id="replyForm" name="replyForm">
+			<div class="panel panel-default">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td class="col-md-1">댓글 내용</td>
+							<td colspan="4" class="col-md-11 text-left">
+								<textarea readonly="readonly" class="form-control" rows="3">로그인 후 이용해주세요.</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+		</c:if>
 			<hr>
 			
  	 <!-- 댓글 리스트 시작 -->
@@ -208,7 +227,7 @@
 					<h3 class="panel-title">
 						<span class="name"></span>
 						<span class="date"></span>					
-						<button type="button" data-btn="deleteBtn" id="deleteBtn" class="btn btn-default gap">삭제하기</button>
+						<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
 						</h3>
 				</div>
 				<div class="panel-body"></div>

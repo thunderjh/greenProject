@@ -7,6 +7,18 @@
 	insert into campaign_board_reply(c_r_num, c_no, id, c_r_content)
 	values(campaign_board_reply_seq.nextval, #{c_no}, #{id}, #{c_r_content})
 	</insert>
+	
+	
+	
+	<!-- 댓글삭제 -->
+	<delete id="campaignboardReplyDelete" parameterType="campaignBoardReply">
+	delete 
+	from campaign_board_reply 
+	where c_r_num =#{c_r_num} 
+	</delete>
+
+
+
 
 
 </mapper>
