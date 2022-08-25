@@ -42,7 +42,7 @@ public class CampaignListTest {
 		cbvo.setPageNum(1);
 		cbvo.setAmount(10);
 		
-		cbvo.setCat_title("가정");
+		cbvo.setCat_title("환경");
 		
 		List<CampaignBoardVo> list = campaignBoardDao.campaignBoardList(cbvo);
 		for(CampaignBoardVo vo : list) {

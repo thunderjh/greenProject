@@ -47,7 +47,7 @@ public class CampaignBoardController {
 		int total = campaignBoardService.campaignBoardListCnt(cbvo);
 		//페이징 처리
 		model.addAttribute("pageMaker", new PageDTO(cbvo, total));
-		
+		log.info("total = " + total);
 		
 		return "client/campaignBoard/campaignBoardList";
 	}

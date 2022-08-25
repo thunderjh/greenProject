@@ -82,7 +82,32 @@
 			$("#detailForm").submit();
 		
 		});
-		   
+		
+		/**/
+		$(".person").click(function() {
+			
+			let cat_title = $(this).parents("div.cat").find("strong").html();
+			console.log("cat_title :" + cat_title);
+			
+			if(cat_title!="전체"){
+				$("#cat_title").val(cat_title);
+				$("#pageNum").val(1);
+			}
+		//	console.log("c_no = " + c_no);
+			/*상세페이지 이동하기 위한 폼*/
+		//	$("#detailForm").attr({
+		//		"method" : "get",
+		//		"action" : "/client/campaignBoard/campaignBoardDetail"
+		//	});
+		//	$("#detailForm").submit();
+			goPage();
+		});
+		
+		 /**/ 
+		 
+		 
+		 
+		 
 		$(".paginate_button a").click(function(e){
 			e.preventDefault();
 			$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
@@ -91,7 +116,16 @@
 		});
 		
 	})// 최상위 펀션
-	
+	function goPage(){
+		//if ($("#search").val() == "all") {
+		//	$("#keyword").val("");
+		//}
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/client/campaignBoard/campaignBoardList"
+		});
+		$("#f_search").submit();
+	}
 	
 	</script>
 	
@@ -108,29 +142,40 @@
   </form>
  
   <!-- 카테고리 시작 -->
+  
  <div class="container text-center">
+ <form id="f_search" name="f_search" class="form-inline">
+	<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum}">
+	<input type="hidden" name="cat_title" id="cat_title">
+	<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount}">
+	  </form>
   <h3>카테고리</h3>
   <br>
   <div class="row">
-    <div class="col-sm-3">     
-      <a href="/client/campaignBoard/campaignBoardList"><img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100">
-     </a> <p class="text-center"><strong>전체</strong></p><br>
+    <div class="col-sm-3 cat">     
+      <img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100"> 
+     <p class="text-center"><strong>전체</strong></p><br>
     </div>
-    <div class="col-sm-3">      
-       <a href="/client/campaignBoard/campaignBoardList?cat_title=환경"><img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
-       </a><p class="text-center"><strong>환경</strong></p><br>
+    
+    <div class="col-sm-3 cat">      
+      <!--  <a href="/client/campaignBoard/campaignBoardList?cat_title=환경">--> 
+       <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
+       <!-- </a> --><p class="text-center"><strong>환경</strong></p><br>
     </div>
-    <div class="col-sm-3">     
-       <a href="/client/campaignBoard/campaignBoardList?cat_title=동물"><img src="/resources/images/cmapaignBoardimage/pictogram/pet-house.png" class="img-circle person" alt="Random Name" width="100" height="100">
-       </a><p class="text-center"><strong>동물</strong></p><br>
+    
+    <div class="col-sm-3 cat">     
+       <img src="/resources/images/cmapaignBoardimage/pictogram/pet-house.png" class="img-circle person" alt="Random Name" width="100" height="100">
+       <p class="text-center"><strong>동물</strong></p><br>
     </div>
-    <div class="col-sm-3">      
-      <a href="/client/campaignBoard/campaignBoardList?cat_title=가정"><img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100"></a>
+    
+    <div class="col-sm-3 cat">      
+      <img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100">
       <p class="text-center"><strong>가정</strong></p><br>
     </div>
   </div>
-</div>
     
+</div>
+
 <!-- 카테고리 끝 -->
 	
 <!-- 보드 리스트 -->
