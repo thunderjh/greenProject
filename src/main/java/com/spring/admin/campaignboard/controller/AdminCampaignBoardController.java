@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.admin.campaignboard.service.AdminCampaignBoardService;
 import com.spring.admin.login.vo.AdminLoginVO;
+import com.spring.client.campaign.common.vo.PageDTO;
 import com.spring.client.campaignboard.vo.CampaignBoardVo;
 
 
@@ -34,10 +35,14 @@ public class AdminCampaignBoardController {
 	@GetMapping("/adminCampaignBoard/campaignBoardList")
 	public String campaignBoardList(@ModelAttribute("data") CampaignBoardVo cbvo, Model model) {
 		log.info("admin campaignBoardList호출 성공!!");
-		
+		//전체 레코드 조회
 		List<CampaignBoardVo> campaignBoardList = adminCampaignBoardService.campaignBoardList(cbvo);
 		model.addAttribute("campaignBoardList", campaignBoardList);
 		
+		//전체 레코드 수 구현
+		int total = adminCampaignBoardService.adminCampaignBoardListCnt(cbvo);
+		//페이징
+		model.addAttribute("pageMaker", new PageDTO(cbvo, total));
 		
 		return "admin/adminCampaignBoard/campaignBoardList";
 

@@ -24,17 +24,18 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 		List<CampaignBoardVo> list = adminCampaignBoardDao.campaignBoardList(cbvo);
 		return list;
 	}
+	
+	@Override
+	public int adminCampaignBoardListCnt(CampaignBoardVo cbvo) {
+
+		return adminCampaignBoardDao.adminCampaignBoardListCnt(cbvo);
+	}
+	
 	//글입력 실제구현
 	@Override
 	public int campaignBoardInsert(CampaignBoardVo cbvo) throws Exception {
 		int result = 0;
 		
-		/**예외 발생 코드
-		bvo.setB_num(0);
-		if(bvo.getB_num()==0) {
-			throw new IllegalArgumentException("0번 글은 등록 불가능");
-		}
-		**/		
 		
 		if(cbvo.getFile().getSize()>0) {
 			String fileName = FileUploadUtil.fileUpload(cbvo.getFile(), "campaign");
@@ -106,6 +107,7 @@ public class AdminCampaignBoardServiceImpl implements AdminCampaignBoardService{
 		result = adminCampaignBoardDao.comment_cnt(c_no);
 		return result;
 	}
+	
 
 
 

@@ -10,6 +10,8 @@ import com.spring.client.campaignboard.vo.CampaignBoardVo;
 public interface AdminCampaignBoardDao {
 	
 	public List<CampaignBoardVo> campaignBoardList(CampaignBoardVo cbvo); //게시판 리스트 표현
+	
+	public int adminCampaignBoardListCnt(CampaignBoardVo cbvo);
 
 	public int campaignBoardInsert(CampaignBoardVo cbvo) throws Exception;
 

@@ -34,41 +34,39 @@
     
     <!-- Bootstrap core CSS -->
 	<style type="text/css">
-/* 	  .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail p {
-    margin-top: 15px;
-    color: #555;
-  }
-   #btn {
-   	border: 1px solid #333;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #000;
-    border-radius: 0;
-    transition: .2s;
-  }
-  #btn:hover, .btn:focus {
-    border: 1px solid #333;
-    background-color: #58D64A;
-    color: #fff;
-  }
-
-   .container {
-    padding: 80px 120px;
-  }
-  .board_icon{
-  	height: 20px;
-  	width: 20px;
-  } */
+	.content{
+ display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-height: 2;
+  overflow: hidden;
+}
 	</style>
 	
 	<script type="text/javascript">
 	$(function () {
-		
+		//검색 처리 이벤트
+		$("#search").change(function() {
+			if ($("#search").val() != "all") {
+				$("#keyword").val("");
+				$("#keyword").focus();
+			}
+		});
+
+		$("#searchButton").click(function() {
+			if ($("#search").val() != "all") {
+				if (!chkData("#keyword", "검색어를"))
+					return;
+			}
+			goPage();
+		});
+
+		//검색 데이터 유지
+		let word = "<c:out value='${data.keyword}' />";
+		if (word != "") {
+			$("#keyword").val("<c:out value='${data.keyword}' />");
+			$("#search").val("<c:out value='${data.search}' />");
+		}
 		
 		
 		//글 쓰기 버튼 클 릭 
@@ -90,15 +88,27 @@
 			$("#detailForm").submit();
 		
 		});
-
-		$("#exam").click(function () {
-			location.href="/admin/adminCampaignBoard/campaignBoardDetail";
-		});				   
+			   
 		
+		$(".paginate_button a").click(function(e){
+			e.preventDefault();
+			$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
+			
+			goPage();
+		});
 		
 	})// 최상위 펀션
-	
-	
+		
+	function goPage(){
+		if ($("#search").val() == "all") {
+			$("#keyword").val("");
+		}
+		$("#f_search").attr({
+			"method" : "get",
+			"action" : "/admin/adminCampaignBoard/campaignBoardList"
+		});
+		$("#f_search").submit();
+	}
 	</script>
 	
 </head>
@@ -112,37 +122,54 @@
   <form id="detailForm">
   	<input type="hidden" id="c_no" name="c_no">
   </form>
+ 
   
- 	<div class="row">
-  		<div class="col-xs-6 col-md-10"><button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button></div>
-	</div>
+  
  	
+ 	 <div id="campaignSearch" class="text-right">
+ 	 <div class="text-left">
+  		<div class="col-xs-2 col-md-2"><button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" >캠페인 등록</button></div>
+	</div>
+					<form id="f_search" name="f_search" class="form-inline">
+						<%--페이징 처리 위한 파라미터 --%>
+						<div class="form-group">
+						<input type="hidden" name="pageNum" value="${pageMaker.cvo.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cvo.amount}">
+							<label>게시판검색</label> <select id="search" name="search"
+								class="form-control form-control-sm">
+								<option value="all">전체</option>
+								<option value="c_title">제목</option>
+								<option value="c_content">내용</option>
+								<option value="a_id">작성자</option>
+								<option value="cat_title">카테고리</option>
+							</select> <input type="text" name="keyword" id="keyword"
+								class="form-control form-control-sm" />
+							<button type="button" class="btn btn-sm btn-primary" name="searchButton"
+								id="searchButton">검색</button>
+						</div>
+					</form>
+				</div>
  	<table class="table table-striped table-sm">
 					<colgroup>
 						<col style="width: 5%;" />
-						<col style="width: 10%;" />
+						<col style="width: 6%;" />
 						<col style="width: auto;" />
+						<col style="width: auto;" />
+						<col style="width: 5%;" />
+						<col style="width: 5%;" />
+						<col style="width: 5%;" />
 						<col style="width: 10%;" />
-						<col style="width: 15%;" />
-						<col style="width: 10%;" />
-						<col style="width: 15%;" />
-						<col style="width: 5%;" />
-						<col style="width: 5%;" />
-						<col style="width: 5%;" />
 					</colgroup>
 					<thead>
 						<tr class="">
 							<th>NO</th>
 							<th>관리자 ID</th>
 							<th>글제목</th>
+							<th>글설명</th>
 							<th>카테고리</th>
 							 <th>조회수</th>
 							 <th>댓글</th>
 							<th>작성일</th>
-							<!--
-							
-							<th colspan=2></th> 
-							<th></th>-->
 						</tr>
 					</thead>
 					<tbody id="list">
@@ -154,17 +181,11 @@
 										<td>${campaignBoard.c_no}</td>
 										<td>${campaignBoard.a_id}</td>
 										<td class="goDetail">${campaignBoard.c_title}</td>
+										<td class="content">${campaignBoard.c_content}</td> 
 										<td>${campaignBoard.cat_title}</td>
 										 <td class="id">${campaignBoard.c_views}</td>
-										 <td class="text-center">${campaignBoard.comment_cnt}</td>
+										 <td >${campaignBoard.comment_cnt}</td>
 										<td>${campaignBoard.c_date}</td>
-										<%--<td>${list.m_views}</td>
-										
-										<td style="display: none;" class="text-center file">${list.m_file}</td>
-										<td style="display: none;" class="text-center thumb">${list.m_thumb}</td>
-										<td><button type="button" class="btn btn-sm btn-primary pointPlus">승인</button></td>
-										<td><button type="button" class="btn btn-sm btn-primary pointCancle">취소</button></td>
-										<td><button type="button" class="btn btn-sm btn-danger PostDelete">삭제</button></td> --%>
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -176,8 +197,29 @@
 						</c:choose>
 					</tbody>
 				</table>
-
-
+	
+<!-- 페이징 -->
+<div class="text-center">
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li class="paginate_button previous">
+						<a href="${pageMaker.startPage -1}">Previous</a>
+						</li>
+					</c:if>
+				
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active' : ''}">
+						<a href="${num}">${num}</a>
+						</li>
+					</c:forEach>
+				
+					<c:if test="${pageMaker.next}">
+						<li class="paginate_button next">
+						<a href="${pageMaker.endPage +1}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 	
 
 
