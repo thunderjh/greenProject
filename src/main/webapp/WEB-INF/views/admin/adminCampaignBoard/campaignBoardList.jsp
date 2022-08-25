@@ -112,7 +112,11 @@
   <form id="detailForm">
   	<input type="hidden" id="c_no" name="c_no">
   </form>
- 
+  
+ 	<div class="row">
+  		<div class="col-xs-6 col-md-10"><button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button></div>
+	</div>
+ 	
  	<table class="table table-striped table-sm">
 					<colgroup>
 						<col style="width: 5%;" />
@@ -172,7 +176,7 @@
 						</c:choose>
 					</tbody>
 				</table>
- <button type="button" class="btn btn-primary btn-lg btn-block" id="insertFormBtn" style="margin-bottom: 40px;">캠페인 등록</button>
+
 
 	
 

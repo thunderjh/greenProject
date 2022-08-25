@@ -64,6 +64,8 @@
   	height: 20px;
   	width: 20px;
   }
+  
+  .person{cursor: pointer;}
 	</style>
 	
 	<script type="text/javascript">
@@ -169,7 +171,9 @@
     </div>
     
     <div class="col-sm-3 cat">      
-      <img src="/resources/images/cmapaignBoardimage/pictogram/home.png" class="img-circle person" alt="Random Name" width="100" height="100">
+      <img 
+      src="/resources/images/cmapaignBoardimage/pictogram/home.png" 
+      class="img-circle person" alt="Random Name" width="100" height="100">
       <p class="text-center"><strong>가정</strong></p><br>
     </div>
   </div>
@@ -230,6 +234,7 @@
   </div>
 </div>	
 <!-- 보드 리스트 끝-->
+
 
 <!-- 페이징 -->
 			<div class="text-center">
