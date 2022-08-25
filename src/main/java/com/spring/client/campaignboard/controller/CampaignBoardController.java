@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.spring.client.campaign.common.vo.PageDTO;
 import com.spring.client.campaignboard.service.CampaignBoardService;
 import com.spring.client.campaignboard.vo.CampaignBoardVo;
 
@@ -42,6 +42,13 @@ public class CampaignBoardController {
 		//전체 레코드 조회
 		List<CampaignBoardVo> campaignBoardList = campaignBoardService.campaignBoardList(cbvo);
 		model.addAttribute("campaignBoardList", campaignBoardList);	
+		
+		//전체 레코드 수 구현
+		int total = campaignBoardService.campaignBoardListCnt(cbvo);
+		//페이징 처리
+		model.addAttribute("pageMaker", new PageDTO(cbvo, total));
+		
+		
 		return "client/campaignBoard/campaignBoardList";
 	}
 	

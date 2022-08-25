@@ -142,7 +142,9 @@
 						</c:if>
 					</tbody>
 				</table>
-		
+				
+				      	<button type="button" id="campaignBoardUpdateBtn" class="btn btn-success">수정하기</button>
+      	<button type="button" id="campaignBoardDeleteBtn" class="btn btn-success">삭제하기</button>
 
 				<jsp:include page="campaignBoardReply.jsp" />
 

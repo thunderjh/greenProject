@@ -23,7 +23,7 @@ public class CampaignListTest {
 	@Setter(onMethod_ = @Autowired)
 	private CampaignBoardDao campaignBoardDao;
 	
-	
+	/*
 	@Test
 	public void testBoardList(){
 		CampaignBoardVo cbvo = new CampaignBoardVo();
@@ -34,4 +34,24 @@ public class CampaignListTest {
 			log.info(vo);
 		}		
 	}
+	*/
+	
+	@Test
+	public void testBoardList(){
+		CampaignBoardVo cbvo = new CampaignBoardVo();
+		cbvo.setPageNum(1);
+		cbvo.setAmount(10);
+		
+		cbvo.setCat_title("가정");
+		
+		List<CampaignBoardVo> list = campaignBoardDao.campaignBoardList(cbvo);
+		for(CampaignBoardVo vo : list) {
+			log.info(vo);
+		}
+		log.info("레코드수 : " + campaignBoardDao.campaignBoardListCnt(cbvo));
+		
+		
+	}
+	
+	
 }

@@ -83,7 +83,12 @@
 		
 		});
 		   
-		
+		$(".paginate_button a").click(function(e){
+			e.preventDefault();
+			$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
+			
+			goPage();
+		});
 		
 	})// 최상위 펀션
 	
@@ -181,6 +186,28 @@
 </div>	
 <!-- 보드 리스트 끝-->
 
+<!-- 페이징 -->
+			<div class="text-center">
+				<ul class="pagination">
+					<c:if test="${pageMaker.prev}">
+						<li class="paginate_button previous">
+						<a href="${pageMaker.startPage -1}">Previous</a>
+						</li>
+					</c:if>
+				
+					<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+						<li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active' : ''}">
+						<a href="${num}">${num}</a>
+						</li>
+					</c:forEach>
+				
+					<c:if test="${pageMaker.next}">
+						<li class="paginate_button next">
+						<a href="${pageMaker.endPage +1}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 
 	
 

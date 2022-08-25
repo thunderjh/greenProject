@@ -33,6 +33,13 @@ public class CampaignBoardServiceImlp implements CampaignBoardService{
 		List<CampaignBoardVo> list = campaignBoardDao.campaignBoardList(cbvo);
 		return list;
 	}
+	
+	@Override
+	public int campaignBoardListCnt(CampaignBoardVo cbvo) {
+		
+		return campaignBoardDao.campaignBoardListCnt(cbvo);
+	}
+	
 
 	@Override
 	public CampaignBoardVo campaignBoardDetail(CampaignBoardVo cbvo) {
@@ -46,4 +53,6 @@ public class CampaignBoardServiceImlp implements CampaignBoardService{
 		}
 		return campaignBoardDetail;
 	}
+
+	
 }

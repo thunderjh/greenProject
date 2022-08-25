@@ -2,6 +2,8 @@ package com.spring.client.campaignboard.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.client.campaign.common.vo.CommonVO;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CampaignBoardVo {
+public class CampaignBoardVo extends CommonVO{
 	private int c_no = 0; //게시판 번호
  	private String c_title= ""; // 게시판 리스트 타이틀
 	private String c_content =""; //게시판 리스트 소개
