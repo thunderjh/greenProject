@@ -53,6 +53,7 @@
 			$(function () {
 				/*기본 댓글 목록 불러오기*/
 				let c_no =${campaignBoardDetail.c_no};
+				
 				listAll(c_no);
 				
 				/*비밀번호 확인 없이 삭제 버튼 제어*/
@@ -126,8 +127,9 @@
 							let c_r_num = this.c_r_num;	
 							let c_r_content = this.c_r_content;	
 							let c_r_date = this.c_r_date;	
-							let a_id = this.a_id;	
-							addItem(c_r_num, c_r_content, c_r_date, a_id);
+							let a_id = this.a_id;
+							let id = this.id;
+							addItem(c_r_num, c_r_content, c_r_date, a_id, id);
 						});
 					}).fail(function(){
 						alert("댓글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
@@ -139,7 +141,7 @@
 					$("#reviewList").append(c_r_num + c_r_content + c_r_date + a_id);
 			}*/
 			//새로운 글을 화면에 추가하기(보여주기) 위한 함수
-			function addItem(c_r_num, c_r_content, c_r_date, a_id){
+			function addItem(c_r_num, c_r_content, c_r_date, a_id,id){
 				
 			console.log("a_id = " + a_id + "c_r_date = " + c_r_date);
 				let $div = $('#reviewList');
@@ -147,7 +149,7 @@
 				let $element = $('#item-template').clone().removeAttr('id');
 				$element.attr("data-num", c_r_num);
 				$element.addClass("reply");
-				$element.find('.panel-heading > .panel-title > .name').html("관리자 : "+a_id);
+				$element.find('.panel-heading > .panel-title > .name').html( (a_id == "")? id:"관리자 : "+a_id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html("관리자 : "+a_id);

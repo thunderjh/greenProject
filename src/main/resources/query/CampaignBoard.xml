@@ -52,7 +52,7 @@
 
 <!-- 게시판 디테일 -->
 		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
-		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
+		select C_NO,  A_ID,  C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
 		from CAMPAIGN_BOARD
 		WHERE c_no = #{c_no}
 		</select>

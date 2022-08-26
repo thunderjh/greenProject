@@ -4,7 +4,7 @@
 	
 	<!-- 전체 댓글 조회 -->
 	<select id="adminCampaignboardReplyList" parameterType="adminCampaignBoardReply" resultType="adminCampaignBoardReply">
-	select  c_r_num ,c_r_content, to_char(c_r_date, 'YYYY-MM-DD') as c_r_date, c_no, a_id
+	select  c_r_num ,c_r_content, to_char(c_r_date, 'YYYY-MM-DD') as c_r_date, c_no, a_id,id
 	from campaign_board_reply
 	where c_no = #{c_no}
 	order by c_r_num desc

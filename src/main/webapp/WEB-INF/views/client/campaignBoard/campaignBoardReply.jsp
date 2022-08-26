@@ -53,10 +53,10 @@
 			$(function () {
 				/*기본 댓글 목록 불러오기*/
 				let c_no =${campaignBoardDetail.c_no};
-				let a_id ="${pvo.id }";
+				let id = "${pvo.id}";
 				listAll(c_no);
 				
-				/*비밀번호 확인 없이 삭제 버튼 제어*/
+				/* 확인 없이 삭제 버튼 제어*/
 				$(document).on("click", ".delBtn", function() {
 					let c_r_num = $(this).parents("div.panel").attr("data-num");
 					deleteBtn(c_no, c_r_num);	
@@ -65,11 +65,11 @@
 				
 				//댓글입력 Ajax 연동 처리 방법
 				$(document).on("click", "#replyInsertBtn", function() {
-					let insertUrl = "/replies/replyInsert";
+					let insertUrl = "/clientreplies/replyInsert";
 					//JSON.stringify = javaScript 값 혹은 객체를 json문자열로 변환
 					let value = JSON.stringify({
 						c_no : c_no,
-						a_id : $("#id").val(),
+						id : "${pvo.id}",
 						c_r_content : $("#c_r_content").val()
 					});
 
@@ -114,8 +114,8 @@
 				
 			/*댓글*/
 			function listAll(c_no) {
-					//$("#reviewList").html("");
-					let url = "/replies/all/"+c_no;
+					$(".reply").detach();
+					let url = "/clientreplies/all/"+c_no;
 					    
 					$.getJSON(url, function (data) {
 						$(data).each(function() {
@@ -123,34 +123,31 @@
 							let c_r_content = this.c_r_content;	
 							let c_r_date = this.c_r_date;	
 							let id = this.id;	
-							addItem(c_r_num, c_r_content, c_r_date, id);
+							let a_id = this.a_id;
+							addItem(c_r_num, c_r_content, c_r_date, id, a_id);
 						});
 					}).fail(function(){
 						alert("댓글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
 					});
 			}
 			
-			/*댓글 표현
-			function addItem(c_r_num, c_r_content, c_r_date, id) {
-					$("#reviewList").append(c_r_num + c_r_content + c_r_date + id);
-			}*/
 			//새로운 글을 화면에 추가하기(보여주기) 위한 함수
-			function addItem(c_r_num, c_r_content, c_r_date, id){
+			function addItem(c_r_num, c_r_content, c_r_date, id, a_id){
 				
-			console.log("id = " + id + "c_r_date = " + c_r_date);
+			console.log("id = " + id + "c_r_date = " + c_r_date + " a_id =" + a_id );
 				let $div = $('#reviewList');
 				
 				let $element = $('#item-template').clone().removeAttr('id');
 				$element.attr("data-num", c_r_num);
 				$element.addClass("reply");
-				$element.find('.panel-heading > .panel-title > .name').html(id);
+				$element.find('.panel-heading > .panel-title > .name').html( (id == "")? "관리자 : "+a_id:id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html(id);
 				$div.append($element);
 			}
 			
-			/*글 삭제를 위한 Ajax 연동 처리*/
+			/*댓글 삭제를 위한 Ajax 연동 처리*/
 			function deleteBtn(c_no, c_r_num){
 				if(confirm("선택하신 댓글을 삭제하시겠습니까?")){
 					$.ajax({
@@ -174,7 +171,7 @@
 				}
 			}
 			
-			
+	
 			
 			</script>
 		</head>
@@ -227,9 +224,9 @@
 					<h3 class="panel-title">
 						<span class="name"></span>
 						<span class="date"></span>	
-						<c:if test="${pvo.id != null }">		
+						
 						<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
-						</c:if>		
+						
 						</h3>
 				</div>
 				<div class="panel-body"></div>
@@ -238,8 +235,11 @@
 	<!-- 댓글 리스트 끝 -->		
 	
 	
-		
-			
+	<c:set var="deleteBtnid" value="${id}" />
+	${pvo.id} / ${deleteBtnid }
+			<c:if test="${pvo.id == deleteBtnid }">
+				<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
+			</c:if>
 	
 		</body>
 </html>
