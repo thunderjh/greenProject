@@ -142,6 +142,7 @@
 				$element.addClass("reply");
 				$element.find('.panel-heading > .panel-title > .name').html( (id == "")? "관리자 : "+a_id:id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
+				$element.find('.panel-heading > .panel-title > .deleteif').html((id == "${pvo.id}")? "<button type='button'  data-btn='deleteBtn' class='btn btn-default gap delBtn'>삭제하기</button>":"");
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html(id);
 				$div.append($element);
@@ -224,8 +225,8 @@
 					<h3 class="panel-title">
 						<span class="name"></span>
 						<span class="date"></span>	
+						<span class="deleteif"></span>
 						
-						<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
 						
 						</h3>
 				</div>
@@ -238,7 +239,7 @@
 	<c:set var="deleteBtnid" value="${id}" />
 	${pvo.id} / ${deleteBtnid }
 			<c:if test="${pvo.id == deleteBtnid }">
-				<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
+				<button type="button" id="deleteId" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
 			</c:if>
 	
 		</body>
