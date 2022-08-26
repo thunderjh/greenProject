@@ -1,13 +1,15 @@
 package com.spring.client.campaignboardReply.controller;
 
+import java.util.List;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import com.spring.client.campaignboardReply.service.CampaignboardReplyService;
 import com.spring.client.campaignboardReply.vo.CampaignboardReplyVo;
@@ -22,6 +24,18 @@ import lombok.extern.log4j.Log4j;
 public class CampaignboardReplycontroller {
 	
 	private CampaignboardReplyService campaignboardReplyService;
+	
+
+	//댓글 보여주기
+	@GetMapping(value = "/all/{c_no}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<CampaignboardReplyVo> replyList(@PathVariable("c_no") Integer c_no){
+		log.info("list 호출 성공");
+		
+		List<CampaignboardReplyVo> entity = null;
+		entity = campaignboardReplyService.campaignboardReplyList(c_no);
+		return entity;
+	}
+	
 	
 	//댓글입력
 	@PostMapping(value="/replyInsert", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)

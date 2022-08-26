@@ -1,5 +1,7 @@
 package com.spring.client.campaignboardReply.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.spring.client.campaignboardReply.dao.CampaignboardReplyDao;
@@ -12,6 +14,13 @@ import lombok.AllArgsConstructor;
 public class CampaignboardReplyServiceImpl implements CampaignboardReplyService {
 	
 	private CampaignboardReplyDao campaignboardReplyDao;
+	
+	@Override
+	public List<CampaignboardReplyVo> campaignboardReplyList(Integer c_no) {
+		List<CampaignboardReplyVo> list = null;
+		list = campaignboardReplyDao.campaignboardReplyList(c_no);
+		return list;
+	}
 	
 	
 	@Override
@@ -26,6 +35,8 @@ public class CampaignboardReplyServiceImpl implements CampaignboardReplyService 
 		int result = campaignboardReplyDao.campaignboardReplyDelete(cb_rvo);
 		return result;
 	}
+
+	
 
 
 }

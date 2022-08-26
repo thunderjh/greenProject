@@ -143,7 +143,7 @@
 				let $element = $('#item-template').clone().removeAttr('id');
 				$element.attr("data-num", c_r_num);
 				$element.addClass("reply");
-				$element.find('.panel-heading > .panel-title > .name').html('${pvo.id}');
+				$element.find('.panel-heading > .panel-title > .name').html(id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html(id);
@@ -226,8 +226,10 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<span class="name"></span>
-						<span class="date"></span>					
+						<span class="date"></span>	
+						<c:if test="${pvo.id != null }">		
 						<button type="button" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
+						</c:if>		
 						</h3>
 				</div>
 				<div class="panel-body"></div>
