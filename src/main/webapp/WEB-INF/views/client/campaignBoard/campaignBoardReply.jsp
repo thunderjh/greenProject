@@ -134,7 +134,7 @@
 			//새로운 글을 화면에 추가하기(보여주기) 위한 함수
 			function addItem(c_r_num, c_r_content, c_r_date, id, a_id){
 				
-			console.log("id = " + id + "c_r_date = " + c_r_date + " a_id =" + a_id );
+			console.log("id = " + id + " a_id = " + a_id+ " c_r_date = " + c_r_date  );
 				let $div = $('#reviewList');
 				
 				let $element = $('#item-template').clone().removeAttr('id');
@@ -142,12 +142,16 @@
 				$element.addClass("reply");
 				$element.find('.panel-heading > .panel-title > .name').html( (id == "")? "관리자 : "+a_id:id);
 				$element.find('.panel-heading > .panel-title > .date').html(" / "+c_r_date);
-				$element.find('.panel-heading > .panel-title > .deleteif').html((id == "${pvo.id}")? "<button type='button'  data-btn='deleteBtn' class='btn btn-default gap delBtn'>삭제하기</button>":"");
+				
+				//$element.find('.panel-heading > .panel-title > .deleteif').html("<button type='button' id='deleteId' data-btn='deleteBtn' class='btn btn-default gap delBtn'>삭제하기</button>");
+				 if(id == "${pvo.id}" && a_id == ""){
+					$element.find('.panel-heading > .panel-title > .deleteif').html("<button type='button' id='deleteId' data-btn='deleteBtn' class='btn btn-default gap delBtn'>삭제하기</button>");	
+				}else if(id == ""){} 			
 				$element.find('.panel-body').html(c_r_content);
 				$element.find('#a-name').html(id);
 				$div.append($element);
 			}
-			
+			//<button type='button' id='deleteId' data-btn='deleteBtn' class='btn btn-default gap delBtn'>삭제하기</button>
 			/*댓글 삭제를 위한 Ajax 연동 처리*/
 			function deleteBtn(c_no, c_r_num){
 				if(confirm("선택하신 댓글을 삭제하시겠습니까?")){
@@ -236,11 +240,9 @@
 	<!-- 댓글 리스트 끝 -->		
 	
 	
-	<c:set var="deleteBtnid" value="${id}" />
-	${pvo.id} / ${deleteBtnid }
-			<c:if test="${pvo.id == deleteBtnid }">
-				<button type="button" id="deleteId" data-btn="deleteBtn" class="btn btn-default gap delBtn">삭제하기</button>
-			</c:if>
+	
+	
+
 	
 		</body>
 </html>
