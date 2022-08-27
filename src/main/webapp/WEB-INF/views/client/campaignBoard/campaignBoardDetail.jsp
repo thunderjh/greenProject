@@ -34,7 +34,7 @@
 	
     //body에 있는 유튜브를 실행하기 위한 것 DB에 담긴 값을 가져온다
  	var youtubeVideoId = '<c:out value="${campaignBoardDetail.c_detail_videoid}"/>';
- 	console.log("videoId = " + youtubeVideoId);
+ 	//console.log("videoId = " + youtubeVideoId);
  	
  	
     // Load the IFrame Player API code asynchronously.
@@ -103,7 +103,7 @@
  
       <div class="row marketing">
         <div class="col-xs-9"><h2 class="page-header">${campaignBoardDetail.c_detail_title }</h2></div>
- 		 <div class="col-xs-12"><p>${campaignBoardDetail.c_detail_content}
+ 		 <div class="col-xs-12" style="white-space:pre;"><p>${campaignBoardDetail.c_detail_content}
  		  </p></div>   
       </div>
       

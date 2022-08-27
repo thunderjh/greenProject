@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>about</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,17 +30,9 @@
     
     <link rel="styleSheet" href="/resources/include/css/greenProject.css">
     
-    <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+
 	
     <style type="text/css">
-    #about_img{
-    	filter:brightness(50%);
-    }
-    
     </style>
   </head>
 
@@ -201,7 +193,7 @@
 		<!-- 캠페인 섹션 끝 -->
 		
 		<!-- 진행 중인 후원 섹션 시작 -->
-		<div class="album py-5 bg-light">
+<!-- 		<div class="album py-5 bg-light">
 			<div class="container">
 				<h3 class="h3Title"><a href="#">진행 중인 후원 ></a></h3>
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -254,7 +246,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- 진행 중인 후원 섹션끝 -->
 	
 

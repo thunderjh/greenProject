@@ -67,9 +67,9 @@
   
   .person{cursor: pointer;}
   
-  .item{
+  .listContent{
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 2;
   overflow: hidden;
@@ -134,6 +134,21 @@ html {
   background-color: #32CD32	;
   color: #fff;
 }  
+  .board_icon{
+  	height: 20px;
+  	width: 20px;
+  }
+  .boardIcondiv{
+  	margin-top: 5px;
+  	margin-bottom: 8px;
+  } 
+  .listContent{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 2;
+  overflow: hidden;
+}
 	</style>
 	
 	<script type="text/javascript">
@@ -275,6 +290,10 @@ html {
 			      <div class="containerList"> 
 			       		<h4>${campaignBoard.c_title}</h4>
 				        <p class="listContent">${campaignBoard.c_content}</p>
+				        <div class="text-left boardIcondiv">
+							<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> ${campaignBoard.c_views}
+							<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png">  ${campaignBoard.comment_cnt}
+						</div>
 				        <div class="text-center"  data-num="${campaignBoard.c_no}" >
 				        	<p><button class="goDetail"id="btn" data-target="#myModal">바로가기</button></p>	
 				        </div>		       
