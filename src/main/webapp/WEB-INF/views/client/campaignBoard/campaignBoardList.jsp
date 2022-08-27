@@ -34,7 +34,7 @@
     
     <!-- Bootstrap core CSS -->
 	<style type="text/css">
-	  .thumbnail {
+	/*   .thumbnail {
     padding: 0 0 15px 0;
     border: none;
     border-radius: 0;
@@ -66,6 +66,74 @@
   }
   
   .person{cursor: pointer;}
+  
+  .item{
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  line-height: 2;
+  overflow: hidden;
+} */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.containerList {
+  padding: 0 16px;
+}
+
+.containerList::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.listContent {
+  color: grey;
+}
+
+.goDetail {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+
+  border: solid #505050 0.2px;
+  
+}  
+
+.goDetail:hover {
+  background-color: #32CD32	;
+  color: #fff;
+}  
 	</style>
 	
 	<script type="text/javascript">
@@ -176,62 +244,48 @@
       class="img-circle person" alt="Random Name" width="100" height="100">
       <p class="text-center"><strong>가정</strong></p><br>
     </div>
-  </div>
-    
+  </div>   
 </div>
-
 <!-- 카테고리 끝 -->
 	
-<!-- 보드 리스트 -->
+	
+
 <div id="tour" class="bg-1">
   <div class="container">
     <h3 class="text-center">캠페인 목록</h3>
     <p class="text-center" style="margin-bottom: 40px;">작은 실천으로,<br> 힘을 모아요!</p>
+</div>		
 		
-		
 
 
-
-    
-    <div class="row text-left">
-      <!-- 리스트를 위한 반복문시작 -->
-      
-      <c:forEach items="${campaignBoardList }" var="campaignBoard">
-      <div class="col-xs-6 col-sm-4" style="border: solid 0.5px #000;">
-        <div class="thumbnail" >
-        <!-- 데이터 리스트 시작  -->
-        <c:if test='${campaignBoard.c_file == ""}'>
-          <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
-          </c:if>
-           <c:if test='${campaignBoard.c_file != ""}'>
-          <img src="/uploadStorage/campaign/${campaignBoard.c_file}" alt="캠페인 이미지" width="400" height="300">
-           </c:if>
-          <p><strong>${campaignBoard.c_title}</strong></p>
-          <p>${campaignBoard.c_content}</p>
-          
-        <!-- 데이터 리스트 끝 -->
-        
-          <div class="text-center"  data-num="${campaignBoard.c_no}" >
-          	<button class="goDetail" id="btn" data-target="#myModal" style="margin-bottom: 15px;" >바로가기</button>
-          	<div class="text-left">
-					<img alt="눈동자 아이콘"  class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/view.png"> ${campaignBoard.c_views}
-					<img alt="말풍선 아이콘" class="board_icon" src="/resources/images/cmapaignBoardimage/pictogram/comment.png">  ${campaignBoard.comment_cnt}
-			</div>
-          </div>
-        </div>
-      </div>
-     
-      </c:forEach>
-      
-      <!-- 리스트를 위한 반복문 끝 -->
-      
-     
-    
-      
-    
-      
-    </div>
+<!-- 보드 리스트 -->
+<div class="container">    
+ <div class="row">
+ 
+ <!-- 반복문 시작 -->
+ <c:forEach items="${campaignBoardList }" var="campaignBoard">
+		 <div class="column">
+		    <div class="card">
+			     <c:if test='${campaignBoard.c_file == ""}'>
+	         		 <img src="/resources/images/cmapaignBoardimage/images/logo.png" alt="캠페인 이미지" style="width:100%; height:200px; object-fit: cover;">
+	          	 </c:if>
+	          	 <c:if test='${campaignBoard.c_file != ""}'> 
+	          		 <img src="/uploadStorage/campaign/${campaignBoard.c_file}" alt="캠페인 이미지" 	  style="width:100%; height:200px; object-fit: cover;"> 
+	          	 </c:if>	           
+			      <div class="containerList"> 
+			       		<h2>${campaignBoard.c_title}</h2>
+				        <p class="listContent">${campaignBoard.c_content}</p>
+				        <div class="text-center"  data-num="${campaignBoard.c_no}" >
+				        	<p><button class="goDetail"id="btn" data-target="#myModal">바로가기</button></p>	
+				        </div>		       
+			      </div>
+		    </div>
+		 </div>
+ </c:forEach>
+ <!-- 반복문 끝 -->
+</div>
   </div>
+  
 </div>	
 <!-- 보드 리스트 끝-->
 
