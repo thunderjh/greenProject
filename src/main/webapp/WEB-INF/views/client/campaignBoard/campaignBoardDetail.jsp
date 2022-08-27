@@ -16,7 +16,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
-
+ 
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/campaignBoardDetail.css" rel="stylesheet">
 
@@ -29,7 +29,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+      
     <script type="text/javascript">
 	
     //body에 있는 유튜브를 실행하기 위한 것 DB에 담긴 값을 가져온다
@@ -62,17 +62,21 @@
     	text-align: center;
     	width: 100%;
     	}
-    .detail-mainwrapper{
+/*     .detail-mainwrapper{
    	width: 100%;
     }
     .detail-mainimage{
-    	max-width: 100%;
+    	max-width:200%;
     	height: auto;
-    	}
+    	} */
+    	 
+    .jumbotron{
+    	background-color: #ffffff;
+    }	
     </style>
-  </head>
-
-  <body>
+  </head> 
+   
+  <body> 
 	
 	
 	<form id="youtubesrcForm">
@@ -89,14 +93,14 @@
       <div class="jumbotron detail-mainwrapper">
 
  		<c:if test='${campaignBoardDetail.c_file == ""}'>
-          <img src="/resources/images/cmapaignBoardimage/images/main_01.jpg" alt="캠페인 이미지" width="400" height="300">
+          <img src="/resources/images/cmapaignBoardimage/images/logo.png" alt="캠페인 이미지" style="width:600px; height:100%; object-fit: cover;">
           </c:if>
            <c:if test='${campaignBoardDetail.c_file != ""}'>
-          <img src="/uploadStorage/campaign/${campaignBoardDetail.c_file}" alt="캠페인 이미지" width="400" height="300">
+          <img src="/uploadStorage/campaign/${campaignBoardDetail.c_file}" alt="캠페인 이미지" style="width:600px; height:100%; object-fit: cover;">
            </c:if>
 
       </div>
-
+ 
       <div class="row marketing">
         <div class="col-xs-9"><h2 class="page-header">${campaignBoardDetail.c_detail_title }</h2></div>
  		 <div class="col-xs-12"><p>${campaignBoardDetail.c_detail_content}
@@ -115,9 +119,9 @@
 	        <!-- 16:9 aspect ratio -->	
            </c:if>
 	
-      <div class="btnArea col-md-4">
+    <!--   <div class="btnArea col-md-2">
       	<button type="button" class="btn btn-default" onclick="history.back()">목록으로</button>
-    </div> 
+    </div> -->   
     <br>
     <div>	 
     <jsp:include page="campaignBoardReply.jsp" />

@@ -273,7 +273,7 @@ html {
 	          		 <img src="/uploadStorage/campaign/${campaignBoard.c_file}" alt="캠페인 이미지" 	  style="width:100%; height:200px; object-fit: cover;"> 
 	          	 </c:if>	           
 			      <div class="containerList"> 
-			       		<h2>${campaignBoard.c_title}</h2>
+			       		<h4>${campaignBoard.c_title}</h4>
 				        <p class="listContent">${campaignBoard.c_content}</p>
 				        <div class="text-center"  data-num="${campaignBoard.c_no}" >
 				        	<p><button class="goDetail"id="btn" data-target="#myModal">바로가기</button></p>	

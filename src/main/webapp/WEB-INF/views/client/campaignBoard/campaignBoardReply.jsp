@@ -190,7 +190,7 @@
 							<td class="col-md-1">작성자 : ${pvo.id }</td>				
 						</tr>
 						<tr>
-							<td class="col-md-1">댓글 내용</td>
+							<td class="col-md-3">댓글</td>
 							<td colspan="4" class="col-md-11 text-left">
 								<textarea name="c_r_content" id="c_r_content" class="form-control" rows="3"></textarea>
 								<div class="text-right" style="padding-top: 8px;">
@@ -210,7 +210,7 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td class="col-md-1">댓글 내용</td>
+							<td class="col-md-2">댓글 내용</td>
 							<td colspan="4" class="col-md-11 text-left">
 								<textarea readonly="readonly" class="form-control" rows="3">로그인 후 이용해주세요.</textarea>
 							</td>
