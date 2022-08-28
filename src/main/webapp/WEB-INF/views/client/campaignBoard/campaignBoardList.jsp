@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
 <!DOCTYPE html>
 <html lang="en">
@@ -34,46 +35,7 @@
     
     <!-- Bootstrap core CSS -->
 	<style type="text/css">
-	/*   .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail p {
-    margin-top: 15px;
-    color: #555;
-  }
-   #btn {
-   	border: 1px solid #333;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #000;
-    border-radius: 0;
-    transition: .2s;
-  }
-  #btn:hover, .btn:focus {
-    border: 1px solid #333;
-    background-color: #58D64A;
-    color: #fff;
-  }
 
-   .container {
-    padding: 80px 120px;
-  }
-  .board_icon{
-  	height: 20px;
-  	width: 20px;
-  }
-  
-  .person{cursor: pointer;}
-  
-  .listContent{
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-height: 2;
-  overflow: hidden;
-} */
 
 html {
   box-sizing: border-box;
@@ -178,13 +140,6 @@ html {
 				$("#cat_title").val(cat_title);
 				$("#pageNum").val(1);
 			}
-		//	console.log("c_no = " + c_no);
-			/*상세페이지 이동하기 위한 폼*/
-		//	$("#detailForm").attr({
-		//		"method" : "get",
-		//		"action" : "/client/campaignBoard/campaignBoardDetail"
-		//	});
-		//	$("#detailForm").submit();
 			goPage();
 		});
 		
@@ -227,7 +182,8 @@ html {
   </form>
  
   <!-- 카테고리 시작 -->
-  
+
+ 
  <div class="container text-center">
  <form id="f_search" name="f_search" class="form-inline">
 	<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum}">
@@ -236,6 +192,7 @@ html {
 	  </form>
   <h3>카테고리</h3>
   <br>
+  
   <div class="row">
     <div class="col-sm-3 cat">     
       <img src="/resources/images/cmapaignBoardimage/pictogram/allpick.png" class="img-circle person" alt="Random Name" width="100" height="100"> 
@@ -243,9 +200,12 @@ html {
     </div>
     
     <div class="col-sm-3 cat">      
-      <!--  <a href="/client/campaignBoard/campaignBoardList?cat_title=환경">--> 
+    <!-- <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
+       <p class="text-center"><strong>환경</strong></p><br> -->
+       
+
        <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
-       <!-- </a> --><p class="text-center"><strong>환경</strong></p><br>
+       <p class="text-center"><strong>환경</strong></p><br>              
     </div>
     
     <div class="col-sm-3 cat">     
@@ -261,6 +221,9 @@ html {
     </div>
   </div>   
 </div>
+
+   
+
 <!-- 카테고리 끝 -->
 	
 	
