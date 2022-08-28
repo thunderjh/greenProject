@@ -22,7 +22,7 @@
 	
     <!-- Custom styles for this template -->
     <link href="/resources/include/css/campaignBoardList.css" rel="stylesheet">
-
+	<link href="/resources/include/css/campaignBoardList2.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
@@ -32,10 +32,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <!-- Bootstrap core CSS -->
 	<style type="text/css">
-
+/* 
 
 html {
   box-sizing: border-box;
@@ -110,7 +108,7 @@ html {
   -webkit-box-orient: vertical;
   line-height: 2;
   overflow: hidden;
-}
+} */
 	</style>
 	
 	<script type="text/javascript">
@@ -203,7 +201,7 @@ html {
     <!-- <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
        <p class="text-center"><strong>환경</strong></p><br> -->
        
-
+     
        <img src="/resources/images/cmapaignBoardimage/pictogram/environment.png" class="img-circle person" alt="Random Name" width="100" height="100">
        <p class="text-center"><strong>환경</strong></p><br>              
     </div>
@@ -222,23 +220,22 @@ html {
   </div>   
 </div>
 
-   
+        
 
 <!-- 카테고리 끝 -->
 	
 	
 
 <div id="tour" class="bg-1">
-  <div class="container">
-    <h3 class="text-center">캠페인 목록</h3>
-    <p class="text-center" style="margin-bottom: 40px;">작은 실천으로,<br> 힘을 모아요!</p>
+  <div class="container" style="background-color: #fff;">
+    <h3 class="text-center" style="color: #000;">캠페인 목록</h3>
 </div>		
 		
-
-
+ 
+  
 <!-- 보드 리스트 -->
 <div class="container">    
- <div class="row">
+ <div class="row" style="background-color: #fff;">
  
  <!-- 반복문 시작 -->
  <c:forEach items="${campaignBoardList }" var="campaignBoard">
@@ -263,9 +260,9 @@ html {
 			      </div>
 		    </div>
 		 </div>
- </c:forEach>
+ </c:forEach> 
  <!-- 반복문 끝 -->
-</div>
+</div> 
   </div>
   
 </div>	

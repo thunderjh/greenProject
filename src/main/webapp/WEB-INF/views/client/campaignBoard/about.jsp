@@ -114,7 +114,15 @@ img {
   }
 }
 
+#navbar{
+margin: 0 0;
+padding: 0 0;  
+}
 
+.header{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
     </style>
     
     
@@ -140,7 +148,7 @@ img {
   </head>
  
   <body>
-  
+    
 <!-- <img alt="ss" src="/resources/images/cmapaignBoardimage/images/main_01.jpg"> -->
 	<div class="jumbotron text-center">
 	  <h1>STORY</h1> 
@@ -148,14 +156,14 @@ img {
 	  GreenProject는 사회의 그림자를 빛으로 비추는 마음으로 만들어졌습니다.
 	  </p> 
 	</div>
- 
+    
 
 	<!-- 어바웃 메인 이미지 -->
 
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
-    
+       
      	<!-- (About Section) -->
 		<div class="container-fluid bg-grey">
 		  <div class="row">

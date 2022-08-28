@@ -28,7 +28,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="include/dist/css/jumbotron.css" rel="stylesheet">
+    <!-- <link href="include/dist/css/jumbotron.css" rel="stylesheet"> -->
     
     <style type="text/css">
     
@@ -105,16 +105,16 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/profile/mainMypage">마이페이지<img alt="마이페이지" src="/resources/images/common/myPage.png" style="width: 20px;height: 20px"></a></li>
+            <li><a href="/profile/mainMypage"><img alt="마이페이지" src="/resources/images/common/myPage.png" style="width: 20px;height: 20px"></a></li>
             
 					<c:if test="${pvo == null}">
-						<li><a href="/profile/login">로그인<img src="/resources/images/common/signIn.png" style="width: 20px;height: 20px" ></a></li> 
-						<li><a href="/profile/memberJoinForm">가입<img src="/resources/images/common/singUp.png" style="width: 20px;height: 20px"></a></li>
+						<li><a href="/profile/login"><img src="/resources/images/common/signIn.png" style="width: 20px;height: 20px" ></a></li> 
+						<li><a href="/profile/memberJoinForm"><img src="/resources/images/common/singUp.png" style="width: 20px;height: 20px"></a></li>
 					</c:if>
 					
 					<c:if test="${pvo != null}">
-						<li><a href="/profile/logout">로그아웃<img src="/resources/images/common/signIn.png" style="width: 20px;height: 20px"></a> </li>
-						<li><a href="/profile/mainMypage">마이페이지<img src="/resources/images/common/singUp.png" ></a></li>
+						<li><a href="/profile/logout"><img src="/resources/images/common/signIn.png" style="width: 20px;height: 20px"></a> </li>
+						<li><a href="/profile/mainMypage"><img src="/resources/images/common/singUp.png" ></a></li>
 					</c:if>
           </ul>
         </div><!--/.nav-collapse -->
@@ -139,10 +139,10 @@
   <a href="#" class="btn btn-default btn-lg" onclick = "location.href = '/client/campaignBoard/about' ">이동하기</a>
 </div>
    
-  
+    
 <div class="bg-1"> 
   <div class="container" style="margin-top: 15px;">
-    <h2 class="text-center">GreenProject</h2>
+    <h2 class="text-center" style="margin-bottom: 20px;">GreenProject</h2>
      
     <div class="row text-center">
       <div class="col-sm-4">
