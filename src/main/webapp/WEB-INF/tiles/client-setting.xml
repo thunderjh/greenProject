@@ -20,8 +20,14 @@
   		<put-attribute name="body"	value="/WEB-INF/views/client/question/{1}.jsp"/>
   	</definition>
   	
+
   	<definition name="client/campaignBoard/*"	extends="content">
   		<put-attribute name="title"	value=""/>
   		<put-attribute name="body"	value="/WEB-INF/views/client/campaignBoard/{1}.jsp"/>
+
+  	<definition name="mission/*"	extends="content">
+  		<put-attribute name="title"	value="미션"/>
+  		<put-attribute name="body"	value="/WEB-INF/views/client/mission/{1}.jsp"/>
+
   	</definition>
   </tiles-definitions> 

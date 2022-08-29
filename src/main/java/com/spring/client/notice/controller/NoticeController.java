@@ -24,7 +24,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	/************************************************************
-	 * 공지사항 목록
+	 * 공지사항 목록 구현하기
 	 * ***********************************************************/
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
 	public String noticeList(@ModelAttribute NoticeVO nvo, Model model) {
@@ -40,7 +40,7 @@ public class NoticeController {
 	}
 	
 	/************************************************************
-	 * 공지사항 목록 상세 보기
+	 * 공지사항 세부 글 구현하기
 	 * ***********************************************************/
 	@RequestMapping(value="/noticeDetail", method=RequestMethod.GET)
 	public String noticeDetail(@ModelAttribute("data") NoticeVO nvo, Model model) {

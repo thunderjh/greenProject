@@ -31,10 +31,10 @@ public class loginController{
 	/***********************************
 	 메인 페이지 
 	 ************************************/
-	@RequestMapping(value = "/greenProject")	
+	@RequestMapping(value = "/main")	
 	public String mainMypage() {
-		log.info("greenProject 호출 성공");		
-		return "greenProject";
+		log.info("main 호출 성공");		
+		return "main";
 	}
 	
 	/************************************
@@ -55,7 +55,7 @@ public class loginController{
 		log.info("loginCheck 호출 성공");
 		pvo = service.loginCheck(pvo, response);	//**
 		session.setAttribute("pvo", pvo);	//**
-		return "redirect:/greenProject";
+		return "redirect:/main";
 	}	
 	
 	
