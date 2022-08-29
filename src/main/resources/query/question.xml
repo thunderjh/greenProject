@@ -7,7 +7,7 @@
 		SELECT
 			q_num, q_title, to_char(q_date, 'YYYY-MM-DD') as q_date, views, q_name
 		FROM (
-						SELECT /*+ INDEX_DESC(question quesetion_pk)*/
+						SELECT /*+ INDEX_DESC(question question_pk)*/
     						rownum as rnum, q_num, q_title, q_date, views, q_name
 						FROM question
 						WHERE ]]>

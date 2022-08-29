@@ -7,7 +7,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active">
-            	<a href="#" style="width:70px; height:60px; padding:0px;">
+            	<a href="/main" style="width:70px; height:60px; padding:0px;">
             		<img src="/resources/images/common/logo.png" style="width:100%; height:100%">
             	</a>
             </li>

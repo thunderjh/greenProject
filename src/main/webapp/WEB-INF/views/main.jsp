@@ -9,8 +9,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active">
-            	<a href="#" style="width:60px; height:50px; padding:0px;">
-            		<img src="images/common/logo.png" style="width:100%; height:100%">
+            	<a href="/main" style="width:70px; height:60px; padding:0px;">
+            		<img src="/resources/images/common/logo.png" style="width:100%; height:100%">
             	</a>
             </li>
             <li><a href="#about">소개</a></li>
@@ -19,15 +19,21 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">고객센터<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="images/common/myPage.png">공지사항</a></li>
-                <li><a href="#">Q & A</a></li>
+                <li><a href="/notice/noticeList" >공지사항</a></li>
+                <li><a href="/question/questionList">Q & A</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+          	<c:if test="${pvo == null}">
+            	<li><a href="/profile/login">로그인<img src="/resources/images/common/singIn.png" style="width: 30px; height:30px; padding: 5px;"></a></li>
+            	<li><a href="/profile/memberJoinForm">회원가입<img src="/resources/images/common/singUp.png" style="width: 30px; height:30px; padding: 5px;"></a></li>
+            </c:if>
+            
+            <c:if test="${pvo != null}">
+				<li><a href="/profile/logout">로그아웃<img src="/resources/images/common/signIn.png" style="width: 30px; height:30px; padding: 5px;"></a></li> 
+				<li><a href="/profile/mainMypage">마이페이지<img src="/resources/images/common/myPage.png" style="width: 30px; height:30px; padding: 5px;"></a></li>
+			</c:if>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -18,10 +18,18 @@
 	
 	<!-- Bootstrap core CSS -->
 	<link href="/resources/include/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/resources/include/dist/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	
+	 <!-- Custom styles for this template -->
+    <link href="/resources/include/dist/css/jumbotron.css" rel="stylesheet">
+	
 	<!--[if lt IE 9]>
 	<script src="resources/js/html5shiv.js"></script>
 	<![endif]-->
-	
+	 <script src="/resources/include/dist/assets/js/ie-emulation-modes-warning.js"></script>
+    
 	<script type="text/javascript" src="/resources/include/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/resources/include/js/common.js"></script>
 <!-- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
