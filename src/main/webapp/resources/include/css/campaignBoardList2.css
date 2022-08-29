@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.containerList {
+  padding: 0 16px;
+}
+
+.containerList::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.listContent {
+  color: grey;
+}
+
+.goDetail {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+
+  border: solid #505050 0.2px;
+  
+}  
+
+.goDetail:hover {
+  background-color: #32CD32	;
+  color: #fff;
+}  
+  .board_icon{
+  	height: 20px;
+  	width: 20px;
+  }
+  .boardIcondiv{
+  	margin-top: 5px;
+  	margin-bottom: 8px;
+  } 
+  .listContent{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 2;
+  overflow: hidden;
+}

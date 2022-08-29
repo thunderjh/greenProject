@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.client.campaignboardReply.dao.CampaignboardReplyDao">
+	
+	<!-- 전체 댓글 조회 -->
+	<select id="campaignboardReplyList" parameterType="campaignBoardReply" resultType="campaignBoardReply">
+	select  c_r_num ,c_r_content, to_char(c_r_date, 'YYYY-MM-DD') as c_r_date, c_no, id, a_id
+	from campaign_board_reply
+	where c_no = #{c_no}
+	order by c_r_num desc
+	</select>
+	
+	<!-- 댓글입력 -->
+	<insert id="campaignboardReplyInsert" parameterType="campaignBoardReply">
+	insert into campaign_board_reply(c_r_num, c_no, id, c_r_content)
+	values(campaign_board_reply_seq.nextval, #{c_no}, #{id}, #{c_r_content})
+	</insert>
+	
+	
+	
+	<!-- 댓글삭제 -->
+	<delete id="campaignboardReplyDelete" parameterType="campaignBoardReply">
+	delete 
+	from campaign_board_reply 
+	where c_r_num =#{c_r_num} 
+	</delete>
+
+
+
+
+
+</mapper>

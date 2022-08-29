@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.admin.campaignboard.dao.AdminCampaignBoardDao">
+
+		<!-- 게시판 리스트 조회
+		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, c_date, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views,
+		(select count(c_no) from CAMPAIGN_BOARD_reply where c_no = CAMPAIGN_BOARD.c_no) as comment_cnt
+		from CAMPAIGN_BOARD 
+		order by C_NO desc
+		</select>
+-->
+		<!-- sql if -->
+		<sql id ="boardCaTtitle">
+			<if test="search=='cat_title'">
+				<![CDATA[cat_title like '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search=='c_title'">
+				<![CDATA[c_title like '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search=='c_content'">
+				<![CDATA[c_content like '%' || #{keyword} || '%']]>
+			</if>
+			<if test="search=='a_id'">
+				<![CDATA[a_id like '%' || #{keyword} || '%']]>
+			</if>
+		</sql>
+		<!-- 게시판 리스트 조회 -->
+		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+		<![CDATA[
+		select 
+				C_NO,  A_ID, C_TITLE, C_CONTENT,c_date, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views,
+				(select count(c_no) from CAMPAIGN_BOARD_reply where c_no = campaignBoardList.c_no) as comment_cnt
+		from (
+			    select /*+index_desc(CAMPAIGN_BOARD CAMPAIGN_BOARD_PK)*/
+			        rownum as rnum, C_NO,  A_ID, C_TITLE, C_CONTENT, c_date,C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views
+			    from CAMPAIGN_BOARD
+				WHERE ]]> 
+				<trim prefix="(" suffix=") AND " prefixOverrides="AND">
+					<include refid="boardCaTtitle"></include>
+				</trim>
+				<![CDATA[ rownum <= #{pageNum} * #{amount} 
+				) campaignBoardList
+				WHERE rnum > (#{pageNum} - 1) * #{amount}
+				]]>
+		</select>
+		
+		<!-- 전체 레코드 조회 campaignBoardListCnt -->
+		<select id="adminCampaignBoardListCnt" parameterType="campaignBoard" resultType="int">
+		select count(*) FROM CAMPAIGN_BOARD
+				<where>
+				<include refid="boardCaTtitle"></include>
+				</where>
+		</select>
+		
+		<!-- 게시글 등록 -->
+			<insert id="campaignBoardInsert" parameterType="campaignBoard">
+				insert into
+				CAMPAIGN_BOARD(C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB)
+				values(CAMPAIGN_BOARD_seq.nextval,#{a_id},#{c_title},#{c_content},#{c_detail_title},#{c_detail_content},#{c_detail_videoid},#{cat_title},#{c_file},#{c_thumb})
+			</insert>
+
+		<!-- 게시판 디테일 -->
+		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, c_date, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
+		from CAMPAIGN_BOARD
+		WHERE c_no = #{c_no}
+		</select>
+		
+		<!-- 글수정하기 campaignBoardUpdate -->
+		<update id="campaignBoardUpdate" parameterType="campaignBoard">
+		update CAMPAIGN_BOARD
+		SET C_TITLE=#{c_title}, C_CONTENT=#{c_content}, C_DETAIL_TITLE=#{c_detail_title}, C_DETAIL_CONTENT=#{c_detail_content}, 
+		C_DETAIL_VIDEOID=#{c_detail_videoid}, CAT_TITLE=#{cat_title} 
+		<if test="c_thumb !=''">
+			,C_THUMB=#{c_thumb}
+		</if>
+		<if test="c_thumb !=''">
+			,C_FILE = #{c_file}
+		</if>
+		where c_no = #{c_no}
+		</update>
+		
+		<!-- 글삭제하기 campaignBoardDelete -->
+		<delete id="campaignBoardDelete" parameterType="campaignBoard">
+		 	delete from CAMPAIGN_BOARD
+		 	where c_no = #{c_no}
+		</delete>
+		
+		<!-- 조회수 표현 -->
+		<update id="campaignBoardView" parameterType="campaignBoard">
+		update CAMPAIGN_BOARD
+		set c_views = c_views + 1
+		where c_no = #{c_no}
+		</update>
+		
+</mapper>

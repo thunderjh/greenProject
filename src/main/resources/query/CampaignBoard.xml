@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.client.campaignboard.dao.CampaignBoardDao">
+
+<!-- 게시판 리스트 조회
+		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views
+		from CAMPAIGN_BOARD
+		<where>
+			<if test="cat_title != ''">
+				 cat_title = #{cat_title}
+			</if>
+		</where>	
+		order by C_NO desc	
+		</select>
+-->
+	<!-- sql if -->
+		<sql id ="boardCaTtitle">
+			<if test="cat_title != ''">
+				<![CDATA[ cat_title = #{cat_title}]]>
+			</if>
+		</sql>
+
+<!-- 게시판 리스트 조회 -->
+		<select id="campaignBoardList" parameterType="campaignBoard" resultType="campaignBoard">
+		<![CDATA[
+		select 
+				C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views,
+				(select count(c_no) from CAMPAIGN_BOARD_reply where c_no = campaignBoardList.c_no) as comment_cnt
+		from (
+			    select /*+index_desc(CAMPAIGN_BOARD CAMPAIGN_BOARD_PK)*/
+			        rownum as rnum, C_NO,  A_ID, C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB, c_views
+			    from CAMPAIGN_BOARD
+				WHERE ]]> 
+				<trim prefix="(" suffix=") AND " prefixOverrides="AND">
+					<include refid="boardCaTtitle"></include>
+				</trim>
+				<![CDATA[ rownum <= #{pageNum} * #{amount} 
+				) campaignBoardList
+				WHERE rnum > (#{pageNum} - 1) * #{amount}
+				]]>
+		</select>
+		
+<!-- 전체 레코드 조회 campaignBoardListCnt -->
+		<select id="campaignBoardListCnt" parameterType="campaignBoard" resultType="int">
+		select count(*) FROM CAMPAIGN_BOARD
+				<where>
+				<include refid="boardCaTtitle"></include>
+				</where>
+		</select>
+		
+
+<!-- 게시판 디테일 -->
+		<select id="campaignBoardDetail" parameterType="campaignBoard" resultType="campaignBoard">
+		select C_NO,  A_ID,  C_TITLE, C_CONTENT, C_DETAIL_TITLE, C_DETAIL_CONTENT, C_DETAIL_VIDEOID, CAT_TITLE, C_FILE, C_THUMB,c_views
+		from CAMPAIGN_BOARD
+		WHERE c_no = #{c_no}
+		</select>
+		
+<!-- 조회수 표현 -->
+		<update id="campaignBoardView" parameterType="campaignBoard">
+		update CAMPAIGN_BOARD
+		set c_views = c_views + 1
+		where c_no = #{c_no}
+		</update>
+
+</mapper>

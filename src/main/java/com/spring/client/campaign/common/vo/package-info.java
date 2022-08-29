@@ -1,0 +1,1 @@
+package com.spring.client.campaign.common.vo;

@@ -15,10 +15,15 @@
 		</layout>
 	</appender>
 	
+	<logger name="com.spring.client">
+		<level value="info" />
+	</logger>
+	<logger name="com.spring.admin">
+		<level value="info" />
+	</logger>
 	<logger name="com.spring.common">
 		<level value="info" />
 	</logger>
-	
 	<!-- Application Loggers -->
 	<logger name="com.spring.client">
 		<level value="info" />

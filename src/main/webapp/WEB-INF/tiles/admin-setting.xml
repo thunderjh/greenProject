@@ -15,4 +15,9 @@
 <put-attribute name="main" value="/WEB-INF/views/admin/board/{1}.jsp" />
 </definition>
 
+<definition name="admin/adminCampaignBoard/*" extends="basic">
+<put-attribute name="title" value="관리자 게시판 관리" />
+<put-attribute name="main" value="/WEB-INF/views/admin/adminCampaignBoard/{1}.jsp" />
+</definition>
+
 </tiles-definitions>
