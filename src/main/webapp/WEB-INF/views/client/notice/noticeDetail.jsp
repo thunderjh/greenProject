@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/include/css/noticeDetail.css"/>
 	
 <script type="text/javascript">
+	let buttonCheck=0;
 	$(function(){
 		$("#nextNotice").click(function(){
 			let n_num = $(this).attr("data-num");
@@ -35,19 +36,13 @@
 							<span class="span_right"><em>등록일</em>${detail.n_date}</span>
 						</td>
 					</tr>
-					<tr class="table-tr-height">
-						<%-- <c:if test="${not empty detail.n_file}">
-							<img src="/uploadStorage/notice/thumbnail/${detail.file}"/>
-						</c:if> --%>
-						<td class="col-md-12 text-left">
+					<tr class="table-tr-height" >
+						<td class="col-md-12">
+							<br/>
 							${detail.n_content}
-						</td>
-					</tr>
-					<tr>
-						<td id="nextNotice" class="col-md-12" data-num="${detail.n_num}">
-							<span class="span_left" id="next">다음</span>
-							<span class="span_left">${detail.n_title}</span>
-							<span class="span_right">${detail.n_date}</span>
+							<c:if test="${not empty detail.n_img_file}">
+								<img src="/uploadStorage/notice/${detail.n_img_file}"/>
+							</c:if> 
 						</td>
 					</tr>
 				</tbody>

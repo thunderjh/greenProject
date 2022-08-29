@@ -8,4 +8,5 @@ public interface NoticeDao {
 	public List<NoticeVO> noticeList(NoticeVO nvo);
 	public NoticeVO noticeDetail(NoticeVO nvo);
 	public int noticeListCnt(NoticeVO nvo);
+	public void readViewsUpdate(NoticeVO nvo);
 }

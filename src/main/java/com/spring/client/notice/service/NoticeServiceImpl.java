@@ -26,7 +26,12 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public NoticeVO noticeDetail(NoticeVO nvo) {
 		NoticeVO detail = null;
+		
+		noticeDao.readViewsUpdate(nvo);
+		
 		detail = noticeDao.noticeDetail(nvo);
+		
+		System.out.println("views"+detail.getViews() + "num" + detail.getN_num());
 		if(detail != null)
 			detail.setN_content(detail.getN_content().toString().replaceAll("\n", "<br/>"));
 		return detail;
