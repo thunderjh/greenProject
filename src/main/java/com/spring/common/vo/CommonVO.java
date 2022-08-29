@@ -11,16 +11,16 @@ public class CommonVO {
 	private int pageNum = 0;
 	private int amount = 0;
 	
-	//Á¶°Ç °Ë»ö½Ã »ç¿ëÇÒ ÇÊµå(°Ë»ö´ë»ó, °Ë»ö´Ü¾î)
+	//ì¡°ê±´ê²€ìƒ‰ì‹œ ì‚¬ìš©í•  í•„ë“œ(ê²€ìƒ‰ëŒ€ìƒ, ê²€ìƒ‰ ë‹¨ì–´)
 	private String search = "";
 	private String keyword = "";
 	
-	//³¯Â¥ °Ë»ö½Ã »ç¿ëÇÒ ÇÊµå(½ÃÀÛÀÏ, Á¾·áÀÏ)
+	//ë‚ ì§œ ê²€ìƒ‰ì‹œ ì‚¬ìš©í•  í•„ë“œ(ì‹œì‘ì¼, ì¢…ë£Œì¼)
 	private String start_date = "";
 	private String end_date = "";
 	
 	public CommonVO() {
-		this(1,10);
+		this(1,5);
 	}
 	
 	public CommonVO(int pageNum, int  amount) {

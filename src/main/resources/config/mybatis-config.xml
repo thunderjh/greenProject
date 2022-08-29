@@ -9,5 +9,6 @@
     <typeAlias type="com.spring.admin.login.vo.AdminLoginVO" alias="adminLogin" />
     <!--회원정보-->
 	  <typeAlias type="com.spring.client.profile.vo.ProfileVO" alias="profile"/>
+	  <typeAlias type="com.spring.client.reply.vo.ReplyVO" alias="reply"/>
 </typeAliases>
 </configuration>

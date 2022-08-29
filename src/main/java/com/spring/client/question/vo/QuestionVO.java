@@ -1,14 +1,24 @@
 package com.spring.client.question.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.spring.common.vo.CommonVO;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class QuestionVO {
-	private int q_num				=0;	//¹®ÀÇ»çÇ× ¹øÈ£
-	private String id					="";	//¾ÆÀÌµð
-	private String q_title			="";	//Á¦¸ñ
-	private String q_content	="";	//³»¿ë
-	private String q_date			="";	//ÀÛ¼ºÀÏÀÚ
-	private int views					=0;	//Á¶È¸¼ö
-	private int q_r_num			=0;	//´ñ±Û ¹øÈ£
+@EqualsAndHashCode(callSuper = false)
+public class QuestionVO extends CommonVO{
+	private int q_num				=0;	//ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ ï¿½ï¿½È£
+	private String q_name			="";	//ï¿½ï¿½ï¿½Ìµï¿½
+	private String q_title			="";	//ï¿½ï¿½ï¿½ï¿½
+	private String q_content		="";	//ï¿½ï¿½ï¿½ï¿½
+	private String q_date			="";	//ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String q_pwd			="";	//ï¿½ï¿½Ð¹ï¿½È£
+	
+	private MultipartFile file;			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Çµï¿½
+	private String q_file			="";	//Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int views				=0;	//ï¿½ï¿½È¸ï¿½ï¿½
+	private int q_r_num				=0;	//ï¿½ï¿½ï¿½ ï¿½ï¿½È£
 }

@@ -6,9 +6,9 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PageDTO {
-	private int startPage;	//È­¸é¿¡¼­ º¸¿©Áö´Â ÆäÀÌÁöÀÇ ½ÃÀÛ ¹øÈ£
-	private int endPage;	//È­¸é¿¡¼­ º¸¿©Áö´Â ÆäÀÌÁöÀÇ ³¡ ¹øÈ£
-	private boolean prev, next;	//ÀÌÀü°ú ´ÙÀ½À¸·Î ÀÌµ¿ÇÑ ¸µÅ©ÀÇ Ç¥½Ã ¿©ºÎ
+	private int startPage;	//í™”ë©´ì—ì„œ ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ì˜ ì‹œì‘ë²ˆí˜¸
+	private int endPage;	//í™”ë©´ì—ì„œ ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ì˜ ëë²ˆí˜¸
+	private boolean prev, next;	//ì´ì „ê³¼ ë‹¤ìŒìœ¼ë¡œ ì´ë™í•œ ë§í¬ì˜ í‘œì‹œ ì—¬ë¶€
 	
 	private int total;
 	private CommonVO cvo;
@@ -17,23 +17,23 @@ public class PageDTO {
 		this.cvo = cvo;
 		this.total = total;
 		
-		//ÆäÀÌÂ¡ÀÇ ³¡¹øÈ£(endPage) ±¸ÇÏ±â
-		//this.endPage = (int)(Math.ceil(ÆäÀÌÁö¹øÈ£/ 10.0)) * 10;
-		this.endPage = (int)(Math.ceil(cvo.getPageNum()/10.0))*10;
-		this.startPage = this.endPage - 9;
+		//í˜ì´ì§•ì˜ ëë²ˆí˜¸(endPage) êµ¬í•˜ê¸°
+				//this.endPage = (int)(Math.ceil(í˜ì´ì§€ë²ˆí˜¸ / 5.0)) * 5;
+		this.endPage = (int)(Math.ceil(cvo.getPageNum()/5.0))*5;
+		this.startPage = this.endPage - 4;
 		
-		//ÆäÀÌÂ¡ÀÇ ½ÃÀÛ¹øÈ£(StartPage)±¸ÇÏ±â
-		int realEnd = (int)(Math.ceil(total*1.0)/ cvo.getAmount());
+		//í˜ì´ì§•ì˜ ì‹œì‘ë²ˆí˜¸(startPage)êµ¬í•˜ê¸°
+		int realEnd = (int)(Math.ceil((total*1.0)/ cvo.getAmount()));
 		
-		//³¡ ÆäÀÌÁö ±¸ÇÏ±â
+		//ë í˜ì´ì§€ êµ¬í•˜ê¸°
 		if(realEnd <= this.endPage) {
 			this.endPage = realEnd;
 		}
 		
-		//ÀÌÀü ±¸ÇÏ±â
+		//ì´ì „ êµ¬í•˜ê¸°
 		this.prev = this.startPage > 1;
 		
-		//´ÙÀ½ ±¸ÇÏ±â
+		//ë‹¤ìŒ êµ¬í•˜ê¸°
 		this.next = this.endPage < realEnd;
 	}
 }
